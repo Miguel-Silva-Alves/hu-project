@@ -14,6 +14,7 @@ public class Person {
 
     boolean passwordIsValid(Password password){
         System.out.println(password);
+        return true;
     }
 
 

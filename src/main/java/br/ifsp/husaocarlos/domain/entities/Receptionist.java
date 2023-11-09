@@ -1,4 +1,4 @@
-package br.ifsp.husaocarlos.model;
+package br.ifsp.husaocarlos.domain.entities;
 
 import javax.security.enterprise.credential.Password;
 

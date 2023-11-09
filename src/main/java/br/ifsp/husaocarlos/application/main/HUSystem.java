@@ -1,4 +1,4 @@
-package br.ifsp.husaocarlos;
+package br.ifsp.husaocarlos.application.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -8,4 +8,6 @@ module br.ifsp.husaocarlos {
     exports br.ifsp.husaocarlos;
     exports br.ifsp.husaocarlos.controller;
     opens br.ifsp.husaocarlos.controller to javafx.fxml;
+    exports br.ifsp.husaocarlos.application.main;
+    opens br.ifsp.husaocarlos.application.main to javafx.fxml;
 }

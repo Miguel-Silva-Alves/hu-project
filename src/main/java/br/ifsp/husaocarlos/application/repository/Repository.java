@@ -1,6 +1,6 @@
-package br.ifsp.husaocarlos.persistent;
+package br.ifsp.husaocarlos.application.repository;
 
-import br.ifsp.husaocarlos.model.Person;
+import br.ifsp.husaocarlos.domain.entities.Person;
 
 import java.util.HashMap;
 

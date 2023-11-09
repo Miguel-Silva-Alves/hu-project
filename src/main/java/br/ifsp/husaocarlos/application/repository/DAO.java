@@ -1,4 +1,4 @@
-package br.ifsp.husaocarlos.persistent;
+package br.ifsp.husaocarlos.application.repository;
 
 import java.util.List;
 import java.util.Optional;

@@ -12,9 +12,8 @@ public class Person {
         this.password = password;
     }
 
-    boolean passwordIsValid(Password password){
-        System.out.println(password);
-        return true;
+    boolean passwordIsValid(String password){
+        return this.password.compareTo(password);
     }
 
 

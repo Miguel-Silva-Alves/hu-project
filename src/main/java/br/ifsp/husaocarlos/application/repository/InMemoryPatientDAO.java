@@ -3,13 +3,19 @@ package br.ifsp.husaocarlos.application.repository;
 import br.ifsp.husaocarlos.domain.entities.Patient;
 import br.ifsp.husaocarlos.domain.usecases.patient.PatientDAO;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class InMemoryPatientDAO implements PatientDAO {
 
+    private static final Map<String, Patient> db = new HashMap<>();
+    private static int idCounter;
+
     @Override
     public boolean save(Patient object) {
+        if (db.containsKey(object.getCpf())){
+            return false;
+        }
+        db.put(object.getCpf(), object);
         return true;
     }
 

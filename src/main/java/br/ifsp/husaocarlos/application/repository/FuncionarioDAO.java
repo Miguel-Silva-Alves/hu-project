@@ -1,29 +1,29 @@
 package br.ifsp.husaocarlos.application.repository;
 
-import br.ifsp.husaocarlos.domain.entities.Person;
+import br.ifsp.husaocarlos.domain.entities.User;
 
 import java.util.List;
 import java.util.Optional;
 
-public class FuncionarioDAO implements DAO<String,Person>{
+public class FuncionarioDAO implements DAO<String, User>{
 
     @Override
-    public boolean save(Person object) {
+    public boolean save(User object) {
         return false;
     }
 
     @Override
-    public Optional<Person> findOne(String key) {
+    public Optional<User> findOne(String key) {
         return Optional.empty();
     }
 
     @Override
-    public List<Person> findAll() {
+    public List<User> findAll() {
         return null;
     }
 
     @Override
-    public void update(String key, Person object) {
+    public void update(String key, User object) {
 
     }
 

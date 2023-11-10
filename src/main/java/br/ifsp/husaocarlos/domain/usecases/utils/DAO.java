@@ -1,4 +1,4 @@
-package br.ifsp.husaocarlos.application.repository;
+package br.ifsp.husaocarlos.domain.usecases.utils;
 
 import java.util.List;
 import java.util.Optional;

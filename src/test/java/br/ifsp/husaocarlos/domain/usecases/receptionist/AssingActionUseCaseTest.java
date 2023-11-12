@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.security.enterprise.credential.Password;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AssingActionUseCaseTest {
     Action action;
@@ -26,6 +25,23 @@ public class AssingActionUseCaseTest {
         AssingActionUseCase assingActionUseCase = new AssingActionUseCase(action,patient);
         boolean result = assingActionUseCase.AssingAction();
         assertTrue(result);
+    }
+
+    @Test
+    public void AssingActionWithNullPatient(){
+        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,() ->{
+            AssingActionUseCase assingActionUseCase = new AssingActionUseCase(action,null);
+        });
+
+        assertEquals(exception.getClass(),IllegalArgumentException.class);
+    }
+
+    @Test
+    public void AssingActionWithNullAction(){
+        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,() ->{
+            AssingActionUseCase assingActionUseCase = new AssingActionUseCase(null,patient);
+        });
+        assertEquals(exception.getClass(),IllegalArgumentException.class);
     }
 
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Action {
+
+   Integer id;
    String name;
    String specialty;
    Professor professor;
@@ -11,7 +13,8 @@ public class Action {
 
    private final List<Patient> patients = new ArrayList<Patient>();
 
-   public Action(String name, String specialty, Professor professor, String lineOfCare) {
+   public Action(Integer id, String name, String specialty, Professor professor, String lineOfCare) {
+      this.id = id;
       this.name = name;
       this.specialty = specialty;
       this.professor = professor;
@@ -25,4 +28,7 @@ public class Action {
       return patients.add(patient);
    }
 
+   public Integer getId() {
+      return id;
+   }
 }

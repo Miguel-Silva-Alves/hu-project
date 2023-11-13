@@ -16,7 +16,7 @@ public class RegisterLinesOfCareTest {
     @BeforeEach
     void setup(){
         Password professorPassword = new Password("1234");
-        professor = new Professor("prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor);
+        professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor);
         lineName = "Line1";
     }
 

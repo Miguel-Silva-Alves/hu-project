@@ -21,6 +21,22 @@ public class Action {
       this.lineOfCare = lineOfCare;
    }
 
+   public Action(String name, String specialty, Professor professor, String lineOfCare) {
+      this.name = name;
+      this.specialty = specialty;
+      this.professor = professor;
+      this.lineOfCare = lineOfCare;
+      this.id = -1;
+   }
+
+   public void setId(Integer id) {
+      this.id = id;
+   }
+
+   public Professor getProfessor() {
+      return professor;
+   }
+
    public boolean reciveNewPatient(Patient patient){
       if (patient == null)
          return false;

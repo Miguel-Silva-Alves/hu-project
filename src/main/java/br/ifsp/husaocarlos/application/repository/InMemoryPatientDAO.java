@@ -8,7 +8,6 @@ import java.util.*;
 public class InMemoryPatientDAO implements PatientDAO {
 
     private static final Map<String, Patient> db = new HashMap<>();
-    private static int idCounter;
 
     @Override
     public boolean save(Patient object) {

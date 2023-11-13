@@ -7,9 +7,10 @@ import br.ifsp.husaocarlos.domain.usecases.patient.RegisterPatientUseCase;
 import javax.security.enterprise.credential.Password;
 
 public class Receptionist extends User {
-    public Receptionist(String email, String cpf, String name, Password password, String adress, String registration, Roles role) {
-        super(email, cpf, name, password, adress, registration, role);
+    public Receptionist(Integer id, String email, String cpf, String name, Password password, String adress, String registration, Roles role) {
+        super(id, email, cpf, name, password, adress, registration, role);
     }
+
     public boolean registerPatient(Patient patient){
         PatientDAO DAO = new InMemoryPatientDAO();
         RegisterPatientUseCase registerPatientUseCase = new RegisterPatientUseCase(DAO);

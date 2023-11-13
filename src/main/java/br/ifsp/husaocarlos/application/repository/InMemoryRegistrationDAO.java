@@ -49,8 +49,8 @@ public class InMemoryRegistrationDAO implements RegistrationDAO {
     }
 
     @Override
-    public void update(Integer key, Registration object) {
-
+    public boolean update(Integer key, Registration object) {
+        return true;
     }
 
     @Override

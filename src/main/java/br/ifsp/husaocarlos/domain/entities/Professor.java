@@ -12,13 +12,16 @@ public class Professor extends User {
         super(id, email, cpf, name, password, adress, registration, role);
     }
 
-    public boolean addNewLineOfCare(String LineName){
-        try{
-            linesOfCare.put(LineName,new ArrayList<Action>());
+    public boolean addNewLineOfCare(String LineName) throws Exception {
+
+        List<Action> list = linesOfCare.get(LineName);
+        if (list == null) {
+            linesOfCare.put(LineName, new ArrayList<Action>());
             return true;
-        }catch (Exception e){
-            return false;
         }
+        else
+            throw new Exception("Line of Care already exists");
+
     }
     public boolean setAppointment(){return true;}
     public void checkSchedule(){}

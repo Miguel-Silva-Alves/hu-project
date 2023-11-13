@@ -29,8 +29,8 @@ public class InMemoryPatientDAO implements PatientDAO {
     }
 
     @Override
-    public void update(String key, Patient object) {
-
+    public boolean update(String key, Patient object) {
+        return true;
     }
 
     @Override

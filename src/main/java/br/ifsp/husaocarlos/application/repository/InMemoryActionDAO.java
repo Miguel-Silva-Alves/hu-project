@@ -15,13 +15,15 @@ public class InMemoryActionDAO implements ActionDAO {
     public Optional<Action> findByName(String name) {
         return Optional.empty();
     }
-
+    private int idCounter = 0;
     @Override
     public boolean save(Action object) {
-        if (db.containsKey(object.getId())){
+        if (object.getId() != -1){
             return false;
         }
-        db.put(object.getId(), object);
+        object.setId(idCounter);
+        db.put(idCounter, object);
+        idCounter++;
         return true;
     }
 

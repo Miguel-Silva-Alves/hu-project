@@ -11,7 +11,7 @@ public class User {
     Password password;
     String adress;
     String registration;
-    Roles role;
+    public Roles role;
 
     public User(Integer id, String email, String cpf, String name, Password password, String adress, String registration, Roles role) {
         this.id = id;

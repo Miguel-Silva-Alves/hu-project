@@ -38,8 +38,8 @@ public class InMemoryActionDAO implements ActionDAO {
     }
 
     @Override
-    public void update(Integer key, Action object) {
-
+    public boolean update(Integer key, Action object) {
+        return true;
     }
 
     @Override

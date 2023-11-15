@@ -1,9 +1,8 @@
 package br.ifsp.husaocarlos.application.repository;
-
 import br.ifsp.husaocarlos.domain.entities.Registration;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
-
 import java.util.*;
+
 
 public class InMemoryRegistrationDAO implements RegistrationDAO {
     private static final Map<Integer, Registration> db = new HashMap<>();

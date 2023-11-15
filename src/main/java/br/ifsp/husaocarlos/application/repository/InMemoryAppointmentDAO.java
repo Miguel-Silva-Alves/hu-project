@@ -1,8 +1,5 @@
 package br.ifsp.husaocarlos.application.repository;
-
-import br.ifsp.husaocarlos.App;
 import br.ifsp.husaocarlos.domain.entities.Patient;
-import br.ifsp.husaocarlos.domain.entities.Registration;
 import br.ifsp.husaocarlos.domain.entities.Student;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
@@ -36,13 +33,11 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
 
     @Override
     public boolean update(Integer key, Appointment object) {
-
         if(db.containsKey(key)){
             db.replace(key, object);
             return true;
         }
         return false;
-
     }
 
     @Override

@@ -1,9 +1,6 @@
 package br.ifsp.husaocarlos.application.repository;
-
-import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.User;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
-
 import java.util.*;
 
 public class InMemoryUserDAO implements UserDAO {
@@ -22,12 +19,10 @@ public class InMemoryUserDAO implements UserDAO {
 
     @Override
     public Optional<User> findOne(Integer key) {
-
         if(db.containsKey(key)){
             return Optional.of(db.get(key));
         }
         return Optional.empty();
-
     }
 
     @Override

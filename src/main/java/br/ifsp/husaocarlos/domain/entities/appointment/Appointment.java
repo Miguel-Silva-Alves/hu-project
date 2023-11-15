@@ -15,14 +15,19 @@ public class Appointment {
     Student student;
     Patient patient;
 
+<<<<<<< HEAD
+=======
     AppointmentStatus status;
 
+>>>>>>> 4c828c65fb4993b1cae5d34596c32ef8fb0fa95c
     public Appointment(LocalDateTime date, Action action, Student student, Patient patient) {
         this.date = date;
         this.action = action;
         this.student = student;
         this.patient = patient;
         this.id = -1;
+<<<<<<< HEAD
+=======
         this.status = AppointmentStatus.Scheduled;
     }
 
@@ -45,6 +50,7 @@ public class Appointment {
 
     public AppointmentStatus getStatus() {
         return status;
+>>>>>>> 4c828c65fb4993b1cae5d34596c32ef8fb0fa95c
     }
 
     public Integer getId() {
@@ -59,10 +65,13 @@ public class Appointment {
         return student;
     }
 
+<<<<<<< HEAD
+=======
     public Patient getPatient() {
         return patient;
     }
 
+>>>>>>> 4c828c65fb4993b1cae5d34596c32ef8fb0fa95c
     public LocalDateTime getDate() {
         return date;
     }

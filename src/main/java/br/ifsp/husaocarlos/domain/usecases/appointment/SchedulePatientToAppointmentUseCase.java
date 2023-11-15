@@ -44,16 +44,12 @@ public class SchedulePatientToAppointmentUseCase {
         }
 
         Appointment appointment = new Appointment(gnt.getNextHourFree(student.get()), action, student.get(), patient);
-<<<<<<< HEAD
 
-        return appointment;
-=======
+
         if (!appointmentDAO.save(appointment)){
             throw new IllegalArgumentException("appoitment can not be created");
         }
         return appointment;
-
->>>>>>> 4c828c65fb4993b1cae5d34596c32ef8fb0fa95c
     }
 
 }

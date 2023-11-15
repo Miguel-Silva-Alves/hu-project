@@ -15,12 +15,36 @@ public class Appointment {
     Student student;
     Patient patient;
 
+    AppointmentStatus status;
+
     public Appointment(LocalDateTime date, Action action, Student student, Patient patient) {
         this.date = date;
         this.action = action;
         this.student = student;
         this.patient = patient;
         this.id = -1;
+        this.status = AppointmentStatus.Scheduled;
+    }
+
+    public Appointment(Integer id, LocalDateTime date, Action action, Student student, Patient patient, AppointmentStatus status) {
+        this.id = id;
+        this.date = date;
+        this.action = action;
+        this.student = student;
+        this.patient = patient;
+        this.status = status;
+    }
+
+    public void attend(){
+        this.status = AppointmentStatus.Attend;
+    }
+
+    public void dischard(){
+        this.status = AppointmentStatus.Discharge;
+    }
+
+    public AppointmentStatus getStatus() {
+        return status;
     }
 
     public Integer getId() {
@@ -33,6 +57,10 @@ public class Appointment {
 
     public Student getStudent() {
         return student;
+    }
+
+    public Patient getPatient() {
+        return patient;
     }
 
     public LocalDateTime getDate() {

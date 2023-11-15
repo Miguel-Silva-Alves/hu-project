@@ -1,6 +1,7 @@
 package br.ifsp.husaocarlos.application.repository;
 
 import br.ifsp.husaocarlos.App;
+import br.ifsp.husaocarlos.domain.entities.Patient;
 import br.ifsp.husaocarlos.domain.entities.Registration;
 import br.ifsp.husaocarlos.domain.entities.Student;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
@@ -35,7 +36,13 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
 
     @Override
     public boolean update(Integer key, Appointment object) {
+
+        if(db.containsKey(key)){
+            db.replace(key, object);
+            return true;
+        }
         return false;
+
     }
 
     @Override
@@ -48,6 +55,14 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
         ArrayList<Appointment> appointments = new ArrayList<>(db.values());
         return  appointments.stream()
                 .filter(appointment -> appointment.getStudent().getId().equals(student.getId()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Appointment> getAppointmentPatient(Patient patient) {
+        ArrayList<Appointment> appointments = new ArrayList<>(db.values());
+        return  appointments.stream()
+                .filter(appointment -> appointment.getPatient().getCpf().equals(patient.getCpf()))
                 .collect(Collectors.toList());
     }
 }

@@ -1,31 +1,33 @@
 package br.ifsp.husaocarlos.application.repository;
-
-import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.User;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class InMemoryUserDAO implements UserDAO {
     private static final Map<Integer, User> db = new HashMap<>();
-
+    private int idCounter = 0;
     @Override
     public boolean save(User object) {
-       User newUser = db.put(object.getId(),object);
-        return newUser == null;
+        if (object.getId() != -1){
+            return false;
+        }
+        object.setId(idCounter);
+        db.put(idCounter, object);
+        idCounter++;
+        return true;
     }
 
     @Override
     public Optional<User> findOne(Integer key) {
+        if(db.containsKey(key)){
+            return Optional.of(db.get(key));
+        }
         return Optional.empty();
     }
 
     @Override
     public List<User> findAll() {
-        return null;
+        return new ArrayList<>(db.values());
     }
 
     @Override

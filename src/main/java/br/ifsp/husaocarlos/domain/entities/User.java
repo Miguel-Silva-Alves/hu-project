@@ -31,4 +31,20 @@ public class User {
     public Integer getId() {
         return id;
     }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", role=" + role +
+                '}';
+    }
+
+    public String getName() {
+        return name;
+    }
 }

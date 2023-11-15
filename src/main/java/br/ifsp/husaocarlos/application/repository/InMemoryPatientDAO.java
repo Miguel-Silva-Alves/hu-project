@@ -25,7 +25,7 @@ public class InMemoryPatientDAO implements PatientDAO {
 
     @Override
     public List<Patient> findAll() {
-        return null;
+        return db.values().stream().toList();
     }
 
     @Override

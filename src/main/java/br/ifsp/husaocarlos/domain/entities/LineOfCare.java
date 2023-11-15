@@ -13,6 +13,14 @@ public class LineOfCare {
         this.reponsableProfessor = reponsableProfessor;
     }
 
+    public String getLineName() {
+        return lineName;
+    }
+
+    public void setLineName(String lineName) {
+        this.lineName = lineName;
+    }
+
     @Override
     public String toString() {
         return "LineOfCare{" +

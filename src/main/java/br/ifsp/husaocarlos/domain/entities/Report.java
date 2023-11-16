@@ -2,15 +2,15 @@ package br.ifsp.husaocarlos.domain.entities;
 
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Report {
-    private final Date reportDate;
+    private final LocalDateTime reportDate;
     private final List<Appointment> appointments = new ArrayList<Appointment>();
 
-    public Report(Date reportDate) {
+    public Report(LocalDateTime reportDate) {
         this.reportDate = reportDate;
     }
     public boolean receiveNewAppointment(Appointment appointment){

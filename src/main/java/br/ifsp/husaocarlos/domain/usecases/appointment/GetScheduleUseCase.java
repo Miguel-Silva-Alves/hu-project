@@ -5,10 +5,10 @@ import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 
 import java.util.List;
 
-public class GetSchedule {
+public class GetScheduleUseCase {
     private final AppointmentDAO appointmentDAO;
 
-    public GetSchedule(AppointmentDAO appointmentDAO) {
+    public GetScheduleUseCase(AppointmentDAO appointmentDAO) {
         this.appointmentDAO = appointmentDAO;
     }
 

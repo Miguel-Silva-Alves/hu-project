@@ -14,13 +14,19 @@ public class EditLinesOfCareUseCase {
         this.DAO = DAO;
     }
 
-    public List<LineOfCare> getLinesOfCareThroughManagement(Management adm) throws IllegalAccessException {
-        if (adm.role != Roles.Management)
-            throw new IllegalAccessException("Not a Management !");
-        return adm.getLinesOfCare(DAO);
+    public List<LineOfCare> getLinesOfCareThroughManagement(Management management) throws IllegalAccessException {
+        if (management == null)
+            throw new IllegalArgumentException("Null management !");
+        if (management.role != Roles.Management)
+            throw new IllegalAccessException("Not a management !");
+
+        return management.getLinesOfCare(DAO);
     }
 
     public boolean edit(String lineName, LineOfCare lineOfCare){
+        if (lineName == null || lineOfCare == null)
+            throw new IllegalArgumentException("One or more null argmuments !");
+
         return DAO.update(lineName,lineOfCare);
     }
 }

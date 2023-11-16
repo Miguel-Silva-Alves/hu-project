@@ -16,4 +16,8 @@ public class Management extends User {
         return DAO.findAll();
     }
 
+    public List<User> getAllUsers(UserDAO DAO){
+        return DAO.findAll();
+    }
+
 }

@@ -27,7 +27,7 @@ public class InMemoryUserDAO implements UserDAO {
 
     @Override
     public List<User> findAll() {
-        return new ArrayList<>(db.values());
+        return db.values().stream().toList();
     }
 
     @Override

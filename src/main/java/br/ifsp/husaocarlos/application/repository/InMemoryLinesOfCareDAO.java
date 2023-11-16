@@ -1,16 +1,20 @@
 package br.ifsp.husaocarlos.application.repository;
 
 import br.ifsp.husaocarlos.domain.entities.LineOfCare;
+import br.ifsp.husaocarlos.domain.entities.Patient;
 import br.ifsp.husaocarlos.domain.usecases.management.LinesOfCareDAO;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class InMemoryLinesOfCareDAO implements LinesOfCareDAO {
-
+    private static final Map<String, LineOfCare> db = new HashMap<>();
     @Override
     public boolean save(LineOfCare object) {
-        return false;
+        LineOfCare newLine = db.put(object.getLineName(),object);
+        return newLine != null;
     }
 
     @Override
@@ -25,7 +29,8 @@ public class InMemoryLinesOfCareDAO implements LinesOfCareDAO {
 
     @Override
     public boolean update(String key, LineOfCare object) {
-        return false;
+        LineOfCare updatedLine = db.replace(key,object);
+        return updatedLine != null;
     }
 
     @Override

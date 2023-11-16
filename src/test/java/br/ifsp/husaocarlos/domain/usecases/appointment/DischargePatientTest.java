@@ -64,7 +64,6 @@ class DischargePatientTest {
         boolean updated = appointmentDAO.update(appointment.getId(), appointment);
         assertEquals(true, updated);
 
-
         execd = dischargePatient.discharge(patient);
         assertEquals(true, execd);
 

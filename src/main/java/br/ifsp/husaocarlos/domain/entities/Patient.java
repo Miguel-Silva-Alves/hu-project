@@ -36,4 +36,12 @@ public class Patient{
     public String getCpf() {
         return cpf;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

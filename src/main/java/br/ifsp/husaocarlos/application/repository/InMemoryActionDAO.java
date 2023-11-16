@@ -2,12 +2,11 @@ package br.ifsp.husaocarlos.application.repository;
 
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
+import br.ifsp.husaocarlos.domain.entities.Professor;
 import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class InMemoryActionDAO implements ActionDAO {
     private static final Map<Integer, Action> db = new HashMap<>();
@@ -15,6 +14,16 @@ public class InMemoryActionDAO implements ActionDAO {
     public Optional<Action> findByName(String name) {
         return Optional.empty();
     }
+
+    @Override
+    public List<Action> findByProfessor(Professor professor) {
+        ArrayList<Action> actions = new ArrayList<>(db.values());
+        return actions.stream()
+                .filter(action -> action.getProfessor().getId().equals(professor.getId()))
+                .collect(Collectors.toList());
+
+    }
+
     private int idCounter = 0;
     @Override
     public boolean save(Action object) {
@@ -34,7 +43,7 @@ public class InMemoryActionDAO implements ActionDAO {
 
     @Override
     public List<Action> findAll() {
-        return null;
+        return new ArrayList<>(db.values());
     }
 
     @Override

@@ -1,16 +1,12 @@
 package br.ifsp.husaocarlos.domain.usecases.user;
 
 import br.ifsp.husaocarlos.domain.entities.User;
-import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
-import br.ifsp.husaocarlos.domain.usecases.appointment.ListAppointmentUseCase;
 
-import java.util.List;
-
-public class CrudUserCase {
+public class CreateUpdateUserUseCase {
 
     UserDAO userDAO;
 
-    public CrudUserCase(UserDAO userDAO) {
+    public CreateUpdateUserUseCase(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 

@@ -69,4 +69,16 @@ public class User {
     public boolean isStudent(){
         return this.role == Roles.Student;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

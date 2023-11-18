@@ -74,4 +74,8 @@ public class ListAppointmentUseCase {
         return new ArrayList<>();
     }
 
+    public List<Appointment> getAppointments(Student student){
+        return appointmentDAO.getAppointmentStudent(student);
+    }
+
 }

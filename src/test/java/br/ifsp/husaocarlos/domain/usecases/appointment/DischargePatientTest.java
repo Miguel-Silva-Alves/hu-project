@@ -29,7 +29,7 @@ class DischargePatientTest {
 
         // Action
         Password professorPassword = new Password("1234");
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor);
+        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor, true);
         Action action = new Action("Ação1","Urologista",professor,"LinhaDeCuidade1");
 
         // Student

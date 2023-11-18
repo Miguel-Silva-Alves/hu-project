@@ -13,7 +13,9 @@ public class User {
     String registration;
     public Roles role;
 
-    public User(Integer id, String email, String cpf, String name, Password password, String adress, String registration, Roles role) {
+    Boolean isActive;
+
+    public User(Integer id, String email, String cpf, String name, Password password, String adress, String registration, Roles role, boolean isActive) {
         this.id = id;
         this.email = email;
         this.cpf = cpf;
@@ -22,6 +24,7 @@ public class User {
         this.adress = adress;
         this.registration = registration;
         this.role = role;
+        this.isActive = isActive;
     }
     public User(String email, String cpf, String name, Password password, String adress, String registration, Roles role) {
         this.id = -1;
@@ -32,6 +35,11 @@ public class User {
         this.adress = adress;
         this.registration = registration;
         this.role = role;
+        this.isActive = true;
+    }
+
+    public void setInactive() {
+        this.isActive = false;
     }
 
     boolean passwordIsValid(String password){
@@ -56,5 +64,21 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isStudent(){
+        return this.role == Roles.Student;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

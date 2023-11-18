@@ -37,11 +37,4 @@ public class Patient{
         return cpf;
     }
 
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

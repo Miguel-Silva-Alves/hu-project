@@ -18,7 +18,7 @@ public class AssingActionUseCaseTest {
     @BeforeEach
     public void setup(){
         Password professorPassword = new Password("1234");
-        professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor);
+        professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor, true);
         action = new Action(1,"Ação1","Urologista",professor,"LinhaDeCuidade1");
         patient = new Patient("567.894.784-42","Paulo","contato@email.com","(16)99356-8742","outro canto do mundo");
         DAO = new InMemoryActionDAO();

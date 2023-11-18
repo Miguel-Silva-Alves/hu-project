@@ -32,12 +32,19 @@ public class InMemoryUserDAO implements UserDAO {
 
     @Override
     public boolean update(Integer key, User object) {
-        User modifiedUser = db.replace(key,object);
-        return modifiedUser == null;
+        if(db.containsKey(key)){
+            db.replace(key,object);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public boolean delete(Integer key) {
+        if(db.containsKey(key)){
+            db.remove(key);
+            return true;
+        }
         return false;
     }
 

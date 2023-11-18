@@ -26,12 +26,12 @@ class GetNextHourFreeStudentUseCaseTest {
 
         // Action
         Password professorPassword = new Password("1234");
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor);
+        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor, true);
         Action action = new Action(1,"Ação1","Urologista",professor,"LinhaDeCuidade1");
 
         // Student
         Student student = new Student(0,"miguel.dev@gmail.com","410.852.512-57","miguel", professorPassword,
-                "rua aldo milanetto,176","13345", Roles.Student);
+                "rua aldo milanetto,176","13345", Roles.Student, true);
 
         // Patient
         Patient patient = new Patient("1111111111", "Miguel", "miguel@email.com", "169999999", "Rua onde ele mora, 10");

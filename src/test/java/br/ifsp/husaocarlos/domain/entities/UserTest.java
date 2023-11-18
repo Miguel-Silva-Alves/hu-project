@@ -11,7 +11,7 @@ class UserTest {
     void passwordIsValid() {
         Password password = new Password("senha123");
         User user = new User(0,"miguel.dev@gmail.com","410.852.512-57","miguel",password,
-                "rua aldo milanetto,176","13345",Roles.Professor);
+                "rua aldo milanetto,176","13345",Roles.Professor, true);
 
         boolean ret = user.passwordIsValid("senha123");
         boolean ret2 = user.passwordIsValid("senha1234");

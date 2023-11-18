@@ -25,7 +25,7 @@ public class GetAllUsersTest {
     void setup(){
         DAO = new InMemoryUserDAO();
         Password managementPassword = new Password("1234");
-        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João",managementPassword,"la na pqp",null, Roles.Management);
+        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João",managementPassword,"la na pqp",null, Roles.Management, true);
         Password professorPassword = new Password("123456");
         professor = new Professor("prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor);
         DAO.save(professor);
@@ -59,7 +59,7 @@ public class GetAllUsersTest {
     @Test
     void getAllUsersWithDifferentRole(){
         Password managementPassword = new Password("1234");
-        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João",managementPassword,"la na pqp",null, Roles.Professor);
+        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João",managementPassword,"la na pqp",null, Roles.Professor, true);
         final IllegalAccessException exception = assertThrows(IllegalAccessException.class,() ->{
             GetAllUsers getAllUsers = new GetAllUsers(DAO);
             getAllUsers.get(management);

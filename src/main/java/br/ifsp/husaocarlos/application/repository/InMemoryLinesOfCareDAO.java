@@ -13,8 +13,13 @@ public class InMemoryLinesOfCareDAO implements LinesOfCareDAO {
     private static final Map<String, LineOfCare> db = new HashMap<>();
     @Override
     public boolean save(LineOfCare object) {
-        LineOfCare newLine = db.put(object.getLineName(),object);
-        return newLine != null;
+
+
+        if (db.containsKey(object.getLineName())){
+            return false;
+        }
+        db.put(object.getLineName(), object);
+        return true;
     }
 
     @Override

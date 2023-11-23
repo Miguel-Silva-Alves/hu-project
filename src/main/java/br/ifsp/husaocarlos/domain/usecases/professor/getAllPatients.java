@@ -19,7 +19,7 @@ public class getAllPatients {
     public List<Patient> get(Professor professor) throws IllegalAccessException {
         if (professor == null )
             throw new IllegalArgumentException("Null Professor !");
-        if (professor.role.equals(Roles.Professor))
+        if (professor.role != Roles.Professor)
             throw new IllegalAccessException("Not a Professor !");
         return professor.viewPatients(DAO);
     }

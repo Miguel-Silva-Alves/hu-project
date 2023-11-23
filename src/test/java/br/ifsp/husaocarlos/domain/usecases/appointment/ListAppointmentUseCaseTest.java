@@ -55,6 +55,7 @@ class ListAppointmentUseCaseTest {
         for(Student studentt: list){
             System.out.println(studentt);
         }
+
         assertEquals(list.isEmpty(), false);
 
     }

@@ -1,9 +1,11 @@
 package br.ifsp.husaocarlos.application.repository;
 
+import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
 import br.ifsp.husaocarlos.domain.usecases.patient.PatientDAO;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class InMemoryPatientDAO implements PatientDAO {
 
@@ -40,6 +42,28 @@ public class InMemoryPatientDAO implements PatientDAO {
 
     @Override
     public Optional<Patient> findByCpf(String cpf) {
+        if(db.containsKey(cpf)){
+            return Optional.of(db.get(cpf));
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public List<Patient> findByName(String name) {
+        ArrayList<Patient> patients = new ArrayList<>(db.values());
+        return patients.stream()
+                .filter(patient -> patient.getName().contains(name))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<Patient> findByEmail(String email) {
+        ArrayList<Patient> patients = new ArrayList<>(db.values());
+        for(Patient patient: patients){
+            if(patient.getEmail().equals(email)){
+                return Optional.of(patient);
+            }
+        }
         return Optional.empty();
     }
 }

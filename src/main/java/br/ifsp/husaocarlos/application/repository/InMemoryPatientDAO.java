@@ -36,8 +36,13 @@ public class InMemoryPatientDAO implements PatientDAO {
     }
 
     @Override
-    public boolean delete(String key) {
+    public boolean delete(String cpf) {
+        if(db.containsKey(cpf)){
+            db.remove(cpf);
+            return true;
+        }
         return false;
+
     }
 
     @Override

@@ -15,7 +15,7 @@ public class CreateUpdateUserUseCase {
     }
 
     public boolean updateUser(User user){
-        return userDAO.update(user.getCpf(), user);
+        return userDAO.update(user);
     }
 
 

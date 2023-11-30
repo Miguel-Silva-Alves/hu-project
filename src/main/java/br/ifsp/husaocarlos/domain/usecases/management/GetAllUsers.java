@@ -20,7 +20,7 @@ public class GetAllUsers {
     public List<User> get(Management management) throws IllegalAccessException {
         if (management == null)
             throw new IllegalArgumentException("Null management !");
-        if (management.role != Roles.Management)
+        if (management.getRole() != Roles.Management)
             throw new IllegalAccessException("Not a management !");
 
         return management.getAllUsers(DAO);

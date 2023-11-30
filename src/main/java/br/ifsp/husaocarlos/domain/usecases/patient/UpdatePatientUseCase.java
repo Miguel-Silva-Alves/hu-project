@@ -26,7 +26,7 @@ public class UpdatePatientUseCase {
             throw new EntityNotFoundException("patient not found");
         }
 
-        return patientDAO.update(cpf, patient);
+        return patientDAO.update(patient);
 
     }
 

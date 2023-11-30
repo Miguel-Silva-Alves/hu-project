@@ -11,7 +11,7 @@ public class EditActionUseCase {
     }
 
     public boolean edit(Integer id, Action action){
-        return actionDAO.update(id,action);
+        return actionDAO.update(action);
     }
 
 }

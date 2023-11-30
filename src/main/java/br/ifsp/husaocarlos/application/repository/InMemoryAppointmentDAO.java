@@ -32,12 +32,8 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
     }
 
     @Override
-    public boolean update(Integer key, Appointment object) {
-        if(db.containsKey(key)){
-            db.replace(key, object);
-            return true;
-        }
-        return false;
+    public boolean update(Appointment object) {
+        return true;
     }
 
     @Override

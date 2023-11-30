@@ -1,3 +1,9 @@
 use hospital;
-select * from users;
-drop table users;
+CREATE TABLE users (CPF VARCHAR(255) NOT NULL,
+ ADRESS VARCHAR(255),
+  EMAIL VARCHAR(255),
+   ISACTIVE TINYINT(1) default 0,
+    NAME VARCHAR(255),
+     PASSWORD VARCHAR(255),
+      REGISTRATION VARCHAR(255),
+       ROLE VARCHAR(255), PRIMARY KEY (CPF));

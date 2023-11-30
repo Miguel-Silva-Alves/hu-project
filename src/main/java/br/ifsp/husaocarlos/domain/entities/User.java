@@ -8,7 +8,6 @@ import javax.security.enterprise.credential.Password;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public String cpf;
     public String email;
     public String name;

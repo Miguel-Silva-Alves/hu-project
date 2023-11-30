@@ -1,4 +1,4 @@
-package br.ifsp.husaocarlos;
+package br.ifsp.husaocarlos.application.view;
 import jakarta.persistence.*;
 import br.ifsp.husaocarlos.domain.entities.Roles;
 import br.ifsp.husaocarlos.domain.entities.User;
@@ -22,20 +22,20 @@ public class App extends Application {
 
     public static void main(String[] args) {
         // Criando um objeto da Classe user:
-        User user = new User("gabriel.rufino05@gmail.com","568.694.788-98","Gabriel","123wo4","Rua longe",null, Roles.Student,true);
-
-
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("hospital");
-
-        EntityManager em = factory.createEntityManager();
-        // Iniciando uma transação:
-        em.getTransaction().begin();
-        // Gravando o objeto no banco de dados:
-        em.persist(user);
-        // "Comitando" a transação:
-        em.getTransaction().commit();
-
-        em.close();
+//        User user = new User("gabriel.rufino05@gmail.com","568.694.788-98","Gabriel","123wo4","Rua longe",null, Roles.Student,true);
+//
+//
+//        EntityManagerFactory factory = Persistence.createEntityManagerFactory("hospital");
+//
+//        EntityManager em = factory.createEntityManager();
+//        // Iniciando uma transação:
+//        em.getTransaction().begin();
+//        // Gravando o objeto no banco de dados:
+//        em.persist(user);
+//        // "Comitando" a transação:
+//        em.getTransaction().commit();
+//
+//        em.close();
         launch();
     }
 }

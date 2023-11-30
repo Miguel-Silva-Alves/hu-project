@@ -15,6 +15,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -63,6 +64,19 @@
             <version>5.8</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.2.0</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -87,7 +101,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                br.ifsp.husaocarlos.husaocarlos/br.ifsp.husaocarlos.husaocarlos.HelloApplication
+                                br.ifsp.husaocarlos.application.view.App
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

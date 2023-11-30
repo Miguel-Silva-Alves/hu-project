@@ -1,4 +1,4 @@
-package br.ifsp.husaocarlos.domain.usecases.utils;
+package br.ifsp.husaocarlos.domain.usecases.utils.exceptions;
 
 public class EntityAlreadyExistsException extends RuntimeException{
     public EntityAlreadyExistsException(String message) {

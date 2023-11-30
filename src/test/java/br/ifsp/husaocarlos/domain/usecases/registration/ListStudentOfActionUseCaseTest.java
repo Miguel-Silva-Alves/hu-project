@@ -2,6 +2,7 @@ package br.ifsp.husaocarlos.domain.usecases.registration;
 
 import br.ifsp.husaocarlos.application.repository.InMemoryRegistrationDAO;
 import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
+import br.ifsp.husaocarlos.application.repository.MySqlUserDAO;
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Professor;
 import br.ifsp.husaocarlos.domain.entities.Roles;
@@ -23,7 +24,7 @@ class ListStudentOfActionUseCaseTest {
 
         // DAO
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
-        UserDAO userDAO = new InMemoryUserDAO();
+        UserDAO userDAO = new MySqlUserDAO();
 
         RegisterStudentActionUseCase registerStudentActionUseCase = new RegisterStudentActionUseCase(registrationDAO);
         Password professorPassword = new Password("1234");
@@ -47,7 +48,7 @@ class ListStudentOfActionUseCaseTest {
             System.out.println(studentFor);
         }
 
-        Assertions.assertEquals(list.get(0).role, Roles.Student);
+        Assertions.assertEquals(list.get(0).getRole(), Roles.Student);
 
     }
 }

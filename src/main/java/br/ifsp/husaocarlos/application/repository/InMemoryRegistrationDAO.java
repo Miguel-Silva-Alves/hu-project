@@ -8,7 +8,7 @@ public class InMemoryRegistrationDAO implements RegistrationDAO {
     private static final Map<Integer, Registration> db = new HashMap<>();
     private int idCounter = 0;
     @Override
-    public Optional<Registration> findbyActionStudent(Integer actionId, Integer studentId) {
+    public Optional<Registration> findbyActionStudent(Integer actionId, String studentId) {
 
         for(Integer key: db.keySet()){
 
@@ -45,7 +45,7 @@ public class InMemoryRegistrationDAO implements RegistrationDAO {
     }
 
     @Override
-    public boolean update(Integer key, Registration object) {
+    public boolean update(Registration object) {
         return true;
     }
 

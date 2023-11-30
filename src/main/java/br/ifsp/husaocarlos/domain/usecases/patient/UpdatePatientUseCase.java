@@ -1,7 +1,7 @@
 package br.ifsp.husaocarlos.domain.usecases.patient;
 
 import br.ifsp.husaocarlos.domain.entities.Patient;
-import br.ifsp.husaocarlos.domain.usecases.utils.EntityNotFoundException;
+import br.ifsp.husaocarlos.domain.usecases.utils.exceptions.EntityNotFoundException;
 import br.ifsp.husaocarlos.domain.usecases.utils.Notification;
 import br.ifsp.husaocarlos.domain.usecases.utils.Validador;
 
@@ -26,7 +26,7 @@ public class UpdatePatientUseCase {
             throw new EntityNotFoundException("patient not found");
         }
 
-        return patientDAO.update(cpf, patient);
+        return patientDAO.update(patient);
 
     }
 

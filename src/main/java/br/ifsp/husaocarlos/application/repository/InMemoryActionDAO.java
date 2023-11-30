@@ -19,7 +19,7 @@ public class InMemoryActionDAO implements ActionDAO {
     public List<Action> findByProfessor(Professor professor) {
         ArrayList<Action> actions = new ArrayList<>(db.values());
         return actions.stream()
-                .filter(action -> action.getProfessor().getId().equals(professor.getId()))
+                .filter(action -> action.getProfessor().getCpf().equals(professor.getCpf()))
                 .collect(Collectors.toList());
 
     }
@@ -47,7 +47,7 @@ public class InMemoryActionDAO implements ActionDAO {
     }
 
     @Override
-    public boolean update(Integer key, Action object) {
+    public boolean update(Action object) {
         return true;
     }
 

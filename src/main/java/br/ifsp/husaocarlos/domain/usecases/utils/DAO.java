@@ -7,6 +7,6 @@ public interface DAO <K,T>{
     boolean save(T object);
     Optional<T> findOne(K key);
     List<T> findAll();
-    boolean update(K key, T object);
+    boolean update(T object);
     boolean delete(K key);
 }

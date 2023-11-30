@@ -33,9 +33,9 @@ public class InMemoryLinesOfCareDAO implements LinesOfCareDAO {
     }
 
     @Override
-    public boolean update(String key, LineOfCare object) {
-        LineOfCare updatedLine = db.replace(key,object);
-        return updatedLine != null;
+    public boolean update(LineOfCare object) {
+
+        return true;
     }
 
     @Override

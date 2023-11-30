@@ -32,12 +32,8 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
     }
 
     @Override
-    public boolean update(Integer key, Appointment object) {
-        if(db.containsKey(key)){
-            db.replace(key, object);
-            return true;
-        }
-        return false;
+    public boolean update(Appointment object) {
+        return true;
     }
 
     @Override
@@ -49,7 +45,7 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
     public List<Appointment> getAppointmentStudent(Student student) {
         ArrayList<Appointment> appointments = new ArrayList<>(db.values());
         return  appointments.stream()
-                .filter(appointment -> appointment.getStudent().getId().equals(student.getId()))
+                .filter(appointment -> appointment.getStudent().getCpf().equals(student.getCpf()))
                 .collect(Collectors.toList());
     }
 

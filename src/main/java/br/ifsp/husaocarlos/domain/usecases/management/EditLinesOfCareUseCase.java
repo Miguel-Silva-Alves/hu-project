@@ -17,7 +17,7 @@ public class EditLinesOfCareUseCase {
     public List<LineOfCare> getLinesOfCareThroughManagement(Management management) throws IllegalAccessException {
         if (management == null)
             throw new IllegalArgumentException("Null management !");
-        if (management.role != Roles.Management)
+        if (management.getRole() != Roles.Management)
             throw new IllegalAccessException("Not a management !");
 
         return management.getLinesOfCare(DAO);
@@ -27,6 +27,6 @@ public class EditLinesOfCareUseCase {
         if (lineName == null || lineOfCare == null)
             throw new IllegalArgumentException("One or more null argmuments !");
 
-        return DAO.update(lineName,lineOfCare);
+        return DAO.update(lineOfCare);
     }
 }

@@ -19,7 +19,7 @@ public class DeleteUserUseCase {
     }
 
     public boolean deleteUser(User user){
-        return userDAO.delete(user.getId());
+        return userDAO.delete(user.getCpf());
     }
 
     public boolean deleteUser(Student student){
@@ -27,7 +27,7 @@ public class DeleteUserUseCase {
         if(!appointmentList.isEmpty()){
             return false;
         }
-        return userDAO.delete(student.getId());
+        return userDAO.delete(student.getCpf());
     }
 
 }

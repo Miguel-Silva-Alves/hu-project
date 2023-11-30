@@ -19,7 +19,7 @@ public class InMemoryActionDAO implements ActionDAO {
     public List<Action> findByProfessor(Professor professor) {
         ArrayList<Action> actions = new ArrayList<>(db.values());
         return actions.stream()
-                .filter(action -> action.getProfessor().getId().equals(professor.getId()))
+                .filter(action -> action.getProfessor().getCpf().equals(professor.getCpf()))
                 .collect(Collectors.toList());
 
     }

@@ -16,11 +16,11 @@ public class RegisterStudentActionUseCase {
     }
 
     public boolean includeStudentAction(Action action, Student student){
-        Optional<Registration> registration = registrationDAO.findbyActionStudent(action.getId(), student.getId());
+        Optional<Registration> registration = registrationDAO.findbyActionStudent(action.getId(), student.getCpf());
         if (registration.isPresent()){
             return false;
         }
-        Registration newRegistration = new Registration(student.getId(), action.getId());
+        Registration newRegistration = new Registration(student.getCpf(), action.getId());
         this.registrationDAO.save(newRegistration);
         return true;
     }

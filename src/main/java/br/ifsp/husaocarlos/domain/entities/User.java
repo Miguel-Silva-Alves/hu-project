@@ -9,22 +9,20 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
-    public String email;
     public String cpf;
+    public String email;
     public String name;
     public String password;
     public String adress;
     public String registration;
+    @Enumerated(EnumType.STRING)
     public Roles role;
-
     public Boolean isActive;
 
     public User() {
     }
 
-    public User(Integer id, String email, String cpf, String name, String password, String adress, String registration, Roles role, boolean isActive) {
-        this.id = id;
+    public User(String email, String cpf, String name, String password, String adress, String registration, Roles role, boolean isActive) {
         this.email = email;
         this.cpf = cpf;
         this.name = name;
@@ -36,7 +34,6 @@ public class User {
     }
 
     public User(String email, String cpf, String name, String password, String adress, String registration, Roles role) {
-        this.id = -1;
         this.email = email;
         this.cpf = cpf;
         this.name = name;
@@ -58,14 +55,6 @@ public class User {
 
     public boolean isStudent() {
         return this.role == Roles.Student;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getEmail() {

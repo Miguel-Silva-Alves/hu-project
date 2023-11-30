@@ -4,6 +4,7 @@ import br.ifsp.husaocarlos.domain.entities.Roles;
 import br.ifsp.husaocarlos.domain.entities.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -11,17 +12,18 @@ import java.io.IOException;
 
 public class HUSystem extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HUSystem.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
 //        // Criando um objeto da Classe user:
-//        User user = new User(1,"gabriel.rufino05@gmail.com","568.694.788-98","Gabriel","1234","Rua longe",null, Roles.Student,true);
+//        User user = new User(1,"gabriel.rufino05@gmail.com","568.694.788-98","Gabriel","123wo4","Rua longe",null, Roles.Student,true);
 //
 //
 //        EntityManagerFactory factory = Persistence.createEntityManagerFactory("hospital");

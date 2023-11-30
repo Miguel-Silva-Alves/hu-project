@@ -1,16 +1,10 @@
 package br.ifsp.husaocarlos.domain.usecases.user;
-
-import br.ifsp.husaocarlos.App;
 import br.ifsp.husaocarlos.domain.entities.Student;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
-
 import java.util.*;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class GetNextHourFreeStudentUseCase {
 

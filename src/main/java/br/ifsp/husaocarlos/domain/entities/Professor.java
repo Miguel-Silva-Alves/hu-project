@@ -10,7 +10,7 @@ import java.util.List;
 public class Professor extends User {
 
     public Professor(Integer id, String email, String cpf, String name, String password, String adress, String registration, Roles role, boolean isActive) {
-        super(id, email, cpf, name, password, adress, registration, role, isActive);
+        super(email, cpf, name, password, adress, registration, role, isActive);
     }
 
     public Professor(String email, String cpf, String name, String password, String adress, String registration, Roles role) {

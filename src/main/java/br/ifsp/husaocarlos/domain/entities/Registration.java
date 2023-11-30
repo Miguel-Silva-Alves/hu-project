@@ -3,17 +3,17 @@ package br.ifsp.husaocarlos.domain.entities;
 public class Registration {
 
     Integer id;
-    Integer studentId;
+    String studentId;
     Integer actionId;
 
-    public Registration(Integer id, Integer studentId, Integer actionId) {
+    public Registration(Integer id, String cpf, Integer actionId) {
         this.id = id;
-        this.studentId = studentId;
+        this.studentId = cpf;
         this.actionId = actionId;
     }
 
-    public Registration(Integer studentId, Integer actionId) {
-        this.studentId = studentId;
+    public Registration(String cpf, Integer actionId) {
+        this.studentId = cpf;
         this.actionId = actionId;
         this.id = -1;
     }
@@ -26,7 +26,7 @@ public class Registration {
         return actionId;
     }
 
-    public Integer getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 

@@ -49,7 +49,7 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
     public List<Appointment> getAppointmentStudent(Student student) {
         ArrayList<Appointment> appointments = new ArrayList<>(db.values());
         return  appointments.stream()
-                .filter(appointment -> appointment.getStudent().getId().equals(student.getId()))
+                .filter(appointment -> appointment.getStudent().getCpf().equals(student.getCpf()))
                 .collect(Collectors.toList());
     }
 

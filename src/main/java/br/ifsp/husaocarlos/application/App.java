@@ -1,4 +1,4 @@
-package br.ifsp.husaocarlos.application.view;
+package br.ifsp.husaocarlos.application;
 import jakarta.persistence.*;
 import br.ifsp.husaocarlos.domain.entities.Roles;
 import br.ifsp.husaocarlos.domain.entities.User;

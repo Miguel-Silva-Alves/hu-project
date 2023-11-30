@@ -11,4 +11,7 @@ module br.ifsp.husaocarlos {
     opens br.ifsp.husaocarlos.controller to javafx.fxml;
     exports br.ifsp.husaocarlos.application.main;
     opens br.ifsp.husaocarlos.application.main to javafx.fxml;
+    opens br.ifsp.husaocarlos.application.view to javafx.fxml;
+    exports br.ifsp.husaocarlos.application;
+    opens br.ifsp.husaocarlos.application to javafx.fxml;
 }

@@ -1,5 +1,7 @@
 package br.ifsp.husaocarlos.application.main;
-
+import jakarta.persistence.*;
+import br.ifsp.husaocarlos.domain.entities.Roles;
+import br.ifsp.husaocarlos.domain.entities.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +20,21 @@ public class HUSystem extends Application {
     }
 
     public static void main(String[] args) {
+//        // Criando um objeto da Classe user:
+//        User user = new User(1,"gabriel.rufino05@gmail.com","568.694.788-98","Gabriel","1234","Rua longe",null, Roles.Student,true);
+//
+//
+//        EntityManagerFactory factory = Persistence.createEntityManagerFactory("hospital");
+//
+//        EntityManager em = factory.createEntityManager();
+//        // Iniciando uma transação:
+//        em.getTransaction().begin();
+//        // Gravando o objeto no banco de dados:
+//        em.persist(user);
+//        // "Comitando" a transação:
+//        em.getTransaction().commit();
+//
+//        em.close();
         launch();
     }
 }

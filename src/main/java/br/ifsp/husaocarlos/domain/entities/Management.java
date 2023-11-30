@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Management extends User {
-    public Management(Integer id, String email, String cpf, String name, Password password, String adress, String registration, Roles role, boolean isActive) {
+    public Management(Integer id, String email, String cpf, String name, String password, String adress, String registration, Roles role, boolean isActive) {
         super(id, email, cpf, name, password, adress, registration, role, isActive);
     }
     public List<LineOfCare> getLinesOfCare(LinesOfCareDAO DAO){

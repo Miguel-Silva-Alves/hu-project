@@ -1,7 +1,7 @@
 package br.ifsp.husaocarlos.domain.usecases.patient;
 
 import br.ifsp.husaocarlos.domain.entities.Patient;
-import br.ifsp.husaocarlos.domain.usecases.utils.EntityAlreadyExistsException;
+import br.ifsp.husaocarlos.domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 import br.ifsp.husaocarlos.domain.usecases.utils.Notification;
 import br.ifsp.husaocarlos.domain.usecases.utils.Validador;
 

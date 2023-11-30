@@ -3,8 +3,8 @@ module br.ifsp.husaocarlos {
     requires javafx.fxml;
     requires javax.security.enterprise.api;
     requires com.opencsv;
-
-
+    requires jakarta.persistence;
+    exports br.ifsp.husaocarlos.domain.entities;
     opens br.ifsp.husaocarlos to javafx.fxml;
     exports br.ifsp.husaocarlos;
     exports br.ifsp.husaocarlos.controller;

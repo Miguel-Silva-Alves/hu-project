@@ -1,8 +1,6 @@
 package br.ifsp.husaocarlos.domain.entities;
 import jakarta.persistence.*;
 
-import javax.security.enterprise.credential.Password;
-
 @Entity
 @Table(name = "users")
 public class User {
@@ -12,7 +10,7 @@ public class User {
     public String email;
     public String name;
     public String password;
-    public String adress;
+    public String address;
     public String registration;
     @Enumerated(EnumType.STRING)
     public Roles role;
@@ -26,7 +24,7 @@ public class User {
         this.cpf = cpf;
         this.name = name;
         this.password = password;
-        this.adress = adress;
+        this.address = adress;
         this.registration = registration;
         this.role = role;
         this.isActive = isActive;
@@ -37,9 +35,20 @@ public class User {
         this.cpf = cpf;
         this.name = name;
         this.password = password;
-        this.adress = adress;
+        this.address = adress;
         this.registration = registration;
         this.role = role;
+        this.isActive = true;
+    }
+
+    public User (User castUser){
+        this.email = castUser.getEmail();
+        this.cpf = castUser.getCpf();
+        this.name = castUser.getName();
+        this.password = castUser.getPassword();
+        this.address = castUser.getAddress();
+        this.registration = castUser.getRegistration();
+        this.role = castUser.getRole();
         this.isActive = true;
     }
 
@@ -88,12 +97,12 @@ public class User {
         this.password = password;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getRegistration() {
@@ -118,6 +127,10 @@ public class User {
 
     public void setActive(Boolean active) {
         isActive = active;
+    }
+
+    public boolean passwordIsValid(String password) {
+        return this.password.equals(password);
     }
 }
 

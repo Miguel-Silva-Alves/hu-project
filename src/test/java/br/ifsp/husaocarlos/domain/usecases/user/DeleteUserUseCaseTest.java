@@ -2,7 +2,7 @@ package br.ifsp.husaocarlos.domain.usecases.user;
 
 import br.ifsp.husaocarlos.application.repository.InMemoryAppointmentDAO;
 import br.ifsp.husaocarlos.application.repository.InMemoryRegistrationDAO;
-import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
+import br.ifsp.husaocarlos.application.repository.MySqlUserDAO;
 import br.ifsp.husaocarlos.domain.entities.*;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
@@ -21,16 +21,15 @@ class DeleteUserUseCaseTest {
 
     @Test
     void deleteUser() {
-        UserDAO userDAO = new InMemoryUserDAO();
+        UserDAO userDAO = new MySqlUserDAO();
         AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
 
         // Create User
-        Password pass = new Password("1234");
         User user = new User(
                 "email",
                 "cpf",
                 "name",
-                pass,
+                "1234",
                 "adress",
                 "registration",
                 Roles.Receptionist
@@ -54,7 +53,7 @@ class DeleteUserUseCaseTest {
                 "email",
                 "cpf",
                 "name",
-                pass,
+                "1234",
                 "adress",
                 "registration",
                 Roles.Receptionist
@@ -70,8 +69,7 @@ class DeleteUserUseCaseTest {
         LocalDateTime date = LocalDateTime.now().plusHours(2);
 
         // Action
-        Password professorPassword = new Password("1234");
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         Action action = new Action("Ação1","Urologista",professor,"LinhaDeCuidade1");
 
         // Linkar o student na action

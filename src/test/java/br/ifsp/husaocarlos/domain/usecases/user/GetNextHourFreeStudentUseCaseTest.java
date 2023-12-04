@@ -1,7 +1,7 @@
 package br.ifsp.husaocarlos.domain.usecases.user;
 
 import br.ifsp.husaocarlos.application.repository.InMemoryAppointmentDAO;
-import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
+import br.ifsp.husaocarlos.application.repository.MySqlUserDAO;
 import br.ifsp.husaocarlos.domain.entities.*;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
@@ -19,18 +19,18 @@ class GetNextHourFreeStudentUseCaseTest {
     void getNextHourFree() {
 
         AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
-        UserDAO userDAO = new InMemoryUserDAO();
+        UserDAO userDAO = new MySqlUserDAO();
 
         LocalDateTime date = LocalDateTime.now().plusHours(2);
         LocalDateTime date2 = LocalDateTime.now().minusHours(3);
 
         // Action
-        Password professorPassword = new Password("1234");
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor, true);
+
+        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         Action action = new Action(1,"Ação1","Urologista",professor,"LinhaDeCuidade1");
 
         // Student
-        Student student = new Student(0,"miguel.dev@gmail.com","410.852.512-57","miguel", professorPassword,
+        Student student = new Student("miguel.dev@gmail.com","410.852.512-57","miguel", "1234",
                 "rua aldo milanetto,176","13345", Roles.Student, true);
 
         // Patient

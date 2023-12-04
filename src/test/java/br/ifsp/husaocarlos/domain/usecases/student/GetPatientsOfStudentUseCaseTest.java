@@ -24,21 +24,20 @@ class GetPatientsOfStudentUseCaseTest {
     void getPatients() {
         AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
-        UserDAO userDAO = new InMemoryUserDAO();
+        UserDAO userDAO = new MySqlUserDAO();
         ActionDAO actionDAO = new InMemoryActionDAO();
         PatientDAO patientDAO = new InMemoryPatientDAO();
 
         // Register Action and Professor
         RegisterActionUseCase registerActionUseCase = new RegisterActionUseCase(actionDAO);
-        Password professorPassword = new Password("1234");
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor);
         Action action = new Action("Ação1","Urologista",professor,"LinhaDeCuidade1");
         boolean exec = registerActionUseCase.registerAction(action);
         assertEquals(true, exec);
 
         // Register Student
         RegisterStudentActionUseCase registerStudentActionUseCase = new RegisterStudentActionUseCase(registrationDAO);
-        Student student = new Student("miguel.dev@gmail.com","410.852.512-57","miguel", professorPassword,
+        Student student = new Student("miguel.dev@gmail.com","410.852.512-57","miguel", "1234",
                 "rua aldo milanetto,176","13345", Roles.Student);
         exec = userDAO.save(student);
         assertEquals(true, exec);

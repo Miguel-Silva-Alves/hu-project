@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserTest {
     @Test
     void passwordIsValid() {
-        Password password = new Password("senha123");
-        User user = new User(0,"miguel.dev@gmail.com","410.852.512-57","miguel",password,
+
+        User user = new User("miguel.dev@gmail.com","410.852.512-57","miguel","senha123",
                 "rua aldo milanetto,176","13345",Roles.Professor, true);
 
         boolean ret = user.passwordIsValid("senha123");

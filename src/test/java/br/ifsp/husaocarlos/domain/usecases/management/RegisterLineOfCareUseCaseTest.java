@@ -17,8 +17,7 @@ public class RegisterLineOfCareUseCaseTest {
 
     @BeforeEach
     void setup(){
-        Password professorPassword = new Password("1234");
-        professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor, true);
+        professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         lineName = "Line1";
         DAO = new InMemoryLinesOfCareDAO();
 

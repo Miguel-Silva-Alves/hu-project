@@ -14,8 +14,7 @@ public class ExportToCsvUseCaseTest {
 
     @BeforeEach
     public void setup(){
-        Password professorPassword = new Password("123456");
-        currentUser = new Professor("prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor);
+        currentUser = new Professor("prof.educador@gmail.com","579.456.789-56","João","123456","la na pqp",null, Roles.Professor);
     }
 
     @Test

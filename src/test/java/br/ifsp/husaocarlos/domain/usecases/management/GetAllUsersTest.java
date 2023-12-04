@@ -1,6 +1,5 @@
 package br.ifsp.husaocarlos.domain.usecases.management;
-
-import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
+import br.ifsp.husaocarlos.application.repository.MySqlUserDAO;
 import br.ifsp.husaocarlos.domain.entities.Management;
 import br.ifsp.husaocarlos.domain.entities.Professor;
 import br.ifsp.husaocarlos.domain.entities.Roles;
@@ -23,11 +22,10 @@ public class GetAllUsersTest {
 
     @BeforeEach
     void setup(){
-        DAO = new InMemoryUserDAO();
-        Password managementPassword = new Password("1234");
-        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João",managementPassword,"la na pqp",null, Roles.Management, true);
+        DAO = new MySqlUserDAO();
+        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Management, true);
         Password professorPassword = new Password("123456");
-        professor = new Professor("prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor);
+        professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor);
         DAO.save(professor);
     }
 
@@ -59,7 +57,7 @@ public class GetAllUsersTest {
     @Test
     void getAllUsersWithDifferentRole(){
         Password managementPassword = new Password("1234");
-        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João",managementPassword,"la na pqp",null, Roles.Professor, true);
+        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         final IllegalAccessException exception = assertThrows(IllegalAccessException.class,() ->{
             GetAllUsers getAllUsers = new GetAllUsers(DAO);
             getAllUsers.get(management);

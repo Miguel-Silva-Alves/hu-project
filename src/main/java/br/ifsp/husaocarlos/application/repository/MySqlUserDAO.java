@@ -15,6 +15,15 @@ public class MySqlUserDAO implements UserDAO {
     @Override
     public boolean save(User object) {
         try{
+            if (!object.getClass().equals(User.class))
+            {
+                System.out.println("Entrei");
+                User newUser = new User(object);
+                em.getTransaction().begin();
+                em.persist(newUser);
+                em.getTransaction().commit();
+                return true;
+            }
             em.getTransaction().begin();
             em.persist(object);
             em.getTransaction().commit();
@@ -32,7 +41,7 @@ public class MySqlUserDAO implements UserDAO {
 
     @Override
     public List<User> findAll() {
-        String jpql = "SELECT u FROM users u";
+        String jpql = "SELECT u FROM User u";
         return em.createQuery(jpql, User.class).getResultList();
     }
 

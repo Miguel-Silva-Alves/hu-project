@@ -16,8 +16,7 @@ class RegisterActionUseCaseTest {
     void registerAction() {
         ActionDAO actionDAO = new InMemoryActionDAO();
         RegisterActionUseCase registerActionUseCase = new RegisterActionUseCase(actionDAO);
-        Password professorPassword = new Password("1234");
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João",professorPassword,"la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         Action action = new Action("Ação1","Urologista",professor,"LinhaDeCuidade1");
         boolean exec = registerActionUseCase.registerAction(action);
         assertEquals(true, exec);

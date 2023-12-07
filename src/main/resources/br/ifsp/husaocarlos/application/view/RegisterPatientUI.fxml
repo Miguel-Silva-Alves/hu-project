@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.RegisterPatientUI">
+   <children>
+      <Label layoutX="76.0" layoutY="51.0" text="CPF:" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="50.0" />
+      <Label layoutX="73.0" layoutY="103.0" text="Nome:" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="100.0" />
+      <Label layoutX="79.0" layoutY="151.0" text="Email:" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="150.0" />
+      <Label layoutX="79.0" layoutY="192.0" text="Telefone:" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="200.0" />
+      <Label layoutX="78.0" layoutY="229.0" text="Endereço:" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="250.0" />
+      <TextField fx:id="txtCPF" layoutX="215.0" layoutY="46.0" prefHeight="24.0" prefWidth="250.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="45.0" />
+      <TextField fx:id="txtName" layoutX="200.0" layoutY="96.0" prefHeight="24.0" prefWidth="250.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="96.0" />
+      <TextField fx:id="txtEmail" layoutX="200.0" layoutY="146.0" prefHeight="24.0" prefWidth="250.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="146.0" />
+      <TextField fx:id="txtPhone" layoutX="200.0" layoutY="196.0" prefHeight="24.0" prefWidth="250.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="196.0" />
+      <TextField fx:id="txtAddress" layoutX="200.0" layoutY="246.0" prefHeight="24.0" prefWidth="250.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="246.0" />
+      <Button layoutX="284.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#registerUser" text="Cadastrar" />
+   </children>
+</AnchorPane>

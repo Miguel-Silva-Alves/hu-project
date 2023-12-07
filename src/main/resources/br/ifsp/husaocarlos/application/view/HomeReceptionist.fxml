@@ -6,6 +6,6 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.HomeReceptionist">
    <children>
-      <Button layoutX="55.0" layoutY="36.0" mnemonicParsing="false" text="Cadastrar Paciente" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="36.0" />
+      <Button layoutX="55.0" layoutY="36.0" onMouseClicked="#changeRegisterPatientView" mnemonicParsing="false" text="Cadastrar Paciente" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="36.0" />
    </children>
 </AnchorPane>

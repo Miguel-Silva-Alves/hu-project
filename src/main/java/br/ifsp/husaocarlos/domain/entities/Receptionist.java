@@ -11,6 +11,11 @@ public class Receptionist extends User {
         super(email, cpf, name, password, adress, registration, role, isActive);
     }
 
+    public Receptionist(User user){
+        super(user.getEmail(), user.getCpf(), user.getName(), user.getPassword(), user.getAddress(), user.getRegistration(), Roles.Receptionist, user.getActive());
+    }
+
+
     public boolean registerPatient(Patient patient){
         PatientDAO DAO = new InMemoryPatientDAO();
         RegisterPatientUseCase registerPatientUseCase = new RegisterPatientUseCase(DAO);

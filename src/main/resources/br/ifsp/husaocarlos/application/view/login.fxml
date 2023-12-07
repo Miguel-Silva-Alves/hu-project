@@ -7,9 +7,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.LoginController">
     <children>
         <Button fx:id="login_btn" layoutX="240.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#loginCurrentUser" prefHeight="25.0" prefWidth="121.0" text="Login" />
-        <TextField fx:id="username_tf" alignment="CENTER" layoutX="226.0" layoutY="148.0" promptText="username" />
+        <TextField fx:id="username_tf" alignment="CENTER" layoutX="226.0" layoutY="148.0" promptText="cpf" />
         <PasswordField fx:id="password_tf" alignment="CENTER" layoutX="226.0" layoutY="200.0" promptText="password" />
-        <Label contentDisplay="CENTER" layoutX="222.0" layoutY="76.0" prefHeight="30.0" prefWidth="157.0" text="HU SÃO CARLOS" textAlignment="CENTER">
+        <Label contentDisplay="CENTER" layoutX="226.0" layoutY="83.0" prefHeight="30.0" prefWidth="171.0" text="HU SÃO CARLOS" textAlignment="JUSTIFY">
             <font>
                 <Font size="20.0" />
             </font>

@@ -70,4 +70,9 @@ public class MySqlUserDAO implements UserDAO {
         String jpql = "SELECT u FROM User u where u.password = ?1 and u.email = ?2";
         return Optional.ofNullable(em.createQuery(jpql, User.class).setParameter(1, password).setParameter(2, username).getSingleResult());
     }
+
+    @Override
+    public Optional<User> findUserByCPF(String cpf) {
+        return Optional.empty();
+    }
 }

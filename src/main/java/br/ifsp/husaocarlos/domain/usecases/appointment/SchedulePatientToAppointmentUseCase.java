@@ -10,6 +10,7 @@ import br.ifsp.husaocarlos.domain.usecases.user.GetNextHourFreeStudentUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +51,17 @@ public class SchedulePatientToAppointmentUseCase {
             throw new IllegalArgumentException("appoitment can not be created");
         }
         return appointment;
+    }
+
+    public Optional<Appointment> scheduleWithDate(Action action, Patient patient, Student student, String date){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
+        Appointment appointment = new Appointment(dateTime, action, student, patient);
+
+        if (!appointmentDAO.save(appointment)){
+            return Optional.empty();
+        }
+        return Optional.of(appointment);
     }
 
 }

@@ -1,15 +1,19 @@
 package br.ifsp.husaocarlos.application.controller;
 
+import br.ifsp.husaocarlos.application.view.App;
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
 import br.ifsp.husaocarlos.domain.entities.Student;
+import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.entities.appointment.Schedule;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,10 +92,10 @@ public class SchedulerPatientUI {
             List<Student> list = listStudentOfActionUseCase.listStudents(actionOptional.get());
             List<Schedule> schedules = new ArrayList<>();
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
             for (Student student: list){
                 String date = getNextHourFreeStudentUseCase.getNextHourFree(student).format(formatter);
-                schedules.add(new Schedule(actionOptional.get().getName(), student.getName(), student.getCpf(), date));
+                schedules.add(new Schedule(actionOptional.get(), student, date));
             }
 
             populateTable(schedules);
@@ -100,13 +104,22 @@ public class SchedulerPatientUI {
         }
     }
 
-    /*
-    *
-    *
-    * - Pegar o nome do textfield
-    - Achar a ação com esse nome
-    - Procurar os estudantes dessa ação
-    - Popular a próxima hora livre deles
-    *
-    * */
+    @FXML
+    void toSchedule(MouseEvent event){
+        Schedule schedule = tableView.getSelectionModel().getSelectedItem();
+        if(schedule != null){
+            Optional<Appointment> appointmentOptional = schedulePatientToAppointmentUseCase.scheduleWithDate(schedule.getAction(), patient, schedule.getStudent(), schedule.getDate());
+            if (appointmentOptional.isPresent()){
+                tableData.clear();
+                txtAction.setText("");
+            }else{
+                System.out.println("SHOW MESSAGE OF ERROR");
+            }
+        }
+    }
+
+    @FXML
+    void toBack(MouseEvent event) throws IOException {
+        App.setRoot("HomeReceptionist");
+    }
 }

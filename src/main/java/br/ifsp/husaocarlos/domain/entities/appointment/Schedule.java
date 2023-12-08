@@ -1,32 +1,43 @@
 package br.ifsp.husaocarlos.domain.entities.appointment;
 
+import br.ifsp.husaocarlos.domain.entities.Action;
+import br.ifsp.husaocarlos.domain.entities.Student;
+
 public class Schedule{
 
-    private String actionName;
-    private String studentName;
-    private String studentCPF;
+    private Action action;
+    private Student student;
     private String date;
 
-    public Schedule(String actionName, String studentName, String studentCPF, String date) {
-        this.actionName = actionName;
-        this.studentName = studentName;
-        this.studentCPF = studentCPF;
+
+    public Schedule(Action action, Student student, String date) {
+        this.action = action;
+        this.student = student;
         this.date = date;
     }
 
     public String getActionName() {
-        return actionName;
+        return action.getName();
     }
 
     public String getStudentName() {
-        return studentName;
+        return student.getName();
     }
 
     public String getStudentCPF() {
-        return studentCPF;
+        return student.getCpf();
     }
+
 
     public String getDate() {
         return date;
+    }
+
+    public Action getAction() {
+        return action;
+    }
+
+    public Student getStudent() {
+        return student;
     }
 }

@@ -1,22 +1,28 @@
 package br.ifsp.husaocarlos.application.main;
 
-import br.ifsp.husaocarlos.application.repository.InMemoryActionDAO;
-import br.ifsp.husaocarlos.application.repository.InMemoryPatientDAO;
-import br.ifsp.husaocarlos.application.repository.InMemoryRegistrationDAO;
-import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
+import br.ifsp.husaocarlos.application.repository.*;
 import br.ifsp.husaocarlos.application.view.App;
 import br.ifsp.husaocarlos.domain.entities.*;
 import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
+import br.ifsp.husaocarlos.domain.usecases.action.FindActionUseCase;
+import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
 import br.ifsp.husaocarlos.domain.usecases.patient.CreatePatientUseCase;
 import br.ifsp.husaocarlos.domain.usecases.patient.PatientDAO;
+import br.ifsp.husaocarlos.domain.usecases.registration.ListStudentOfActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
 import br.ifsp.husaocarlos.domain.usecases.user.FindUserUseCase;
+import br.ifsp.husaocarlos.domain.usecases.user.GetNextHourFreeStudentUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 
 public class Main {
 
+    // USECASE
     public static FindUserUseCase findUserUseCase;
     public static CreatePatientUseCase createPatientUseCase;
+
+    public static FindActionUseCase findActionUseCase;
+    public static ListStudentOfActionUseCase listStudentOfActionUseCase;
+    public static GetNextHourFreeStudentUseCase getNextHourFreeStudentUseCase;
 
     public static void main(String[] args) {
         configureInjection();
@@ -40,7 +46,7 @@ public class Main {
 
         ActionDAO actionDAO = new InMemoryActionDAO();
         // Action
-        Action action = new Action("Ação1","Urologista", professor,"LinhaDeCuidade1");
+        Action action = new Action("action1","Urologista", professor,"LinhaDeCuidade1");
         actionDAO.save(action);
 
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
@@ -58,5 +64,19 @@ public class Main {
         // Patient
         PatientDAO patientDAO = new InMemoryPatientDAO();
         createPatientUseCase = new CreatePatientUseCase(patientDAO);
+
+        // Action
+        ActionDAO actionDAO = new InMemoryActionDAO();
+        findActionUseCase = new FindActionUseCase(actionDAO);
+
+        // Registration
+        RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
+        listStudentOfActionUseCase = new ListStudentOfActionUseCase(registrationDAO, userDAO);
+
+        // Appoitment
+        AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
+        getNextHourFreeStudentUseCase = new GetNextHourFreeStudentUseCase(userDAO, appointmentDAO);
+
+
     }
 }

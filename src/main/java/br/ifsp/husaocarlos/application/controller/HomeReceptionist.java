@@ -98,4 +98,14 @@ public class HomeReceptionist {
         }
     }
 
+    @FXML
+    void toEditPatient(MouseEvent event) throws IOException {
+        Patient patient = tableView.getSelectionModel().getSelectedItem();
+        if(patient != null) {
+            App.setRoot("PatientUI");
+            PatientUI controller = (PatientUI) App.getController();
+            controller.setPatient(patient);
+        }
+    }
+
 }

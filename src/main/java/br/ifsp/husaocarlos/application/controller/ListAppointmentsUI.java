@@ -6,6 +6,7 @@ import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -70,7 +71,7 @@ public class ListAppointmentsUI {
 
         tableData.clear();
         if(appointments == null){
-            System.out.println("Appointments is null!!!");
+            Utils.showAlert("Sem dados", "Não encontramos nenhuma consulta!", Alert.AlertType.INFORMATION);
         }else{
             tableData.addAll(appointments);
         }

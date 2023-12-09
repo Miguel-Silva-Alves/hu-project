@@ -12,6 +12,7 @@ import br.ifsp.husaocarlos.domain.usecases.appointment.SchedulePatientToAppointm
 import br.ifsp.husaocarlos.domain.usecases.patient.CreatePatientUseCase;
 import br.ifsp.husaocarlos.domain.usecases.patient.FindPatientUseCase;
 import br.ifsp.husaocarlos.domain.usecases.patient.PatientDAO;
+import br.ifsp.husaocarlos.domain.usecases.patient.UpdatePatientUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.ListStudentOfActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
 import br.ifsp.husaocarlos.domain.usecases.user.FindUserUseCase;
@@ -26,6 +27,8 @@ public class Main {
     public static FindUserUseCase findUserUseCase;
     public static CreatePatientUseCase createPatientUseCase;
     public static FindPatientUseCase findPatientUseCase;
+    public static UpdatePatientUseCase updatePatientUseCase;
+
     public static SchedulePatientToAppointmentUseCase schedulePatientToAppointmentUseCase;
 
     public static FindActionUseCase findActionUseCase;
@@ -83,6 +86,7 @@ public class Main {
         PatientDAO patientDAO = new InMemoryPatientDAO();
         createPatientUseCase = new CreatePatientUseCase(patientDAO);
         findPatientUseCase = new FindPatientUseCase(patientDAO);
+        updatePatientUseCase = new UpdatePatientUseCase(patientDAO);
 
         // Action
         ActionDAO actionDAO = new InMemoryActionDAO();

@@ -18,5 +18,6 @@
       </TableView>
       <Button layoutX="456.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#toSchedule" text="Marcar Consulta" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="19.0" />
       <Button layoutX="358.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#toSearchAppointments" text="Visualizar Consultas" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="180.0" />
+      <Button layoutX="174.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#toEditPatient" text="Editar" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="369.0" />
    </children>
 </AnchorPane>

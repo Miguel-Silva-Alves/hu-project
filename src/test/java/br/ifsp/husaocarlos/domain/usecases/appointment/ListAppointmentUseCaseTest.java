@@ -1,19 +1,15 @@
 package br.ifsp.husaocarlos.domain.usecases.appointment;
 
+import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
 import br.ifsp.husaocarlos.application.repository.*;
 import br.ifsp.husaocarlos.domain.entities.*;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
-import br.ifsp.husaocarlos.domain.usecases.action.ListActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.action.RegisterActionUseCase;
-import br.ifsp.husaocarlos.domain.usecases.patient.PatientDAO;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegisterStudentActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import javax.security.enterprise.credential.Password;
 
 import java.time.LocalDateTime;
 import java.util.List;

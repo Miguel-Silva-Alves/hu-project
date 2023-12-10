@@ -1,4 +1,4 @@
-package br.ifsp.husaocarlos.application.repository;
+package br.ifsp.husaocarlos.application.persistence;
 import br.ifsp.husaocarlos.application.repository.utils.JPAUtil;
 import br.ifsp.husaocarlos.domain.entities.User;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
@@ -17,7 +17,6 @@ public class MySqlUserDAO implements UserDAO {
         try{
             if (!object.getClass().equals(User.class))
             {
-                System.out.println("Entrei");
                 User newUser = new User(object);
                 em.getTransaction().begin();
                 em.persist(newUser);

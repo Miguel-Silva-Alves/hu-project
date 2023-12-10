@@ -1,5 +1,6 @@
 package br.ifsp.husaocarlos.domain.usecases.student;
 
+import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
 import br.ifsp.husaocarlos.application.repository.*;
 import br.ifsp.husaocarlos.domain.entities.*;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
@@ -12,7 +13,6 @@ import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 import org.junit.jupiter.api.Test;
 
-import javax.security.enterprise.credential.Password;
 import java.time.LocalDateTime;
 import java.util.List;
 

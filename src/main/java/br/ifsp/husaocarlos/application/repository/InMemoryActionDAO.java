@@ -12,7 +12,8 @@ public class InMemoryActionDAO implements ActionDAO {
     private static final Map<Integer, Action> db = new HashMap<>();
     @Override
     public Optional<Action> findByName(String name) {
-        return Optional.empty();
+        ArrayList<Action> actions = new ArrayList<>(db.values());
+        return actions.stream().filter(action -> action.getName().equals(name)).findFirst();
     }
 
     @Override

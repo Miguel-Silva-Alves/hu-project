@@ -6,6 +6,7 @@ import br.ifsp.husaocarlos.domain.entities.Student;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Appointment {
@@ -46,6 +47,10 @@ public class Appointment {
         return status;
     }
 
+    public String getStatusName(){
+        return status.name();
+    }
+
     public Integer getId() {
         return id;
     }
@@ -57,6 +62,9 @@ public class Appointment {
     public Student getStudent() {
         return student;
     }
+    public String getStudentName() {
+        return student.getName();
+    }
 
     public Patient getPatient() {
         return patient;
@@ -65,6 +73,20 @@ public class Appointment {
     public LocalDateTime getDate() {
         return date;
     }
+
+    public String getDateFormated() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return date.format(formatter);
+    }
+
+
+
+
+    public String getAction() {
+        return action.getName();
+    }
+
+
 
     @Override
     public String toString() {

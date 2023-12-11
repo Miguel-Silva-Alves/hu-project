@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.SchedulerPatientUI">
+   <children>
+      <Label layoutX="16.0" layoutY="61.0" text="Paciente:" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="61.0" />
+      <Label fx:id="lblNamePatient" layoutX="88.0" layoutY="58.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="23.0" prefWidth="190.0" AnchorPane.leftAnchor="88.0" AnchorPane.topAnchor="58.0" />
+      <Label layoutX="300.0" layoutY="42.0" text="Ação:" AnchorPane.rightAnchor="263.0" AnchorPane.topAnchor="42.0" />
+      <TextField fx:id="txtAction" layoutX="407.0" layoutY="37.0" prefHeight="24.0" prefWidth="212.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="37.0" />
+      <TableView fx:id="tableView" layoutX="51.0" layoutY="100.0" prefHeight="200.0" prefWidth="454.0">
+        <columns>
+          <TableColumn fx:id="cAction" prefWidth="106.0" text="Açao" />
+          <TableColumn fx:id="cDate" prefWidth="167.0" text="Proximo Horario" />
+            <TableColumn fx:id="cStudent" prefWidth="180.0" text="Aluno" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnFindAction" layoutX="557.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#findStudents" text="&gt;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0" />
+      <Button fx:id="btnSchedule" layoutX="445.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#toSchedule" text="Marcar" AnchorPane.bottomAnchor="49.0" AnchorPane.rightAnchor="92.0" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#toBack" text="Voltar" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+   </children>
+</AnchorPane>

@@ -32,7 +32,13 @@ public class InMemoryPatientDAO implements PatientDAO {
 
     @Override
     public boolean update(Patient object) {
-        return true;
+
+        if(db.containsKey(object.getCpf())){
+            db.replace(object.getCpf(), object);
+            return true;
+        }
+        return false;
+
     }
 
     @Override

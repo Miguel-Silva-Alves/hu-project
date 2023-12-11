@@ -9,4 +9,5 @@ module br.ifsp.husaocarlos {
     exports br.ifsp.husaocarlos.application.view;
     exports br.ifsp.husaocarlos.domain.entities;
     opens br.ifsp.husaocarlos.application.view to javafx.fxml;
+    opens br.ifsp.husaocarlos.domain.entities.appointment to javafx.base;
 }

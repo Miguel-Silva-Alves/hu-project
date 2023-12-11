@@ -14,6 +14,8 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.util.Optional;
 
+import static br.ifsp.husaocarlos.application.main.Main.findUserUseCase;
+
 public class LoginController {
 
     @FXML
@@ -29,18 +31,7 @@ public class LoginController {
 
     @FXML
     void loginCurrentUser(MouseEvent event) throws IOException {
-        UserDAO dao = new InMemoryUserDAO();
-        User user = new User("teste@gmail.com",
-                "99998964059",
-                "miguel",
-                "password",
-                "endereco",
-                "idk",
-                Roles.Receptionist);
-        dao.save(user);
 
-        // Use Case
-        FindUserUseCase findUserUseCase = new FindUserUseCase(dao);
         Optional<User> userOptional = findUserUseCase.getUserByCPF(username_tf.getText());
         if (userOptional.isPresent()){
             currentLoggedUser = userOptional.get();

@@ -28,7 +28,7 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
 
     @Override
     public List<Appointment> findAll() {
-        return null;
+        return new ArrayList<>(db.values());
     }
 
     @Override

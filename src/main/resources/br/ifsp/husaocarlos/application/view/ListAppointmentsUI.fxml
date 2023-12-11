@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.ListAppointmentsUI">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#toBack" text="Voltar" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <TableView fx:id="tableView" layoutX="26.0" layoutY="100.0" prefHeight="200.0" prefWidth="559.0">
+        <columns>
+          <TableColumn fx:id="cDate" prefWidth="149.0" text="Data" />
+          <TableColumn fx:id="cAction" prefWidth="158.0" text="Açao" />
+            <TableColumn fx:id="cStudent" prefWidth="159.0" text="Aluno" />
+            <TableColumn fx:id="cStatus" prefWidth="92.0" text="Status" />
+        </columns>
+      </TableView>
+      <Label layoutX="311.0" layoutY="30.0" text="Paciente:" AnchorPane.rightAnchor="228.0" AnchorPane.topAnchor="30.0" />
+      <TextField fx:id="txtPatient" layoutX="381.0" layoutY="26.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="26.0" />
+      <Button layoutX="557.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#findAppointments" text="&gt;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="26.0" />
+   </children>
+</AnchorPane>

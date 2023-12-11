@@ -70,8 +70,4 @@ public class MySqlUserDAO implements UserDAO {
         return Optional.ofNullable(em.createQuery(jpql, User.class).setParameter(1, password).setParameter(2, username).getSingleResult());
     }
 
-    @Override
-    public Optional<User> findUserByCPF(String cpf) {
-        return Optional.empty();
-    }
 }

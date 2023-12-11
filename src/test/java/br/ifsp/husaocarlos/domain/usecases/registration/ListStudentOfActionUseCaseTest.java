@@ -1,6 +1,8 @@
 package br.ifsp.husaocarlos.domain.usecases.registration;
 
 import br.ifsp.husaocarlos.application.repository.InMemoryRegistrationDAO;
+import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
+import br.ifsp.husaocarlos.application.repository.MySqlUserDAO;
 import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Professor;
@@ -19,7 +21,7 @@ class ListStudentOfActionUseCaseTest {
 
         // DAO
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
-        UserDAO userDAO = new MySqlUserDAO();
+        UserDAO userDAO = new InMemoryUserDAO();
 
         RegisterStudentActionUseCase registerStudentActionUseCase = new RegisterStudentActionUseCase(registrationDAO);
         Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);

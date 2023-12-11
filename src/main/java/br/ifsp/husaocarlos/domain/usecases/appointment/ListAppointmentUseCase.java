@@ -1,5 +1,6 @@
 package br.ifsp.husaocarlos.domain.usecases.appointment;
 
+import br.ifsp.husaocarlos.application.view.App;
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
 import br.ifsp.husaocarlos.domain.entities.Professor;
@@ -74,8 +75,21 @@ public class ListAppointmentUseCase {
         return new ArrayList<>();
     }
 
-    public List<Appointment> getAppointments(Student student){
+    public List<Appointment> getAppointmentsOfStudent(Student student){
         return appointmentDAO.getAppointmentStudent(student);
     }
+
+    public List<Appointment> getAppointmentsOfPatient(Patient patient){
+        if(patient.getCpf() == null || patient.getCpf().isEmpty()){
+            throw new IllegalArgumentException("cpf cannot be null");
+        }
+        return appointmentDAO.getAppointmentPatient(patient);
+    }
+
+    public List<Appointment> findAll(){
+        return appointmentDAO.findAll();
+    }
+
+
 
 }

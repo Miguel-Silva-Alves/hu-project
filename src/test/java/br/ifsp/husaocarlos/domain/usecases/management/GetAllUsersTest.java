@@ -1,5 +1,5 @@
 package br.ifsp.husaocarlos.domain.usecases.management;
-import br.ifsp.husaocarlos.application.repository.MySqlUserDAO;
+import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
 import br.ifsp.husaocarlos.domain.entities.Management;
 import br.ifsp.husaocarlos.domain.entities.Professor;
 import br.ifsp.husaocarlos.domain.entities.Roles;

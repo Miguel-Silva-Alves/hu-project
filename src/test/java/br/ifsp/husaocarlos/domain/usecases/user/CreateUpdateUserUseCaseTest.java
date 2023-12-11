@@ -1,5 +1,5 @@
 package br.ifsp.husaocarlos.domain.usecases.user;
-import br.ifsp.husaocarlos.application.repository.MySqlUserDAO;
+import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
 import br.ifsp.husaocarlos.domain.entities.Roles;
 import br.ifsp.husaocarlos.domain.entities.User;
 import org.junit.jupiter.api.Test;

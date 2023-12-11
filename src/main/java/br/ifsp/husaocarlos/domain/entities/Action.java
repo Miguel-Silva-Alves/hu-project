@@ -1,17 +1,22 @@
 package br.ifsp.husaocarlos.domain.entities;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
+@Table(name = "action")
 public class Action {
 
-   Integer id;
-   String name;
-   String specialty;
-   Professor professor;
-   String lineOfCare;
-
-   private final List<Patient> patients = new ArrayList<Patient>();
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   public Integer id;
+   public String name;
+   public String specialty;
+   @ManyToOne
+   public Professor professor;
+   public String lineOfCare;
+   @OneToMany
+   public final List<Patient> patients = new ArrayList<>();
 
    public Action(Integer id, String name, String specialty, Professor professor, String lineOfCare) {
       this.id = id;
@@ -27,6 +32,9 @@ public class Action {
       this.professor = professor;
       this.lineOfCare = lineOfCare;
       this.id = -1;
+   }
+
+   public Action() {
    }
 
    public void setId(Integer id) {

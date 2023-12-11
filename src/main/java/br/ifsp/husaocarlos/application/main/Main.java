@@ -20,6 +20,11 @@ import br.ifsp.husaocarlos.domain.usecases.user.GetNextHourFreeStudentUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 
 import java.util.Optional;
+import br.ifsp.husaocarlos.application.persistence.MySqlActionDAO;
+import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
+import br.ifsp.husaocarlos.application.view.App;
+import br.ifsp.husaocarlos.domain.entities.Action;
+import br.ifsp.husaocarlos.domain.entities.User;
 
 public class Main {
 
@@ -39,6 +44,8 @@ public class Main {
     public static void main(String[] args) {
         configureInjection();
         populateFakeDatabase();
+        MySqlActionDAO dao = new MySqlActionDAO();
+        System.out.println();
         App.main(args);
     }
 

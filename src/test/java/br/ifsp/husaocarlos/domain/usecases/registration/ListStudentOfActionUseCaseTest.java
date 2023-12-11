@@ -3,6 +3,7 @@ package br.ifsp.husaocarlos.domain.usecases.registration;
 import br.ifsp.husaocarlos.application.repository.InMemoryRegistrationDAO;
 import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
 import br.ifsp.husaocarlos.application.repository.MySqlUserDAO;
+import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Professor;
 import br.ifsp.husaocarlos.domain.entities.Roles;
@@ -11,11 +12,7 @@ import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import javax.security.enterprise.credential.Password;
-
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ListStudentOfActionUseCaseTest {
 

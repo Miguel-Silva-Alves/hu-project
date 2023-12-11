@@ -1,16 +1,19 @@
 package br.ifsp.husaocarlos.domain.entities;
-
-import java.time.LocalDate;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
-
+@Entity
+@Table(name = "patient")
 public class Patient{
-
-    private String cpf;
-    private String name;
-    private String email;
-    private String phone;
-    private String address;
-    private LocalDateTime registerTime;
+    @Id
+    public String cpf;
+    public String name;
+    public String email;
+    public String phone;
+    public String address;
+    public LocalDateTime registerTime;
+    @ManyToOne
+    @JoinColumn(name = "action_id")
+    public Action registeredAction;
 
     public Patient(String cpf, String name, String email, String phone, String address) {
         this.cpf = cpf;
@@ -19,6 +22,9 @@ public class Patient{
         this.phone = phone;
         this.address = address;
         registerTime = LocalDateTime.now();
+    }
+
+    public Patient() {
     }
 
     @Override

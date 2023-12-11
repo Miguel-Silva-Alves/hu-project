@@ -6,8 +6,8 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.HomeReceptionist">
    <children>
       <Button layoutX="55.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#changeRegisterPatientView" text="Cadastrar Paciente" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="36.0" />
-      <Label layoutX="280.0" layoutY="40.0" text="CPF Paciente:" AnchorPane.rightAnchor="231.0" AnchorPane.topAnchor="40.0" />
-      <TextField fx:id="txtCPFPacient" layoutX="375.0" layoutY="36.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="36.0" />
+      <Label layoutX="280.0" layoutY="40.0" text="Paciente:" AnchorPane.rightAnchor="231.0" AnchorPane.topAnchor="40.0" />
+      <TextField fx:id="txtPacient" layoutX="375.0" layoutY="36.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="36.0" />
       <Button layoutX="557.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#searchPatient" text="&gt;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="36.0" />
       <TableView fx:id="tableView" layoutX="83.0" layoutY="91.0" prefHeight="200.0" prefWidth="435.0">
         <columns>

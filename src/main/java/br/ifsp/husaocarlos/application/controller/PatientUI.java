@@ -60,7 +60,11 @@ public class PatientUI {
         }catch (EntityAlreadyExistsException e){
             Utils.showAlert("Erro", "CPF já cadastrado!", Alert.AlertType.ERROR);
         }catch (IllegalArgumentException e){
-            //TODO Limpar os campos
+            txtName.setText("");
+            txtEmail.setText("");
+            txtPhone.setText("");
+            txtCPF.setText("");
+            txtAddress.setText("");
             Utils.showAlert("Erro", "Verifique as informações passadas novamente!", Alert.AlertType.ERROR);
         }
 

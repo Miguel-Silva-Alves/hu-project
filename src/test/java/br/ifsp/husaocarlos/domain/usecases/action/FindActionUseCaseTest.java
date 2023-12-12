@@ -31,21 +31,30 @@ class FindActionUseCaseTest {
     @Test
     void getActions() {
 
-        List<Action> list = findActionUseCase.getActions();
+        List<Action> list = findActionUseCase.findAll();
         assertEquals(list.isEmpty(), true);
 
-        list = findActionUseCase.getActions();
+        list = findActionUseCase.findAll();
         assertEquals(list.isEmpty(), false);
     }
 
     @Test
     void getActionByName() {
         // Incorrect
-        Optional<Action> action = findActionUseCase.getActionByName("idk");
+        Optional<Action> action = findActionUseCase.findActionByName("idk");
         assertEquals(false, action.isPresent());
 
         // Correct
-        Optional<Action> action2 = findActionUseCase.getActionByName("Ação1");
+        Optional<Action> action2 = findActionUseCase.findActionByName("Ação1");
         assertEquals(true, action2.isPresent());
+    }
+
+    @Test
+    void findActionsOfProfessor() {
+        // Incorrect
+        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        List<Action> actions = findActionUseCase.findActionsOfProfessor(professor);
+        System.out.println(actions);
+        assertEquals(false, actions.isEmpty());
     }
 }

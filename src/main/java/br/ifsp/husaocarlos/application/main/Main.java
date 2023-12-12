@@ -3,9 +3,10 @@ package br.ifsp.husaocarlos.application.main;
 import br.ifsp.husaocarlos.application.repository.*;
 import br.ifsp.husaocarlos.application.view.App;
 import br.ifsp.husaocarlos.domain.entities.*;
-import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
+import br.ifsp.husaocarlos.domain.entities.student.Student;
 import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
 import br.ifsp.husaocarlos.domain.usecases.action.FindActionUseCase;
+import br.ifsp.husaocarlos.domain.usecases.action.RegisterActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
 import br.ifsp.husaocarlos.domain.usecases.appointment.ListAppointmentUseCase;
 import br.ifsp.husaocarlos.domain.usecases.appointment.SchedulePatientToAppointmentUseCase;
@@ -15,14 +16,11 @@ import br.ifsp.husaocarlos.domain.usecases.patient.PatientDAO;
 import br.ifsp.husaocarlos.domain.usecases.patient.UpdatePatientUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.ListStudentOfActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
+import br.ifsp.husaocarlos.domain.usecases.student.FindStudentsUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.FindUserUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.GetNextHourFreeStudentUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 
-import java.util.Optional;
-import br.ifsp.husaocarlos.application.persistence.MySqlActionDAO;
-import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
-import br.ifsp.husaocarlos.application.view.App;
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.User;
 
@@ -36,17 +34,27 @@ public class Main {
 
     public static SchedulePatientToAppointmentUseCase schedulePatientToAppointmentUseCase;
 
+    public static RegisterActionUseCase registerActionUseCase;
     public static FindActionUseCase findActionUseCase;
     public static ListStudentOfActionUseCase listStudentOfActionUseCase;
     public static GetNextHourFreeStudentUseCase getNextHourFreeStudentUseCase;
     public static ListAppointmentUseCase listAppointmentUseCase;
+    public static FindStudentsUseCase findStudentsUseCase;
+
+    // DAOS
+    private static ActionDAO actionDAO;
 
     public static void main(String[] args) {
+        configureDaos();
         configureInjection();
         populateFakeDatabase();
-        MySqlActionDAO dao = new MySqlActionDAO();
-        System.out.println();
+        //MySqlActionDAO dao = new MySqlActionDAO();
+        //System.out.println();
         App.main(args);
+    }
+
+    private static void configureDaos(){
+        actionDAO = new InMemoryActionDAO();
     }
 
     private static void populateFakeDatabase(){
@@ -63,7 +71,6 @@ public class Main {
         Professor professor = new Professor("professor@gmail.com", "73885307030", "Professor1", "password", "endereco", "idk", Roles.Professor);
         dao.save(professor);
 
-        ActionDAO actionDAO = new InMemoryActionDAO();
         // Action
         Action action = new Action("action1","Urologista", professor,"LinhaDeCuidade1");
         actionDAO.save(action);
@@ -84,6 +91,8 @@ public class Main {
         sch.scheduleWithDate(action, patient, student, dataa);
     }
 
+
+
     private static void configureInjection() {
         // User
         UserDAO userDAO = new InMemoryUserDAO();
@@ -96,12 +105,13 @@ public class Main {
         updatePatientUseCase = new UpdatePatientUseCase(patientDAO);
 
         // Action
-        ActionDAO actionDAO = new InMemoryActionDAO();
         findActionUseCase = new FindActionUseCase(actionDAO);
+        registerActionUseCase = new RegisterActionUseCase(actionDAO);
 
         // Registration
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
         listStudentOfActionUseCase = new ListStudentOfActionUseCase(registrationDAO, userDAO);
+        findStudentsUseCase = new FindStudentsUseCase(userDAO, actionDAO, registrationDAO);
 
         // Appoitment
         AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();

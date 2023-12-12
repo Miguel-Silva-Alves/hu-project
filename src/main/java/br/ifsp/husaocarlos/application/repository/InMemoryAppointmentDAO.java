@@ -1,6 +1,7 @@
 package br.ifsp.husaocarlos.application.repository;
+import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
-import br.ifsp.husaocarlos.domain.entities.Student;
+import br.ifsp.husaocarlos.domain.entities.student.Student;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
 
@@ -54,6 +55,14 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
         ArrayList<Appointment> appointments = new ArrayList<>(db.values());
         return  appointments.stream()
                 .filter(appointment -> appointment.getPatient().getCpf().equals(patient.getCpf()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Appointment> getAppointmentAction(Action action) {
+        ArrayList<Appointment> appointments = new ArrayList<>(db.values());
+        return  appointments.stream()
+                .filter(appointment -> appointment.getActionObject().getId().equals(action.getId()))
                 .collect(Collectors.toList());
     }
 }

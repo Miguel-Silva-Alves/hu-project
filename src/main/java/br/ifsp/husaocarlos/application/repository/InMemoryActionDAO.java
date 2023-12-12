@@ -39,6 +39,9 @@ public class InMemoryActionDAO implements ActionDAO {
 
     @Override
     public Optional<Action> findOne(Integer key) {
+        if(db.containsKey(key)){
+            return Optional.of(db.get(key));
+        }
         return Optional.empty();
     }
 

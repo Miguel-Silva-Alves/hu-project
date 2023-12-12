@@ -1,10 +1,9 @@
 package br.ifsp.husaocarlos.domain.usecases.user;
 
-import br.ifsp.husaocarlos.domain.entities.Student;
+import br.ifsp.husaocarlos.domain.entities.student.Student;
 import br.ifsp.husaocarlos.domain.entities.User;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
-import br.ifsp.husaocarlos.domain.usecases.appointment.ListAppointmentUseCase;
 
 import java.util.List;
 

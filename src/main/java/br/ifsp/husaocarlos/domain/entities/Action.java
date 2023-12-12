@@ -59,4 +59,22 @@ public class Action {
    public String getName() {
       return name;
    }
+
+   public String getLineOfCare() {
+      return lineOfCare;
+   }
+
+   public String getSpecialty() {
+      return specialty;
+   }
+
+   @Override
+   public String toString() {
+      return "Action{" +
+              "id=" + id +
+              ", name='" + name + '\'' +
+              ", specialty='" + specialty + '\'' +
+              ", professor=" + professor +
+              '}';
+   }
 }

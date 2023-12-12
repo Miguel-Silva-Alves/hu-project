@@ -4,11 +4,9 @@ import br.ifsp.husaocarlos.application.view.App;
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
 import br.ifsp.husaocarlos.domain.entities.Professor;
-import br.ifsp.husaocarlos.domain.entities.Student;
+import br.ifsp.husaocarlos.domain.entities.student.Student;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
-import br.ifsp.husaocarlos.domain.usecases.action.RegisterActionUseCase;
-import br.ifsp.husaocarlos.domain.usecases.patient.PatientDAO;
 import br.ifsp.husaocarlos.domain.usecases.registration.ListStudentOfActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
 import br.ifsp.husaocarlos.domain.usecases.student.GetPatientsOfStudentUseCase;
@@ -17,7 +15,6 @@ import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Optional;
 
 public class ListAppointmentUseCase {
 
@@ -90,6 +87,11 @@ public class ListAppointmentUseCase {
         return appointmentDAO.findAll();
     }
 
-
+    public List<Appointment> findAppointmentOfAction(Action action){
+        if(action == null || action.getId() == null){
+            throw new IllegalArgumentException("action cannot be null");
+        }
+        return appointmentDAO.getAppointmentAction(action);
+    }
 
 }

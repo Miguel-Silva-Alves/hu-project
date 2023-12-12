@@ -2,12 +2,10 @@ package br.ifsp.husaocarlos.domain.entities.appointment;
 
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
-import br.ifsp.husaocarlos.domain.entities.Student;
+import br.ifsp.husaocarlos.domain.entities.student.Student;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class Appointment {
     Integer id;
@@ -86,6 +84,11 @@ public class Appointment {
         return action.getName();
     }
 
+    public Action getActionObject(){
+        return action;
+    }
+
+    public String getPatientName(){ return patient.getName(); }
 
 
     @Override

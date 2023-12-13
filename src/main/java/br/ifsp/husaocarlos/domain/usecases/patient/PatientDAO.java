@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PatientDAO extends DAO<String, Patient> {
-    Optional<Patient> findByCpf(String cpf);
     List<Patient> findByName(String name);
-
     Optional<Patient> findByEmail(String email);
 }

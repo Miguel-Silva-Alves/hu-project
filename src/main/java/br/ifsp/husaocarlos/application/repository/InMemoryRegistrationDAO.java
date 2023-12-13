@@ -11,12 +11,10 @@ public class InMemoryRegistrationDAO implements RegistrationDAO {
     public Optional<Registration> findbyActionStudent(Integer actionId, String studentId) {
 
         for(Integer key: db.keySet()){
-
             Registration registration = db.get(key);
             System.out.println(registration);
-            if(registration.getActionId() == actionId && registration.getStudentId() == studentId){
-                Optional<Registration> opt = Optional.of(registration);
-                return opt;
+            if(Objects.equals(registration.getActionId(), actionId) && Objects.equals(registration.getStudentId(), studentId)){
+                return Optional.of(registration);
             }
         }
         return Optional.empty();

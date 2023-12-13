@@ -12,14 +12,14 @@ public class RemovePatientUseCase {
     }
 
     public boolean remove(String cpf){
-        if(cpf == null || patientDAO.findByCpf(cpf).isEmpty()){
+        if(cpf == null || patientDAO.findOne(cpf).isEmpty()){
             throw new EntityNotFoundException("patient not found");
         }
         return patientDAO.delete(cpf);
     }
 
     public boolean remove(Patient patient){
-        if(patient == null || patientDAO.findByCpf(patient.getCpf()).isEmpty()){
+        if(patient == null || patientDAO.findOne(patient.getCpf()).isEmpty()){
             throw new EntityNotFoundException("patient not found");
         }
         return patientDAO.delete(patient.getCpf());

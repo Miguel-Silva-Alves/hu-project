@@ -1184,178 +1184,325 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <table id="338" parent="325" name="patient">
+    <table id="338" parent="325" name="appointment">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <table id="339" parent="325" name="users">
+    <table id="339" parent="325" name="lineofcare">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <column id="340" parent="336" name="ID">
-      <AutoIncrement>1</AutoIncrement>
+    <table id="340" parent="325" name="lineofcare_action">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="341" parent="325" name="patient">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="342" parent="325" name="users">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <column id="343" parent="336" name="ID">
+      <AutoIncrement>6</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="341" parent="336" name="LINEOFCARE">
+    <column id="344" parent="336" name="NAME">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="342" parent="336" name="NAME">
+    <column id="345" parent="336" name="SPECIALTY">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="343" parent="336" name="SPECIALTY">
+    <column id="346" parent="336" name="LINEOFCARE_LINENAME">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="344" parent="336" name="PROFESSOR_CPF">
+    <column id="347" parent="336" name="PROFESSOR_CPF">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
     </column>
-    <foreign-key id="345" parent="336" name="FK_action_PROFESSOR_CPF">
+    <foreign-key id="348" parent="336" name="FK_action_LINEOFCARE_LINENAME">
+      <ColNames>LINEOFCARE_LINENAME</ColNames>
+      <RefColNames>LINENAME</RefColNames>
+      <RefTableName>lineofcare</RefTableName>
+    </foreign-key>
+    <foreign-key id="349" parent="336" name="FK_action_PROFESSOR_CPF">
       <ColNames>PROFESSOR_CPF</ColNames>
       <RefColNames>CPF</RefColNames>
       <RefTableName>users</RefTableName>
     </foreign-key>
-    <index id="346" parent="336" name="PRIMARY">
+    <index id="350" parent="336" name="PRIMARY">
       <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="347" parent="336" name="FK_action_PROFESSOR_CPF">
+    <index id="351" parent="336" name="FK_action_LINEOFCARE_LINENAME">
+      <ColNames>LINEOFCARE_LINENAME</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="352" parent="336" name="FK_action_PROFESSOR_CPF">
       <ColNames>PROFESSOR_CPF</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="348" parent="336" name="PRIMARY">
+    <key id="353" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="349" parent="337" name="Action_ID">
+    <column id="354" parent="337" name="Action_ID">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="350" parent="337" name="patients_CPF">
+    <column id="355" parent="337" name="patients_CPF">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <foreign-key id="351" parent="337" name="FK_action_patient_Action_ID">
+    <foreign-key id="356" parent="337" name="FK_action_patient_Action_ID">
       <ColNames>Action_ID</ColNames>
       <RefColNames>ID</RefColNames>
       <RefTableName>action</RefTableName>
     </foreign-key>
-    <foreign-key id="352" parent="337" name="FK_action_patient_patients_CPF">
+    <foreign-key id="357" parent="337" name="FK_action_patient_patients_CPF">
       <ColNames>patients_CPF</ColNames>
       <RefColNames>CPF</RefColNames>
       <RefTableName>patient</RefTableName>
     </foreign-key>
-    <index id="353" parent="337" name="PRIMARY">
+    <index id="358" parent="337" name="PRIMARY">
       <ColNames>Action_ID
 patients_CPF</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="354" parent="337" name="FK_action_patient_patients_CPF">
+    <index id="359" parent="337" name="FK_action_patient_patients_CPF">
       <ColNames>patients_CPF</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="355" parent="337" name="PRIMARY">
+    <key id="360" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="356" parent="338" name="CPF">
+    <column id="361" parent="338" name="ID">
+      <AutoIncrement>2</AutoIncrement>
+      <DasType>int(11)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="362" parent="338" name="DATE">
+      <DasType>datetime|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="363" parent="338" name="STATUS">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="364" parent="338" name="ACTION_ID">
+      <DasType>int(11)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="365" parent="338" name="PATIENT_CPF">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="366" parent="338" name="STUDENT_CPF">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="367" parent="338" name="FK_APPOINTMENT_ACTION_ID">
+      <ColNames>ACTION_ID</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>action</RefTableName>
+    </foreign-key>
+    <foreign-key id="368" parent="338" name="FK_APPOINTMENT_PATIENT_CPF">
+      <ColNames>PATIENT_CPF</ColNames>
+      <RefColNames>CPF</RefColNames>
+      <RefTableName>patient</RefTableName>
+    </foreign-key>
+    <foreign-key id="369" parent="338" name="FK_APPOINTMENT_STUDENT_CPF">
+      <ColNames>STUDENT_CPF</ColNames>
+      <RefColNames>CPF</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <index id="370" parent="338" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="371" parent="338" name="FK_APPOINTMENT_ACTION_ID">
+      <ColNames>ACTION_ID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="372" parent="338" name="FK_APPOINTMENT_PATIENT_CPF">
+      <ColNames>PATIENT_CPF</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="373" parent="338" name="FK_APPOINTMENT_STUDENT_CPF">
+      <ColNames>STUDENT_CPF</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="374" parent="338" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="375" parent="339" name="LINENAME">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="357" parent="338" name="ADDRESS">
+    <column id="376" parent="339" name="REPONSABLEPROFESSOR_CPF">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="358" parent="338" name="EMAIL">
+    <foreign-key id="377" parent="339" name="FK_LINEOFCARE_REPONSABLEPROFESSOR_CPF">
+      <ColNames>REPONSABLEPROFESSOR_CPF</ColNames>
+      <RefColNames>CPF</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <index id="378" parent="339" name="PRIMARY">
+      <ColNames>LINENAME</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="379" parent="339" name="FK_LINEOFCARE_REPONSABLEPROFESSOR_CPF">
+      <ColNames>REPONSABLEPROFESSOR_CPF</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="380" parent="339" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="381" parent="340" name="LineOfCare_LINENAME">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="382" parent="340" name="actions_ID">
+      <DasType>int(11)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <foreign-key id="383" parent="340" name="FK_LINEOFCARE_action_LineOfCare_LINENAME">
+      <ColNames>LineOfCare_LINENAME</ColNames>
+      <RefColNames>LINENAME</RefColNames>
+      <RefTableName>lineofcare</RefTableName>
+    </foreign-key>
+    <foreign-key id="384" parent="340" name="FK_LINEOFCARE_action_actions_ID">
+      <ColNames>actions_ID</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>action</RefTableName>
+    </foreign-key>
+    <index id="385" parent="340" name="PRIMARY">
+      <ColNames>LineOfCare_LINENAME
+actions_ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="386" parent="340" name="FK_LINEOFCARE_action_actions_ID">
+      <ColNames>actions_ID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="387" parent="340" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="388" parent="341" name="CPF">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="389" parent="341" name="ADDRESS">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="390" parent="341" name="EMAIL">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="359" parent="338" name="NAME">
+    <column id="391" parent="341" name="NAME">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="360" parent="338" name="PHONE">
+    <column id="392" parent="341" name="PHONE">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="361" parent="338" name="REGISTERTIME">
+    <column id="393" parent="341" name="REGISTERTIME">
       <DasType>datetime|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="362" parent="338" name="action_id">
+    <column id="394" parent="341" name="action_id">
       <DasType>int(11)|0s</DasType>
       <Position>7</Position>
     </column>
-    <foreign-key id="363" parent="338" name="FK_patient_action_id">
+    <foreign-key id="395" parent="341" name="FK_patient_action_id">
       <ColNames>action_id</ColNames>
       <RefColNames>ID</RefColNames>
       <RefTableName>action</RefTableName>
     </foreign-key>
-    <index id="364" parent="338" name="PRIMARY">
+    <index id="396" parent="341" name="PRIMARY">
       <ColNames>CPF</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="365" parent="338" name="FK_patient_action_id">
+    <index id="397" parent="341" name="FK_patient_action_id">
       <ColNames>action_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="366" parent="338" name="PRIMARY">
+    <key id="398" parent="341" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="367" parent="339" name="CPF">
+    <column id="399" parent="342" name="CPF">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="368" parent="339" name="role">
+    <column id="400" parent="342" name="role">
       <DasType>varchar(31)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="369" parent="339" name="ADDRESS">
+    <column id="401" parent="342" name="ADDRESS">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="370" parent="339" name="EMAIL">
+    <column id="402" parent="342" name="EMAIL">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="371" parent="339" name="ISACTIVE">
+    <column id="403" parent="342" name="ISACTIVE">
       <DasType>tinyint(1)|0s</DasType>
       <DefaultExpression>0</DefaultExpression>
       <Position>5</Position>
     </column>
-    <column id="372" parent="339" name="NAME">
+    <column id="404" parent="342" name="NAME">
       <DasType>varchar(255)|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="373" parent="339" name="PASSWORD">
+    <column id="405" parent="342" name="PASSWORD">
       <DasType>varchar(255)|0s</DasType>
       <Position>7</Position>
     </column>
-    <column id="374" parent="339" name="REGISTRATION">
+    <column id="406" parent="342" name="REGISTRATION">
       <DasType>varchar(255)|0s</DasType>
       <Position>8</Position>
     </column>
-    <index id="375" parent="339" name="PRIMARY">
+    <index id="407" parent="342" name="PRIMARY">
       <ColNames>CPF</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="376" parent="339" name="PRIMARY">
+    <key id="408" parent="342" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

@@ -1,16 +1,26 @@
 package br.ifsp.husaocarlos.domain.entities;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.util.List;
 
+@Entity
 public class LineOfCare {
-    private String lineName;
-    private List<Action> actions;
-    private Professor reponsableProfessor;
+    @Id
+    public String lineName;
+    @OneToMany
+    public List<Action> actions;
+    @OneToOne
+    public Professor reponsableProfessor;
 
     public LineOfCare(String lineName, List<Action> actions, Professor reponsableProfessor) {
         this.lineName = lineName;
         this.actions = actions;
         this.reponsableProfessor = reponsableProfessor;
+    }
+
+    public LineOfCare() {
     }
 
     public String getLineName() {

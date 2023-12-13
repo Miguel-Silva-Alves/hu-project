@@ -2,27 +2,16 @@ package br.ifsp.husaocarlos.application.persistence;
 import br.ifsp.husaocarlos.application.repository.utils.JPAUtil;
 import br.ifsp.husaocarlos.domain.entities.User;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
-import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityManager;
-
 import java.util.*;
 
 public class MySqlUserDAO implements UserDAO {
 
     private final EntityManager em = JPAUtil.getEntityManager();
 
-
     @Override
     public boolean save(User object) {
         try{
-            if (!object.getClass().equals(User.class))
-            {
-                User newUser = new User(object);
-                em.getTransaction().begin();
-                em.persist(newUser);
-                em.getTransaction().commit();
-                return true;
-            }
             em.getTransaction().begin();
             em.persist(object);
             em.getTransaction().commit();

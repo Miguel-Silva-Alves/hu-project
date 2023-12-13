@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "role")
+@DiscriminatorColumn(name = "role", discriminatorType = DiscriminatorType.STRING)
 public class User {
 
     @Id
@@ -15,6 +15,7 @@ public class User {
     public String address;
     public String registration;
     @Enumerated(EnumType.STRING)
+    @Column(name = "role", insertable = false, updatable = false)
     public Roles role;
     public Boolean isActive;
 

@@ -14,11 +14,12 @@ public class Action {
    public String specialty;
    @ManyToOne
    public Professor professor;
-   public String lineOfCare;
+   @ManyToOne
+   public LineOfCare lineOfCare;
    @OneToMany
    public final List<Patient> patients = new ArrayList<>();
 
-   public Action(Integer id, String name, String specialty, Professor professor, String lineOfCare) {
+   public Action(Integer id, String name, String specialty, Professor professor, LineOfCare lineOfCare) {
       this.id = id;
       this.name = name;
       this.specialty = specialty;
@@ -26,7 +27,7 @@ public class Action {
       this.lineOfCare = lineOfCare;
    }
 
-   public Action(String name, String specialty, Professor professor, String lineOfCare) {
+   public Action(String name, String specialty, Professor professor, LineOfCare lineOfCare) {
       this.name = name;
       this.specialty = specialty;
       this.professor = professor;

@@ -14,9 +14,10 @@
             <TableColumn fx:id="cStatus" prefWidth="92.0" text="Status" />
         </columns>
       </TableView>
-      <Label fx:id="lblSearch" layoutX="311.0" layoutY="30.0" text="Paciente:" AnchorPane.rightAnchor="228.0" AnchorPane.topAnchor="30.0" />
+      <Label fx:id="lblSearch" layoutX="311.0" layoutY="30.0" text="Ação:" AnchorPane.rightAnchor="228.0" AnchorPane.topAnchor="30.0" />
       <TextField fx:id="txtFilter" layoutX="381.0" layoutY="26.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="26.0" />
       <Button layoutX="557.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#findAppointments" text="&gt;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="26.0" />
       <Button layoutX="521.0" layoutY="330.0" mnemonicParsing="false" text="Dar Alta" AnchorPane.bottomAnchor="46.0" AnchorPane.rightAnchor="14.0" />
+      <Label fx:id="actionOrPatient" layoutX="25.0" layoutY="63.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="63.0" />
    </children>
 </AnchorPane>

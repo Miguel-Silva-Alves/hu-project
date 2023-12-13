@@ -5,6 +5,7 @@ import br.ifsp.husaocarlos.domain.entities.student.Student;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 
 @Entity
@@ -44,11 +45,20 @@ public class Appointment {
     }
 
     public void attend() {
-        this.status = AppointmentStatus.Attend;
+        if(this.status == AppointmentStatus.InService){
+            this.status = AppointmentStatus.Attend;
+        }
+
     }
 
     public void dischard() {
         this.status = AppointmentStatus.Discharge;
+    }
+
+    public void inService(){
+        if(this.status == AppointmentStatus.Scheduled){
+            this.status = AppointmentStatus.InService;
+        }
     }
 
     public AppointmentStatus getStatus() {
@@ -99,6 +109,11 @@ public class Appointment {
 
     public String getPatientName(){ return patient.getName(); }
 
+    public String getDateOfAppointment(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return date.format(formatter);
+    }
+
     @Override
     public String toString() {
         return "Appointment{" +
@@ -108,5 +123,18 @@ public class Appointment {
                 ", student=" + student +
                 ", patient=" + patient +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Appointment that = (Appointment) o;
+        return Objects.equals(id, that.id) && Objects.equals(date, that.date) && Objects.equals(action, that.action) && Objects.equals(student, that.student) && Objects.equals(patient, that.patient) && status == that.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, date, action, student, patient, status);
     }
 }

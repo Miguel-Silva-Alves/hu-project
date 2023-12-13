@@ -16,7 +16,7 @@
                <TableColumn fx:id="cEmail" prefWidth="180.0" text="Email" />
            </columns>
        </TableView>
-       <Button fx:id="btnFindAction" layoutX="557.0" layoutY="38.0" mnemonicParsing="false" text="&gt;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0" />
+       <Button fx:id="btnFindAction" layoutX="557.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#findStudent" text="&gt;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0" />
        <Button fx:id="btnSchedule" layoutX="445.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#toRegisterStudentOnAction" text="Cadastrar" AnchorPane.bottomAnchor="49.0" AnchorPane.rightAnchor="92.0" />
        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#toBack" text="Voltar" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
    </children>

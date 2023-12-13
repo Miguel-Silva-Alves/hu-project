@@ -22,4 +22,18 @@ public class Student extends User {
 
     public Student() {
     }
+
+    public Student(User user) {
+        super(user.getEmail(), user.getCpf(), user.getName(), user.getPassword(), user.getAddress(), user.getRegistration(), Roles.Student, user.getActive());
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

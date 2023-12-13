@@ -7,10 +7,7 @@ import br.ifsp.husaocarlos.domain.entities.student.Student;
 import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
 import br.ifsp.husaocarlos.domain.usecases.action.FindActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.action.RegisterActionUseCase;
-import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
-import br.ifsp.husaocarlos.domain.usecases.appointment.DischargePatient;
-import br.ifsp.husaocarlos.domain.usecases.appointment.ListAppointmentUseCase;
-import br.ifsp.husaocarlos.domain.usecases.appointment.SchedulePatientToAppointmentUseCase;
+import br.ifsp.husaocarlos.domain.usecases.appointment.*;
 import br.ifsp.husaocarlos.domain.usecases.management.LinesOfCareDAO;
 import br.ifsp.husaocarlos.domain.usecases.patient.CreatePatientUseCase;
 import br.ifsp.husaocarlos.domain.usecases.patient.FindPatientUseCase;
@@ -46,6 +43,7 @@ public class Main {
     public static FindStudentsUseCase findStudentsUseCase;
     public static RegisterStudentActionUseCase registerStudentActionUseCase;
     public static DischargePatient dischargePatient;
+    public static UpdateAppointmentUseCase updateAppointmentUseCase;
     public static FindLineOfCareUseCase findLineOfCareUseCase;
 
     // DAOS
@@ -61,7 +59,7 @@ public class Main {
         configureDaos();
         configureInjection();
         populateFakeDatabase();
-        populateDatabase();
+        //populateDatabase();
         App.main(args);
     }
 
@@ -94,14 +92,16 @@ public class Main {
 
         // Action
         Action action = new Action("action1","Urologista", professor,line);
+        Action action2 = new Action("action2","Dermatologista", professor,line);
         actionDAO.save(action);
+        actionDAO.save(action2);
 
 
         // Registration
-//        Registration newRegistration = new Registration(student.getCpf(), action.getId());
-//        registrationDAO.save(newRegistration);
+        Registration newRegistration = new Registration(student.getCpf(), action.getId());
+        registrationDAO.save(newRegistration);
 
-        Patient patient = new Patient("16098760080", "Miguel", "email@gmail.com", "169999999", "Rua lá longe");
+        Patient patient = new Patient("40293742049", "Miguel", "email@gmail.com", "169999999", "Rua lá longe");
         patientDAO.save(patient);
 
         SchedulePatientToAppointmentUseCase sch = new SchedulePatientToAppointmentUseCase(appointmentDAO, registrationDAO, userDAO);
@@ -137,8 +137,8 @@ public class Main {
 
 
         // Registration
-//        Registration newRegistration = new Registration(student.getCpf(), action.getId());
-//        registrationDAO.save(newRegistration);
+        Registration newRegistration = new Registration(student.getCpf(), action.getId());
+        registrationDAO.save(newRegistration);
 
         PatientDAO patientDAO = new MySqlPatientDAO();
         Patient patient = new Patient("16098760080", "Miguel", "email@gmail.com", "169999999", "Rua lá longe");
@@ -173,6 +173,7 @@ public class Main {
         schedulePatientToAppointmentUseCase = new SchedulePatientToAppointmentUseCase(appointmentDAO, registrationDAO, userDAO);
         listAppointmentUseCase = new ListAppointmentUseCase(appointmentDAO, userDAO, actionDAO, registrationDAO);
         dischargePatient = new DischargePatient(appointmentDAO);
+        updateAppointmentUseCase = new UpdateAppointmentUseCase(appointmentDAO);
 
         // Line Of Care
         findLineOfCareUseCase = new FindLineOfCareUseCase(linesOfCareDAO);

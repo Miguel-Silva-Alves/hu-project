@@ -5,8 +5,8 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.HomeProfessor">
    <children>
-      <Label text="Pesquisar:" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="15.0" />
-      <TextField fx:id="txtFilter" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="12.0" />
+      <Label text="Pesquisar:" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="15.0" />
+      <TextField fx:id="txtFilter" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="12.0" />
       <TableView fx:id="tableView" layoutX="51.0" layoutY="78.0" prefHeight="200.0" prefWidth="527.0">
         <columns>
           <TableColumn fx:id="cAction" prefWidth="134.0" text="Nome Açao" />
@@ -18,5 +18,6 @@
       <Button layoutX="178.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toVisualizePatients" text="Visualizar Pacientes" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="140.0" />
       <Button layoutX="222.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toRegisterStudentInAction" text="Cadastrar Aluno na Ação" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="295.0" />
       <Button layoutX="51.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toVisualizeStudents" text="Visualizar Alunos" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="530.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#toFindAction" text="&gt;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="12.0" />
    </children>
 </AnchorPane>

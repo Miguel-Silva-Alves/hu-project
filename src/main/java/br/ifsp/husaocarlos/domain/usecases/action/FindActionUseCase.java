@@ -31,4 +31,20 @@ public class FindActionUseCase {
         return actionDAO.findByProfessor(professor);
     }
 
+    public Optional<Action> findActionsOfProfessor(Professor professor, String filterActionName){
+        if(professor == null){
+            throw new IllegalArgumentException("professor cannot be null");
+        }
+        if(filterActionName == null){
+            throw new IllegalArgumentException("actionName cannot be null");
+        }
+        return actionDAO
+                .findByProfessor(professor)
+                .stream()
+                .filter(action -> action.getName().equals(filterActionName))
+                .findFirst();
+    }
+
+
+
 }

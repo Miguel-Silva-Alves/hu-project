@@ -15,7 +15,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static br.ifsp.husaocarlos.application.main.Main.*;
 
@@ -111,5 +113,24 @@ public class HomeProfessor {
         }else{
             Utils.showAlert("Ação não encontrada", "É necessário escolher uma ação!", Alert.AlertType.ERROR);
         }
+    }
+
+    @FXML
+    void toFindAction(MouseEvent event){
+        String actionName = txtFilter.getText();
+        try{
+            Optional<Action> optionalAction = findActionUseCase.findActionsOfProfessor(professor, actionName);
+            if(optionalAction.isPresent()){
+                List<Action> actions = new ArrayList<>();
+                actions.add(optionalAction.get());
+                tableData.clear();
+                tableData.addAll(actions);
+            }else{
+                Utils.showAlert("Ação não encontrada", "Não foi possível encontrar a ação digitada!", Alert.AlertType.ERROR);
+            }
+        }catch (IllegalArgumentException e){
+            Utils.showAlert("Erro", "Houve um erro durante a busca: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+
     }
 }

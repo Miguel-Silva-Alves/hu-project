@@ -13,7 +13,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static br.ifsp.husaocarlos.application.main.Main.findStudentsUseCase;
 import static br.ifsp.husaocarlos.application.main.Main.registerStudentActionUseCase;
@@ -40,6 +42,7 @@ public class ListStudentsUI {
     private ObservableList<Student> tableData;
 
     private Action action;
+    private boolean getAll = false;
 
     @FXML
     private void initialize(){
@@ -67,12 +70,13 @@ public class ListStudentsUI {
         }
     }
 
-    private void loadAllStudents(Action action){
+    private void loadAllStudents(){
         if(action != null){
             List<Student> students = findStudentsUseCase.findAll();
             tableData.clear();
             tableData.addAll(students);
         }
+        getAll = true;
     }
 
     public void setActionToAddStudent(Action action) {
@@ -81,7 +85,7 @@ public class ListStudentsUI {
         }
         this.action = action;
         lblAction.setText(action.getName());
-        loadAllStudents(action);
+        loadAllStudents();
     }
 
     public void setActionToSeeStudents(Action action) {
@@ -108,10 +112,27 @@ public class ListStudentsUI {
         }
     }
 
-
-
     @FXML
     void toBack(MouseEvent event) throws IOException {
         App.setRoot("HomeProfessor");
+    }
+
+    @FXML
+    void findStudent(MouseEvent event){
+        String search = txtStudent.getText();
+        Optional<Student> optionalStudent;
+        if(getAll){
+            optionalStudent = findStudentsUseCase.findStudentByEmail(search);
+        }else{
+            optionalStudent = findStudentsUseCase.findStudentsOfActionbyEmail(action, search);
+        }
+        if(optionalStudent.isPresent()){
+            List<Student> students = new ArrayList<>();
+            students.add(optionalStudent.get());
+            tableData.clear();
+            tableData.addAll(students);
+        }else{
+            Utils.showAlert("Aluno não encontrado", "Certifique-se de ter digitado o email correto!", Alert.AlertType.ERROR);
+        }
     }
 }

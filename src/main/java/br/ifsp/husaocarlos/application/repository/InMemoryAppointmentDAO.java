@@ -24,6 +24,9 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
 
     @Override
     public Optional<Appointment> findOne(Integer key) {
+        if(db.containsKey(key)){
+            return Optional.of(db.get(key));
+        }
         return Optional.empty();
     }
 
@@ -34,7 +37,11 @@ public class InMemoryAppointmentDAO implements AppointmentDAO {
 
     @Override
     public boolean update(Appointment object) {
-        return true;
+        if(db.containsKey(object.getId())){
+            db.replace(object.getId(), object);
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -12,6 +12,7 @@ import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -34,15 +35,6 @@ public class FindStudentsUseCase {
                 .map(user -> (Student) user)
                 .collect(Collectors.toList());
     }
-    public List<Student> findStudentsOfProfessor(Professor professor){
-        ListStudentOfActionUseCase lsa = new ListStudentOfActionUseCase(registrationDAO, userDAO);
-        List<Action> actions = actionDAO.findByProfessor(professor);
-        LinkedHashSet hashSet = new LinkedHashSet();
-        for(Action action: actions){
-            hashSet.addAll(lsa.listStudents(action));
-        }
-        return hashSet.stream().toList();
-    }
 
     public List<Student> findStudentsOfAction(Action action){
         List<Registration> registrations = registrationDAO.findAll();
@@ -54,6 +46,29 @@ public class FindStudentsUseCase {
                 .flatMap(user -> user.map(Stream::of).orElseGet(Stream::empty))
                 .map(user -> (Student) user)
                 .collect(Collectors.toList());
+    }
+
+    public Optional<Student> findStudentByEmail(String email){
+        List<User> users = userDAO.findAll();
+        return users
+                .stream()
+                .filter(user -> user.isStudent())
+                .map(user -> (Student) user)
+                .filter(student -> student.getEmail().equals(email))
+                .findFirst();
+    }
+
+    public Optional<Student> findStudentsOfActionbyEmail(Action action, String email){
+        List<Registration> registrations = registrationDAO.findAll();
+        return registrations.stream()
+                .filter(registration -> registration.getActionId().equals(action.getId()))
+                .map(registration -> userDAO.findOne(registration.getStudentId()))
+                .collect(Collectors.toList())
+                .stream()
+                .flatMap(user -> user.map(Stream::of).orElseGet(Stream::empty))
+                .map(user -> (Student) user)
+                .filter(student -> student.getEmail().equals(email))
+                .findFirst();
     }
 
 }

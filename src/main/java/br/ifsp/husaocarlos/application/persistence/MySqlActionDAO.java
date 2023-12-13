@@ -4,7 +4,6 @@ import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Professor;
 import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
 import jakarta.persistence.EntityManager;
-
 import java.util.*;
 import java.util.stream.Collectors;
 

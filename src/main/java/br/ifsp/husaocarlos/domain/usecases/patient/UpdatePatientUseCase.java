@@ -22,7 +22,7 @@ public class UpdatePatientUseCase {
         }
 
         String cpf = patient.getCpf();
-        if(patientDAO.findByCpf(cpf).isEmpty()){
+        if(patientDAO.findOne(cpf).isEmpty()){
             throw new EntityNotFoundException("patient not found");
         }
 

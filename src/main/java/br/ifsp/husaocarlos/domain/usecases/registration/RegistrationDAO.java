@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RegistrationDAO extends DAO<Integer, Registration> {
-    Optional<Registration> findbyActionStudent(Integer actionId, String studentId);
+    Optional<Registration> findbyActionStudent(String actionId, String studentId);
     List<Registration> findbyAction(Action action);
 }

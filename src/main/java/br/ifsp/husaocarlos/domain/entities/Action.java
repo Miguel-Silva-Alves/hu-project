@@ -12,11 +12,12 @@ public class Action {
    public String specialty;
    @ManyToOne
    public Professor professor;
-   public String lineOfCare;
+   @ManyToOne
+   public LineOfCare lineOfCare;
    @OneToMany
    public final List<Patient> patients = new ArrayList<>();
 
-   public Action(String name, String specialty, Professor professor, String lineOfCare) {
+   public Action(String name, String specialty, Professor professor, LineOfCare lineOfCare) {
       this.name = name;
       this.specialty = specialty;
       this.professor = professor;
@@ -41,7 +42,7 @@ public class Action {
       return name;
    }
 
-   public String getLineOfCare() {
+   public LineOfCare getLineOfCare() {
       return lineOfCare;
    }
 
@@ -49,10 +50,13 @@ public class Action {
       return specialty;
    }
 
+   public String getId(){
+      return name;
+   }
+
    @Override
    public String toString() {
       return "Action{" +
-              "id=" + id +
               ", name='" + name + '\'' +
               ", specialty='" + specialty + '\'' +
               ", professor=" + professor +

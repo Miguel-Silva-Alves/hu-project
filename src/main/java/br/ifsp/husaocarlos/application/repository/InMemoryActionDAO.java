@@ -1,10 +1,7 @@
 package br.ifsp.husaocarlos.application.repository;
-
 import br.ifsp.husaocarlos.domain.entities.Action;
-import br.ifsp.husaocarlos.domain.entities.Patient;
 import br.ifsp.husaocarlos.domain.entities.Professor;
 import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
-
 import java.util.*;
 import java.util.stream.Collectors;
 

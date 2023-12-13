@@ -27,7 +27,8 @@ public class ActionUI {
 
     @FXML
     void save(MouseEvent event) throws IOException {
-        Action action = new Action(txtName.getText(), txtSpecialty.getText(), professor, txtLineOfCare.getText());
+
+        Action action = new Action(txtName.getText(), txtSpecialty.getText(), professor, findLineOfCareUseCase.findLineOfCareByName(txtLineOfCare.getText()).get());
         try{
             if(registerActionUseCase.registerAction(action)){
                 Utils.showAlert("Sucesso", "A ação foi registrada com sucesso!", Alert.AlertType.CONFIRMATION);

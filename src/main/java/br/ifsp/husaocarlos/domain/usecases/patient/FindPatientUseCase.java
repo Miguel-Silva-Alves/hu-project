@@ -18,7 +18,7 @@ public class FindPatientUseCase {
         if(Validador.nullOrEmpty(cpf)){
             throw new IllegalArgumentException("cpf can not be null");
         }
-        return patientDAO.findByCpf(cpf);
+        return patientDAO.findOne(cpf);
     }
 
     public List<Patient> findByName(String name){

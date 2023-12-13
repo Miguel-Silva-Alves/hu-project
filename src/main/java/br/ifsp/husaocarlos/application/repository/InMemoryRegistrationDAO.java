@@ -9,15 +9,13 @@ public class InMemoryRegistrationDAO implements RegistrationDAO {
     private static final Map<Integer, Registration> db = new HashMap<>();
     private int idCounter = 0;
     @Override
-    public Optional<Registration> findbyActionStudent(Integer actionId, String studentId) {
+    public Optional<Registration> findbyActionStudent(String actionId, String studentId) {
 
         for(Integer key: db.keySet()){
-
             Registration registration = db.get(key);
             System.out.println(registration);
-            if(registration.getActionId() == actionId && registration.getStudentId() == studentId){
-                Optional<Registration> opt = Optional.of(registration);
-                return opt;
+            if(Objects.equals(registration.getActionId(), actionId) && Objects.equals(registration.getStudentId(), studentId)){
+                return Optional.of(registration);
             }
         }
         return Optional.empty();

@@ -50,6 +50,7 @@ public class SchedulePatientToAppointmentUseCase {
         if (!appointmentDAO.save(appointment)){
             throw new IllegalArgumentException("appoitment can not be created");
         }
+        appointmentDAO.save(appointment);
         return appointment;
     }
 

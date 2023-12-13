@@ -21,7 +21,7 @@ public class CreatePatientUseCase {
             throw new IllegalArgumentException(notification.errorMessage());
         }
 
-        if (patientDAO.findByCpf(patient.getCpf()).isPresent()){
+        if (patientDAO.findOne(patient.getCpf()).isPresent()){
             throw new EntityAlreadyExistsException("this cpf is already in use");
         }
 

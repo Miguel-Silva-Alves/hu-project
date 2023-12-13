@@ -1,19 +1,29 @@
 package br.ifsp.husaocarlos.domain.entities.appointment;
-
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
 import br.ifsp.husaocarlos.domain.entities.student.Student;
-
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
+@Entity
 public class Appointment {
-    Integer id;
-    LocalDateTime date ;
-    Action action;
-    Student student;
-    Patient patient;
-    AppointmentStatus status;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer id;
+    public LocalDateTime date;
+    @OneToOne
+    public Action action;
+    @OneToOne
+    public Student student;
+    @OneToOne
+    public Patient patient;
+    @Enumerated(EnumType.STRING)
+    public AppointmentStatus status;
+
+    public Appointment() {
+    }
 
     public Appointment(LocalDateTime date, Action action, Student student, Patient patient) {
         this.date = date;
@@ -33,11 +43,11 @@ public class Appointment {
         this.status = status;
     }
 
-    public void attend(){
+    public void attend() {
         this.status = AppointmentStatus.Attend;
     }
 
-    public void dischard(){
+    public void dischard() {
         this.status = AppointmentStatus.Discharge;
     }
 
@@ -45,7 +55,7 @@ public class Appointment {
         return status;
     }
 
-    public String getStatusName(){
+    public String getStatusName() {
         return status.name();
     }
 
@@ -60,6 +70,7 @@ public class Appointment {
     public Student getStudent() {
         return student;
     }
+
     public String getStudentName() {
         return student.getName();
     }
@@ -78,8 +89,6 @@ public class Appointment {
     }
 
 
-
-
     public String getAction() {
         return action.getName();
     }
@@ -89,7 +98,6 @@ public class Appointment {
     }
 
     public String getPatientName(){ return patient.getName(); }
-
 
     @Override
     public String toString() {

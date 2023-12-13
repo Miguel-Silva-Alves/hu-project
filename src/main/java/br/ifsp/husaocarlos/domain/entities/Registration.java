@@ -1,10 +1,17 @@
 package br.ifsp.husaocarlos.domain.entities;
 
-public class Registration {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    Integer id;
-    String studentId;
-    String actionId;
+@Entity
+public class Registration {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer id;
+    public String studentId;
+    public String actionId;
 
     public Registration(Integer id, String cpf, String actionId) {
         this.id = id;
@@ -16,6 +23,9 @@ public class Registration {
         this.studentId = cpf;
         this.actionId = actionId;
         this.id = -1;
+    }
+
+    public Registration() {
     }
 
     public Integer getId() {

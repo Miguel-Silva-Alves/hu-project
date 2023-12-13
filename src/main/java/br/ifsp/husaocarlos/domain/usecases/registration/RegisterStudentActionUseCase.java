@@ -1,7 +1,7 @@
 package br.ifsp.husaocarlos.domain.usecases.registration;
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Registration;
-import br.ifsp.husaocarlos.domain.entities.Student;
+import br.ifsp.husaocarlos.domain.entities.student.Student;
 
 import java.util.Optional;
 

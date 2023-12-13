@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.ListActionsUI">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#toBack" text="Voltar" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <TableView layoutX="71.0" layoutY="82.0" prefHeight="200.0" prefWidth="415.0">
+        <columns>
+          <TableColumn prefWidth="117.0" text="Nome" />
+          <TableColumn prefWidth="125.0" text="Especialidade" />
+            <TableColumn prefWidth="172.0" text="Linha de Cuidado" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

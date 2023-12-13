@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.ActionUI">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#toBack" text="Voltar" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="119.0" layoutY="61.0" text="Nome:" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="60.0" />
+      <Label layoutX="123.0" layoutY="104.0" text="Especialidade:" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="110.0" />
+      <Label layoutX="123.0" layoutY="149.0" text="Linha de Cuidado:" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="160.0" />
+      <TextField fx:id="txtName" layoutX="264.0" layoutY="56.0" AnchorPane.leftAnchor="264.0" AnchorPane.topAnchor="56.0" />
+      <TextField fx:id="txtSpecialty" layoutX="264.0" layoutY="106.0" AnchorPane.leftAnchor="264.0" AnchorPane.topAnchor="106.0" />
+      <TextField fx:id="txtLineOfCare" layoutX="264.0" layoutY="156.0" AnchorPane.leftAnchor="264.0" AnchorPane.topAnchor="156.0" />
+      <Button layoutX="435.0" layoutY="264.0" mnemonicParsing="false" onMouseClicked="#save" text="Salvar" AnchorPane.bottomAnchor="112.0" AnchorPane.rightAnchor="103.0" />
+   </children>
+</AnchorPane>

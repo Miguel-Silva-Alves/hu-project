@@ -1,4 +1,5 @@
 package br.ifsp.husaocarlos.application.repository;
+import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Registration;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
 import java.util.*;
@@ -21,6 +22,16 @@ public class InMemoryRegistrationDAO implements RegistrationDAO {
         }
         return Optional.empty();
 
+    }
+
+    @Override
+    public List<Registration> findbyAction(Action action) {
+        ArrayList<Registration> registrations = new ArrayList<>(db.values());
+
+        return registrations
+                .stream()
+                .filter(registration -> registration.getActionId().equals(action.getId()))
+                .toList();
     }
 
     @Override

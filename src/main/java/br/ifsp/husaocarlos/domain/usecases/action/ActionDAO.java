@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface ActionDAO extends DAO<Integer, Action>{
     Optional<Action> findByName(String name);
     List<Action> findByProfessor(Professor professor);
+
 }

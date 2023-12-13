@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="br.ifsp.husaocarlos.application.controller.HomeProfessor"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.HomeProfessor">
+   <children>
+      <Label text="Pesquisar:" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="15.0" />
+      <TextField fx:id="txtFilter" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="12.0" />
+      <TableView fx:id="tableView" layoutX="51.0" layoutY="78.0" prefHeight="200.0" prefWidth="527.0">
+        <columns>
+          <TableColumn fx:id="cAction" prefWidth="134.0" text="Nome Açao" />
+          <TableColumn fx:id="cSpecialty" prefWidth="202.0" text="Especialidade" />
+            <TableColumn fx:id="cLineCare" prefWidth="190.0" text="Linha de Cuidado" />
+        </columns>
+      </TableView>
+      <Button layoutX="315.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toRegisterAction" text="Cadastrar Ação" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="178.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toVisualizePatients" text="Visualizar Pacientes" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="140.0" />
+      <Button layoutX="222.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toRegisterStudentInAction" text="Cadastrar Aluno na Ação" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="295.0" />
+      <Button layoutX="51.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toVisualizeStudents" text="Visualizar Alunos" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+   </children>
 </AnchorPane>

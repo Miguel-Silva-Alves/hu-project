@@ -24,6 +24,10 @@ public class Professor extends User {
     public Professor() {
     }
 
+    public Professor(User user) {
+        super(user.getEmail(), user.getCpf(), user.getName(), user.getPassword(), user.getAddress(), user.getRegistration(), Roles.Professor, user.getActive());
+    }
+
     public boolean setAppointment(){return true;}
     public void checkSchedule(){}
     public boolean setStudantInAction(){return true;}

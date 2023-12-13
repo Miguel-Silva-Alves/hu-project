@@ -4,10 +4,7 @@ import br.ifsp.husaocarlos.domain.entities.Patient;
 import br.ifsp.husaocarlos.domain.entities.User;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class InMemoryUserDAO implements UserDAO {
     private static final Map<String, User> db = new HashMap<>();
@@ -16,7 +13,6 @@ public class InMemoryUserDAO implements UserDAO {
         return Optional.empty();
     }
 
-    @Override
     public Optional<User> findUserByCPF(String cpf) {
         if(db.containsKey(cpf)){
             return Optional.of(db.get(cpf));
@@ -44,7 +40,7 @@ public class InMemoryUserDAO implements UserDAO {
 
     @Override
     public List<User> findAll() {
-        return null;
+        return new ArrayList<>(db.values());
     }
 
     @Override

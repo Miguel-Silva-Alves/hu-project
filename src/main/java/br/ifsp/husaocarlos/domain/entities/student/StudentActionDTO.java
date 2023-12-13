@@ -1,19 +1,18 @@
-package br.ifsp.husaocarlos.domain.entities.appointment;
+package br.ifsp.husaocarlos.domain.entities.student;
 
 import br.ifsp.husaocarlos.domain.entities.Action;
-import br.ifsp.husaocarlos.domain.entities.student.Student;
 
-public class Schedule{
+public class StudentActionDTO {
+
 
     private Action action;
     private Student student;
-    private String date;
+    private String lineCare;
 
-
-    public Schedule(Action action, Student student, String date) {
+    public StudentActionDTO(Action action, Student student, String lineCare) {
         this.action = action;
         this.student = student;
-        this.date = date;
+        this.lineCare = lineCare;
     }
 
     public String getActionName() {
@@ -28,16 +27,15 @@ public class Schedule{
         return student.getCpf();
     }
 
-
-    public String getDate() {
-        return date;
-    }
-
     public Action getAction() {
         return action;
     }
 
     public Student getStudent() {
         return student;
+    }
+
+    public String getLineCare() {
+        return lineCare;
     }
 }

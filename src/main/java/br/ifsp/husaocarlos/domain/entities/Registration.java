@@ -4,15 +4,15 @@ public class Registration {
 
     Integer id;
     String studentId;
-    Integer actionId;
+    String actionId;
 
-    public Registration(Integer id, String cpf, Integer actionId) {
+    public Registration(Integer id, String cpf, String actionId) {
         this.id = id;
         this.studentId = cpf;
         this.actionId = actionId;
     }
 
-    public Registration(String cpf, Integer actionId) {
+    public Registration(String cpf, String actionId) {
         this.studentId = cpf;
         this.actionId = actionId;
         this.id = -1;
@@ -22,7 +22,7 @@ public class Registration {
         return id;
     }
 
-    public Integer getActionId() {
+    public String getActionId() {
         return actionId;
     }
 

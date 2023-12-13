@@ -3,7 +3,7 @@ package br.ifsp.husaocarlos.application.controller;
 import br.ifsp.husaocarlos.application.view.App;
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
-import br.ifsp.husaocarlos.domain.entities.Student;
+import br.ifsp.husaocarlos.domain.entities.student.Student;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.entities.appointment.Schedule;
 import javafx.collections.FXCollections;
@@ -87,7 +87,7 @@ public class SchedulerPatientUI {
     @FXML
     public void findStudents(){
         String nameAction = txtAction.getText();
-        Optional<Action> actionOptional = findActionUseCase.getActionByName(nameAction);
+        Optional<Action> actionOptional = findActionUseCase.findActionByName(nameAction);
         if(actionOptional.isPresent()){
             List<Student> list = listStudentOfActionUseCase.listStudents(actionOptional.get());
             List<Schedule> schedules = new ArrayList<>();

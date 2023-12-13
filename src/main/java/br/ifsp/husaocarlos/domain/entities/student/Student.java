@@ -1,4 +1,7 @@
-package br.ifsp.husaocarlos.domain.entities;
+package br.ifsp.husaocarlos.domain.entities.student;
+
+import br.ifsp.husaocarlos.domain.entities.Roles;
+import br.ifsp.husaocarlos.domain.entities.User;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;

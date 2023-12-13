@@ -39,6 +39,7 @@ public class LoginController {
             userHolder.setUser(currentLoggedUser);
             switch (currentLoggedUser.getRole()){
                 case Receptionist -> App.setRoot("HomeReceptionist");
+                case Professor -> App.setRoot("HomeProfessor");
             }
         }
 

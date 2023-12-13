@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="@localhost">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.45">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.48">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -93,7 +93,45 @@
 |root||root|localhost|UPDATE|G
 |root||root|127.0.0.1|grant option|G
 |root||root|::1|grant option|G
-|root||root|localhost|grant option|G</Grants>
+|root||root|localhost|grant option|G
+phpmyadmin|schema||pma|localhost|DELETE|G
+phpmyadmin|schema||pma|localhost|INSERT|G
+phpmyadmin|schema||pma|localhost|SELECT|G
+phpmyadmin|schema||pma|localhost|UPDATE|G
+test|schema||&apos;&apos;||ALTER|G
+test|schema||&apos;&apos;||CREATE|G
+test|schema||&apos;&apos;||CREATE ROUTINE|G
+test|schema||&apos;&apos;||CREATE TEMPORARY TABLES|G
+test|schema||&apos;&apos;||CREATE VIEW|G
+test|schema||&apos;&apos;||DELETE|G
+test|schema||&apos;&apos;||DELETE HISTORY|G
+test|schema||&apos;&apos;||DROP|G
+test|schema||&apos;&apos;||EVENT|G
+test|schema||&apos;&apos;||INDEX|G
+test|schema||&apos;&apos;||INSERT|G
+test|schema||&apos;&apos;||LOCK TABLES|G
+test|schema||&apos;&apos;||REFERENCES|G
+test|schema||&apos;&apos;||SELECT|G
+test|schema||&apos;&apos;||SHOW VIEW|G
+test|schema||&apos;&apos;||TRIGGER|G
+test|schema||&apos;&apos;||UPDATE|G
+test\\_%|schema||&apos;&apos;||ALTER|G
+test\\_%|schema||&apos;&apos;||CREATE|G
+test\\_%|schema||&apos;&apos;||CREATE ROUTINE|G
+test\\_%|schema||&apos;&apos;||CREATE TEMPORARY TABLES|G
+test\\_%|schema||&apos;&apos;||CREATE VIEW|G
+test\\_%|schema||&apos;&apos;||DELETE|G
+test\\_%|schema||&apos;&apos;||DELETE HISTORY|G
+test\\_%|schema||&apos;&apos;||DROP|G
+test\\_%|schema||&apos;&apos;||EVENT|G
+test\\_%|schema||&apos;&apos;||INDEX|G
+test\\_%|schema||&apos;&apos;||INSERT|G
+test\\_%|schema||&apos;&apos;||LOCK TABLES|G
+test\\_%|schema||&apos;&apos;||REFERENCES|G
+test\\_%|schema||&apos;&apos;||SELECT|G
+test\\_%|schema||&apos;&apos;||SHOW VIEW|G
+test\\_%|schema||&apos;&apos;||TRIGGER|G
+test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <ServerVersion>10.4.28</ServerVersion>
     </root>
     <collation id="2" parent="1" name="armscii8_bin">
@@ -1102,15 +1140,14 @@
     <collation id="323" parent="1" name="utf8mb4_vietnamese_ci">
       <Charset>utf8mb4</Charset>
     </collation>
-    <schema id="324" parent="1" name="hospital">
-      <Current>1</Current>
+    <schema id="324" parent="1" name="alunos">
       <CollationName>utf8mb4_general_ci</CollationName>
     </schema>
-    <schema id="325" parent="1" name="information_schema">
+    <schema id="325" parent="1" name="hospital">
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </schema>
+    <schema id="326" parent="1" name="information_schema">
       <CollationName>utf8_general_ci</CollationName>
-    </schema>
-    <schema id="326" parent="1" name="lojabrinquedos">
-      <CollationName>utf8mb4_general_ci</CollationName>
     </schema>
     <schema id="327" parent="1" name="mysql">
       <CollationName>utf8mb4_general_ci</CollationName>
@@ -1139,344 +1176,5 @@
     <user id="335" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="336" parent="324" name="action">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_general_ci</CollationName>
-    </table>
-    <table id="337" parent="324" name="action_patient">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_general_ci</CollationName>
-    </table>
-<<<<<<< HEAD
-    <table id="338" parent="325" name="appointment">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_general_ci</CollationName>
-    </table>
-    <table id="339" parent="325" name="lineofcare">
-=======
-    <table id="338" parent="324" name="patient">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_general_ci</CollationName>
-    </table>
-    <table id="339" parent="324" name="users">
->>>>>>> 9869a425c012f666b5017e525bd9261f1ae68cd4
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_general_ci</CollationName>
-    </table>
-    <table id="340" parent="325" name="lineofcare_action">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_general_ci</CollationName>
-    </table>
-    <table id="341" parent="325" name="patient">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_general_ci</CollationName>
-    </table>
-    <table id="342" parent="325" name="users">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_general_ci</CollationName>
-    </table>
-    <column id="343" parent="336" name="ID">
-      <AutoIncrement>6</AutoIncrement>
-      <DasType>int(11)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="344" parent="336" name="NAME">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>2</Position>
-    </column>
-    <column id="345" parent="336" name="SPECIALTY">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>3</Position>
-    </column>
-    <column id="346" parent="336" name="LINEOFCARE_LINENAME">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>4</Position>
-    </column>
-    <column id="347" parent="336" name="PROFESSOR_CPF">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>5</Position>
-    </column>
-    <foreign-key id="348" parent="336" name="FK_action_LINEOFCARE_LINENAME">
-      <ColNames>LINEOFCARE_LINENAME</ColNames>
-      <RefColNames>LINENAME</RefColNames>
-      <RefTableName>lineofcare</RefTableName>
-    </foreign-key>
-    <foreign-key id="349" parent="336" name="FK_action_PROFESSOR_CPF">
-      <ColNames>PROFESSOR_CPF</ColNames>
-      <RefColNames>CPF</RefColNames>
-      <RefTableName>users</RefTableName>
-    </foreign-key>
-    <index id="350" parent="336" name="PRIMARY">
-      <ColNames>ID</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="351" parent="336" name="FK_action_LINEOFCARE_LINENAME">
-      <ColNames>LINEOFCARE_LINENAME</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="352" parent="336" name="FK_action_PROFESSOR_CPF">
-      <ColNames>PROFESSOR_CPF</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="353" parent="336" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="354" parent="337" name="Action_ID">
-      <DasType>int(11)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="355" parent="337" name="patients_CPF">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <foreign-key id="356" parent="337" name="FK_action_patient_Action_ID">
-      <ColNames>Action_ID</ColNames>
-      <RefColNames>ID</RefColNames>
-      <RefTableName>action</RefTableName>
-    </foreign-key>
-    <foreign-key id="357" parent="337" name="FK_action_patient_patients_CPF">
-      <ColNames>patients_CPF</ColNames>
-      <RefColNames>CPF</RefColNames>
-      <RefTableName>patient</RefTableName>
-    </foreign-key>
-    <index id="358" parent="337" name="PRIMARY">
-      <ColNames>Action_ID
-patients_CPF</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="359" parent="337" name="FK_action_patient_patients_CPF">
-      <ColNames>patients_CPF</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="360" parent="337" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="361" parent="338" name="ID">
-      <AutoIncrement>2</AutoIncrement>
-      <DasType>int(11)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="362" parent="338" name="DATE">
-      <DasType>datetime|0s</DasType>
-      <Position>2</Position>
-    </column>
-    <column id="363" parent="338" name="STATUS">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>3</Position>
-    </column>
-    <column id="364" parent="338" name="ACTION_ID">
-      <DasType>int(11)|0s</DasType>
-      <Position>4</Position>
-    </column>
-    <column id="365" parent="338" name="PATIENT_CPF">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>5</Position>
-    </column>
-    <column id="366" parent="338" name="STUDENT_CPF">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>6</Position>
-    </column>
-    <foreign-key id="367" parent="338" name="FK_APPOINTMENT_ACTION_ID">
-      <ColNames>ACTION_ID</ColNames>
-      <RefColNames>ID</RefColNames>
-      <RefTableName>action</RefTableName>
-    </foreign-key>
-    <foreign-key id="368" parent="338" name="FK_APPOINTMENT_PATIENT_CPF">
-      <ColNames>PATIENT_CPF</ColNames>
-      <RefColNames>CPF</RefColNames>
-      <RefTableName>patient</RefTableName>
-    </foreign-key>
-    <foreign-key id="369" parent="338" name="FK_APPOINTMENT_STUDENT_CPF">
-      <ColNames>STUDENT_CPF</ColNames>
-      <RefColNames>CPF</RefColNames>
-      <RefTableName>users</RefTableName>
-    </foreign-key>
-    <index id="370" parent="338" name="PRIMARY">
-      <ColNames>ID</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="371" parent="338" name="FK_APPOINTMENT_ACTION_ID">
-      <ColNames>ACTION_ID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="372" parent="338" name="FK_APPOINTMENT_PATIENT_CPF">
-      <ColNames>PATIENT_CPF</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="373" parent="338" name="FK_APPOINTMENT_STUDENT_CPF">
-      <ColNames>STUDENT_CPF</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="374" parent="338" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="375" parent="339" name="LINENAME">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="376" parent="339" name="REPONSABLEPROFESSOR_CPF">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>2</Position>
-    </column>
-    <foreign-key id="377" parent="339" name="FK_LINEOFCARE_REPONSABLEPROFESSOR_CPF">
-      <ColNames>REPONSABLEPROFESSOR_CPF</ColNames>
-      <RefColNames>CPF</RefColNames>
-      <RefTableName>users</RefTableName>
-    </foreign-key>
-    <index id="378" parent="339" name="PRIMARY">
-      <ColNames>LINENAME</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="379" parent="339" name="FK_LINEOFCARE_REPONSABLEPROFESSOR_CPF">
-      <ColNames>REPONSABLEPROFESSOR_CPF</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="380" parent="339" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="381" parent="340" name="LineOfCare_LINENAME">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="382" parent="340" name="actions_ID">
-      <DasType>int(11)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <foreign-key id="383" parent="340" name="FK_LINEOFCARE_action_LineOfCare_LINENAME">
-      <ColNames>LineOfCare_LINENAME</ColNames>
-      <RefColNames>LINENAME</RefColNames>
-      <RefTableName>lineofcare</RefTableName>
-    </foreign-key>
-    <foreign-key id="384" parent="340" name="FK_LINEOFCARE_action_actions_ID">
-      <ColNames>actions_ID</ColNames>
-      <RefColNames>ID</RefColNames>
-      <RefTableName>action</RefTableName>
-    </foreign-key>
-    <index id="385" parent="340" name="PRIMARY">
-      <ColNames>LineOfCare_LINENAME
-actions_ID</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="386" parent="340" name="FK_LINEOFCARE_action_actions_ID">
-      <ColNames>actions_ID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="387" parent="340" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="388" parent="341" name="CPF">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="389" parent="341" name="ADDRESS">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>2</Position>
-    </column>
-    <column id="390" parent="341" name="EMAIL">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>3</Position>
-    </column>
-    <column id="391" parent="341" name="NAME">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>4</Position>
-    </column>
-    <column id="392" parent="341" name="PHONE">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>5</Position>
-    </column>
-    <column id="393" parent="341" name="REGISTERTIME">
-      <DasType>datetime|0s</DasType>
-      <Position>6</Position>
-    </column>
-    <column id="394" parent="341" name="action_id">
-      <DasType>int(11)|0s</DasType>
-      <Position>7</Position>
-    </column>
-    <foreign-key id="395" parent="341" name="FK_patient_action_id">
-      <ColNames>action_id</ColNames>
-      <RefColNames>ID</RefColNames>
-      <RefTableName>action</RefTableName>
-    </foreign-key>
-    <index id="396" parent="341" name="PRIMARY">
-      <ColNames>CPF</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="397" parent="341" name="FK_patient_action_id">
-      <ColNames>action_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="398" parent="341" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="399" parent="342" name="CPF">
-      <DasType>varchar(255)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="400" parent="342" name="role">
-      <DasType>varchar(31)|0s</DasType>
-      <Position>2</Position>
-    </column>
-    <column id="401" parent="342" name="ADDRESS">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>3</Position>
-    </column>
-    <column id="402" parent="342" name="EMAIL">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>4</Position>
-    </column>
-    <column id="403" parent="342" name="ISACTIVE">
-      <DasType>tinyint(1)|0s</DasType>
-      <DefaultExpression>0</DefaultExpression>
-      <Position>5</Position>
-    </column>
-    <column id="404" parent="342" name="NAME">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>6</Position>
-    </column>
-    <column id="405" parent="342" name="PASSWORD">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>7</Position>
-    </column>
-    <column id="406" parent="342" name="REGISTRATION">
-      <DasType>varchar(255)|0s</DasType>
-      <Position>8</Position>
-    </column>
-    <index id="407" parent="342" name="PRIMARY">
-      <ColNames>CPF</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="408" parent="342" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
   </database-model>
 </dataSource>

@@ -1,8 +1,9 @@
 package br.ifsp.husaocarlos.application.persistence;
 import br.ifsp.husaocarlos.application.repository.utils.JPAUtil;
+import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
-import br.ifsp.husaocarlos.domain.entities.Student;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
+import br.ifsp.husaocarlos.domain.entities.student.Student;
 import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
 import jakarta.persistence.EntityManager;
 import java.util.List;
@@ -24,6 +25,14 @@ public class MySqlAppointmentDAO implements AppointmentDAO {
         List<Appointment> appointments = findAll();
         return  appointments.stream()
                 .filter(appointment -> appointment.getPatient().getCpf().equals(patient.getCpf()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Appointment> getAppointmentAction(Action action) {
+        List<Appointment> appointments = findAll();
+        return  appointments.stream()
+                .filter(appointment -> appointment.getActionObject().getId().equals(action.getId()))
                 .collect(Collectors.toList());
     }
 

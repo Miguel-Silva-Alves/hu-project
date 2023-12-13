@@ -13,7 +13,7 @@ public class RegisterActionUseCase {
 
     public boolean registerAction(Action action){
         if (action.getProfessor() == null){
-            return false;
+            throw new IllegalArgumentException("professor cannot be null");
         }
         return actionDAO.save(action);
     }

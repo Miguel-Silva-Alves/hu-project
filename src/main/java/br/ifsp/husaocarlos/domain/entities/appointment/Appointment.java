@@ -1,7 +1,7 @@
 package br.ifsp.husaocarlos.domain.entities.appointment;
 import br.ifsp.husaocarlos.domain.entities.Action;
 import br.ifsp.husaocarlos.domain.entities.Patient;
-import br.ifsp.husaocarlos.domain.entities.Student;
+import br.ifsp.husaocarlos.domain.entities.student.Student;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -93,6 +93,11 @@ public class Appointment {
         return action.getName();
     }
 
+    public Action getActionObject(){
+        return action;
+    }
+
+    public String getPatientName(){ return patient.getName(); }
 
     @Override
     public String toString() {

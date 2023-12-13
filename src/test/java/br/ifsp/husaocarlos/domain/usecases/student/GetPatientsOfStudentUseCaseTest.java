@@ -4,6 +4,7 @@ import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
 import br.ifsp.husaocarlos.application.repository.*;
 import br.ifsp.husaocarlos.domain.entities.*;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
+import br.ifsp.husaocarlos.domain.entities.student.Student;
 import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
 import br.ifsp.husaocarlos.domain.usecases.action.RegisterActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;

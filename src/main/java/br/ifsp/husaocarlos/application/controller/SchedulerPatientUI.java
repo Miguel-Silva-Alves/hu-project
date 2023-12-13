@@ -89,6 +89,7 @@ public class SchedulerPatientUI {
         String nameAction = txtAction.getText();
         Optional<Action> actionOptional = findActionUseCase.findActionByName(nameAction);
         if(actionOptional.isPresent()){
+            System.out.println(actionOptional.get());
             List<Student> list = listStudentOfActionUseCase.listStudents(actionOptional.get());
             List<Schedule> schedules = new ArrayList<>();
 

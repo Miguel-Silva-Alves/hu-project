@@ -15,7 +15,7 @@ public class DischargePatient {
         this.appointmentDAO = appointmentDAO;
     }
 
-    public boolean discharge(Patient patient){
+    public boolean discharge(Patient patient , Appointment appointmentView){
 
         List<Appointment> appointments = appointmentDAO.getAppointmentPatient(patient);
         boolean exist = appointments.stream()
@@ -26,7 +26,11 @@ public class DischargePatient {
             return false;
         }
         for(Appointment appointment: appointments){
-            appointment.dischard();
+            if (appointment.equals(appointmentView)){
+                appointmentView.dischard();
+                appointmentDAO.update(appointmentView);
+            }
+
         }
         return true;
     }

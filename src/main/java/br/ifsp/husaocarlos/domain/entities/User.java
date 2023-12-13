@@ -1,4 +1,5 @@
 package br.ifsp.husaocarlos.domain.entities;
+import br.ifsp.husaocarlos.domain.usecases.utils.Hash;
 import jakarta.persistence.*;
 
 @Entity
@@ -26,7 +27,7 @@ public class User {
         this.email = email;
         this.cpf = cpf;
         this.name = name;
-        this.password = password;
+        this.password = Hash.toHash(password);
         this.address = adress;
         this.registration = registration;
         this.role = role;
@@ -34,25 +35,17 @@ public class User {
     }
 
     public User(String email, String cpf, String name, String password, String adress, String registration, Roles role) {
-        this.email = email;
-        this.cpf = cpf;
-        this.name = name;
-        this.password = password;
-        this.address = adress;
-        this.registration = registration;
-        this.role = role;
-        this.isActive = true;
+        this(email, cpf, name, password, adress, registration, role, true);
     }
 
     public User (User castUser){
-        this.email = castUser.getEmail();
-        this.cpf = castUser.getCpf();
-        this.name = castUser.getName();
-        this.password = castUser.getPassword();
-        this.address = castUser.getAddress();
-        this.registration = castUser.getRegistration();
-        this.role = castUser.getRole();
-        this.isActive = true;
+        this(castUser.getEmail(),
+                castUser.getCpf(),
+                castUser.getName(),
+                castUser.getPassword(),
+                castUser.getAddress(),
+                castUser.getRegistration(),
+                castUser.getRole(), true);
     }
 
     @Override

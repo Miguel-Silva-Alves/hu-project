@@ -22,7 +22,7 @@ public class EditLinesOfCareUseCaseTest {
     @BeforeEach
     void setup(){
         DAO = new InMemoryLinesOfCareDAO();
-        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Management, true);
+        management = new Management("adm.admin@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Management, true);
         lineName = "Linha1";
         Password professorPassword = new Password("123456");
         professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);

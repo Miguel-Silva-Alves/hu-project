@@ -62,7 +62,9 @@ public class MySqlRegistrationDAO implements RegistrationDAO {
     @Override
     public boolean update(Registration object) {
         try {
+            em.getTransaction().begin();
             em.merge(object);
+            em.getTransaction().commit();
             return true;
         }catch (RuntimeException e){
             return false;

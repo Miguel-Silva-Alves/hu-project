@@ -6,6 +6,7 @@ import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
 import jakarta.persistence.EntityManager;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MySqlActionDAO implements ActionDAO {
     private final EntityManager em = JPAUtil.getEntityManager();
@@ -13,12 +14,17 @@ public class MySqlActionDAO implements ActionDAO {
 
     @Override
     public Optional<Action> findByName(String name) {
-        return Optional.empty();
+        String jpql = "SELECT a FROM Action a WHERE a.name = ?1 ";
+        return Optional.ofNullable(em.createQuery(jpql, Action.class)
+                .setParameter(1,name).getSingleResult());
     }
 
     @Override
     public List<Action> findByProfessor(Professor professor) {
-        return null;
+        List<Action> actions = findAll();
+        return actions.stream()
+                .filter(action -> action.getProfessor().getCpf().equals(professor.getCpf()))
+                .collect(Collectors.toList());
     }
 
     @Override

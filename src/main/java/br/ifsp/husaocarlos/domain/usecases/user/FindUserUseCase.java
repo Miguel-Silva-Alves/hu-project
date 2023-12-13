@@ -21,7 +21,7 @@ public class FindUserUseCase {
         if (!CheckCPF.checkCpf(cpf)){
             throw new IllegalArgumentException("cpf is not valid");
         }
-        return userDAO.findUserByCPF(cpf);
+        return userDAO.findOne(cpf);
     }
 
 }

@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.ListAppointmentsUI">
+<AnchorPane onMouseClicked="#toDischarge" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ifsp.husaocarlos.application.controller.ListAppointmentsUI">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#toBack" text="Voltar" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <TableView fx:id="tableView" layoutX="26.0" layoutY="100.0" prefHeight="200.0" prefWidth="559.0">
@@ -17,5 +17,6 @@
       <Label fx:id="lblSearch" layoutX="311.0" layoutY="30.0" text="Paciente:" AnchorPane.rightAnchor="228.0" AnchorPane.topAnchor="30.0" />
       <TextField fx:id="txtFilter" layoutX="381.0" layoutY="26.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="26.0" />
       <Button layoutX="557.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#findAppointments" text="&gt;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="26.0" />
+      <Button layoutX="521.0" layoutY="330.0" mnemonicParsing="false" text="Dar Alta" AnchorPane.bottomAnchor="46.0" AnchorPane.rightAnchor="14.0" />
    </children>
 </AnchorPane>

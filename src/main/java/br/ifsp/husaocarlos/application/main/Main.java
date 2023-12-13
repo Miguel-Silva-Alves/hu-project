@@ -8,6 +8,7 @@ import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
 import br.ifsp.husaocarlos.domain.usecases.action.FindActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.action.RegisterActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.appointment.AppointmentDAO;
+import br.ifsp.husaocarlos.domain.usecases.appointment.DischargePatient;
 import br.ifsp.husaocarlos.domain.usecases.appointment.ListAppointmentUseCase;
 import br.ifsp.husaocarlos.domain.usecases.appointment.SchedulePatientToAppointmentUseCase;
 import br.ifsp.husaocarlos.domain.usecases.patient.CreatePatientUseCase;
@@ -15,6 +16,7 @@ import br.ifsp.husaocarlos.domain.usecases.patient.FindPatientUseCase;
 import br.ifsp.husaocarlos.domain.usecases.patient.PatientDAO;
 import br.ifsp.husaocarlos.domain.usecases.patient.UpdatePatientUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.ListStudentOfActionUseCase;
+import br.ifsp.husaocarlos.domain.usecases.registration.RegisterStudentActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
 import br.ifsp.husaocarlos.domain.usecases.student.FindStudentsUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.FindUserUseCase;
@@ -40,9 +42,15 @@ public class Main {
     public static GetNextHourFreeStudentUseCase getNextHourFreeStudentUseCase;
     public static ListAppointmentUseCase listAppointmentUseCase;
     public static FindStudentsUseCase findStudentsUseCase;
+    public static RegisterStudentActionUseCase registerStudentActionUseCase;
+    public static DischargePatient dischargePatient;
 
     // DAOS
     private static ActionDAO actionDAO;
+    private static RegistrationDAO registrationDAO;
+    private static UserDAO userDAO;
+    private static PatientDAO patientDAO;
+    private static AppointmentDAO appointmentDAO;
 
     public static void main(String[] args) {
         configureDaos();
@@ -54,39 +62,43 @@ public class Main {
     }
 
     private static void configureDaos(){
+
         actionDAO = new InMemoryActionDAO();
+        userDAO = new InMemoryUserDAO();
+        patientDAO = new InMemoryPatientDAO();
+        registrationDAO = new InMemoryRegistrationDAO();
+        appointmentDAO = new InMemoryAppointmentDAO();
+
     }
 
     private static void populateFakeDatabase(){
-        UserDAO dao = new InMemoryUserDAO();
         // Recepcionist
         User user = new User("teste@gmail.com", "99998964059", "miguel", "password", "endereco", "", Roles.Receptionist);
-        dao.save(user);
+        userDAO.save(user);
 
         // Student
-        Student student = new Student("student@gmail.com", "23812205009", "Aluno1", "password", "endereco", "idk", Roles.Student);
-        dao.save(student);
+        Student student = new Student("student@gmail.com", "23812205009", "Aluno1", "password", "endereco", "SC0001", Roles.Student);
+        Student student2 = new Student("miguel@gmail.com", "06619184081", "Aluno2", "password", "endereco", "SC0002", Roles.Student);
+        userDAO.save(student);
+        userDAO.save(student2);
 
         // Professor
         Professor professor = new Professor("professor@gmail.com", "73885307030", "Professor1", "password", "endereco", "idk", Roles.Professor);
-        dao.save(professor);
+        userDAO.save(professor);
 
         // Action
         Action action = new Action("action1","Urologista", professor,"LinhaDeCuidade1");
         actionDAO.save(action);
 
-        RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
 
         // Registration
         Registration newRegistration = new Registration(student.getCpf(), action.getId());
         registrationDAO.save(newRegistration);
 
-        PatientDAO patientDAO = new InMemoryPatientDAO();
         Patient patient = new Patient("16098760080", "Miguel", "email@gmail.com", "169999999", "Rua lá longe");
         patientDAO.save(patient);
 
-        AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
-        SchedulePatientToAppointmentUseCase sch = new SchedulePatientToAppointmentUseCase(appointmentDAO, registrationDAO, dao);
+        SchedulePatientToAppointmentUseCase sch = new SchedulePatientToAppointmentUseCase(appointmentDAO, registrationDAO, userDAO);
         String dataa = "02/12/2023 12:10";
         sch.scheduleWithDate(action, patient, student, dataa);
     }
@@ -95,11 +107,9 @@ public class Main {
 
     private static void configureInjection() {
         // User
-        UserDAO userDAO = new InMemoryUserDAO();
         findUserUseCase = new FindUserUseCase(userDAO);
 
         // Patient
-        PatientDAO patientDAO = new InMemoryPatientDAO();
         createPatientUseCase = new CreatePatientUseCase(patientDAO);
         findPatientUseCase = new FindPatientUseCase(patientDAO);
         updatePatientUseCase = new UpdatePatientUseCase(patientDAO);
@@ -109,14 +119,14 @@ public class Main {
         registerActionUseCase = new RegisterActionUseCase(actionDAO);
 
         // Registration
-        RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
         listStudentOfActionUseCase = new ListStudentOfActionUseCase(registrationDAO, userDAO);
         findStudentsUseCase = new FindStudentsUseCase(userDAO, actionDAO, registrationDAO);
+        registerStudentActionUseCase = new RegisterStudentActionUseCase(registrationDAO);
 
         // Appoitment
-        AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
         getNextHourFreeStudentUseCase = new GetNextHourFreeStudentUseCase(userDAO, appointmentDAO);
         schedulePatientToAppointmentUseCase = new SchedulePatientToAppointmentUseCase(appointmentDAO, registrationDAO, userDAO);
         listAppointmentUseCase = new ListAppointmentUseCase(appointmentDAO, userDAO, actionDAO, registrationDAO);
+        dischargePatient = new DischargePatient(appointmentDAO);
     }
 }

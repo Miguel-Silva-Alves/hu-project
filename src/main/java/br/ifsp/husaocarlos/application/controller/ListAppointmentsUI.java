@@ -16,8 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static br.ifsp.husaocarlos.application.main.Main.findPatientUseCase;
-import static br.ifsp.husaocarlos.application.main.Main.listAppointmentUseCase;
+import static br.ifsp.husaocarlos.application.main.Main.*;
 
 public class ListAppointmentsUI {
 
@@ -117,8 +116,23 @@ public class ListAppointmentsUI {
     }
 
     @FXML
-    public void findAppointments(MouseEvent event){
+    void findAppointments(MouseEvent event){
 
+    }
+
+    @FXML
+    void toDischarge(MouseEvent event){
+        Appointment appointment = tableView.getSelectionModel().getSelectedItem();
+        if(appointment != null){
+            boolean wasDeleted = dischargePatient.discharge(appointment.getPatient());
+            if(wasDeleted){
+                Utils.showAlert("Sucesso", "O paciente recebeu alta!", Alert.AlertType.CONFIRMATION);
+            }else{
+                Utils.showAlert("Erro", "O paciente não pode receber alta nesse momento!", Alert.AlertType.ERROR);
+            }
+        }else{
+            Utils.showAlert("Consulta não encontrada", "É necessário escolher uma consulta!", Alert.AlertType.ERROR);
+        }
     }
 
 }

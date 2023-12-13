@@ -85,7 +85,31 @@ public class HomeProfessor {
             ListAppointmentsUI controller = (ListAppointmentsUI) App.getController();
             controller.setAction(action);
         }else{
-            Utils.showAlert("Ação não encontrado", "É necessário escolher uma ação!", Alert.AlertType.ERROR);
+            Utils.showAlert("Ação não encontrada", "É necessário escolher uma ação!", Alert.AlertType.ERROR);
+        }
+    }
+
+    @FXML
+    void toRegisterStudentInAction(MouseEvent event) throws IOException {
+        Action action = tableView.getSelectionModel().getSelectedItem();
+        if(action != null){
+            App.setRoot("ListStudentsUI");
+            ListStudentsUI controller = (ListStudentsUI) App.getController();
+            controller.setActionToAddStudent(action);
+        }else{
+            Utils.showAlert("Ação não encontrada", "É necessário escolher uma ação!", Alert.AlertType.ERROR);
+        }
+    }
+
+    @FXML
+    void toVisualizeStudents(MouseEvent event) throws IOException {
+        Action action = tableView.getSelectionModel().getSelectedItem();
+        if(action != null){
+            App.setRoot("ListStudentsUI");
+            ListStudentsUI controller = (ListStudentsUI) App.getController();
+            controller.setActionToSeeStudents(action);
+        }else{
+            Utils.showAlert("Ação não encontrada", "É necessário escolher uma ação!", Alert.AlertType.ERROR);
         }
     }
 }

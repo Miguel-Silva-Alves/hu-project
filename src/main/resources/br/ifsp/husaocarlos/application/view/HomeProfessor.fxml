@@ -14,7 +14,9 @@
             <TableColumn fx:id="cLineCare" prefWidth="190.0" text="Linha de Cuidado" />
         </columns>
       </TableView>
-      <Button layoutX="315.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toRegisterAction" text="Cadastrar Ação" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="14.0" />
-      <Button layoutX="178.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toVisualizePatients" text="Visualizar Pacientes" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="150.0" />
+      <Button layoutX="315.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toRegisterAction" text="Cadastrar Ação" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="178.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toVisualizePatients" text="Visualizar Pacientes" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="140.0" />
+      <Button layoutX="222.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toRegisterStudentInAction" text="Cadastrar Aluno na Ação" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="295.0" />
+      <Button layoutX="51.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#toVisualizeStudents" text="Visualizar Alunos" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
    </children>
 </AnchorPane>

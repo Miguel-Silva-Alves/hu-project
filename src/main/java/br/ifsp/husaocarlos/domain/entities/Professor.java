@@ -13,7 +13,7 @@ public class Professor extends User {
     @OneToMany(mappedBy = "Professor", cascade = CascadeType.ALL,orphanRemoval = true)
     public List<Action> actions = new ArrayList<>();
 
-    public Professor(Integer id, String email, String cpf, String name, String password, String adress, String registration, Roles role, boolean isActive) {
+    public Professor(String email, String cpf, String name, String password, String adress, String registration, Roles role, boolean isActive) {
         super(email, cpf, name, password, adress, registration, role, isActive);
     }
 

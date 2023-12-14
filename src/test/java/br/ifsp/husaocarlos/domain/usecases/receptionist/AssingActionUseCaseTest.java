@@ -1,5 +1,4 @@
 package br.ifsp.husaocarlos.domain.usecases.receptionist;
-
 import br.ifsp.husaocarlos.application.repository.InMemoryActionDAO;
 import br.ifsp.husaocarlos.application.repository.InMemoryPatientDAO;
 import br.ifsp.husaocarlos.domain.entities.*;
@@ -19,7 +18,7 @@ public class AssingActionUseCaseTest {
     PatientDAO patientDAO;
     @BeforeEach
     public void setup(){
-        professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
 
         lineOfCare = new LineOfCare("LinhaDeCuidade1",new ArrayList<>(),professor);
         action = new Action("Ação1","Urologista",professor,lineOfCare);

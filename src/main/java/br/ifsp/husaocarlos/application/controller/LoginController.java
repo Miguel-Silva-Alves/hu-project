@@ -6,6 +6,7 @@ import br.ifsp.husaocarlos.domain.entities.User;
 import br.ifsp.husaocarlos.domain.usecases.user.FindUserUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import static br.ifsp.husaocarlos.application.main.Main.findUserUseCase;
+import static br.ifsp.husaocarlos.application.main.Main.loginUserUseCase;
 
 public class LoginController {
 
@@ -32,7 +34,7 @@ public class LoginController {
     @FXML
     void loginCurrentUser(MouseEvent event) throws IOException {
 
-        Optional<User> userOptional = findUserUseCase.getUserByCPF(username_tf.getText());
+        Optional<User> userOptional = loginUserUseCase.loginCpf(username_tf.getText(), password_tf.getText());
         if (userOptional.isPresent()){
             currentLoggedUser = userOptional.get();
             UserHolder userHolder = UserHolder.getInstance();
@@ -42,6 +44,10 @@ public class LoginController {
                 case Professor -> App.setRoot("HomeProfessor");
                 case Student -> App.setRoot("HomeStudent");
             }
+        }else{
+            username_tf.setText("");
+            password_tf.setText("");
+            Utils.showAlert("Erro", "Login ou senha incorreta!", Alert.AlertType.ERROR);
         }
 
     }

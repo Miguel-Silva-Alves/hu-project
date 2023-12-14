@@ -8,10 +8,6 @@ import java.util.*;
 
 public class InMemoryUserDAO implements UserDAO {
     private static final Map<String, User> db = new HashMap<>();
-    @Override
-    public Optional<User> findUserByLogin(String username, String password) {
-        return Optional.empty();
-    }
 
     public Optional<User> findUserByCPF(String cpf) {
         if(db.containsKey(cpf)){
@@ -31,7 +27,7 @@ public class InMemoryUserDAO implements UserDAO {
 
     @Override
     public Optional<User> findOne(String key) {
-
+        System.out.println(new ArrayList<>(db.values()));
         if(db.containsKey(key)){
             return Optional.of(db.get(key));
         }
@@ -51,5 +47,20 @@ public class InMemoryUserDAO implements UserDAO {
     @Override
     public boolean delete(String key) {
         return false;
+    }
+
+    @Override
+    public Optional<User> findUserByCpf(String cpf, String passwordHashed) {
+        if (db.containsKey(cpf)) {
+            if(db.get(cpf).getPassword().equals(passwordHashed)){
+                return Optional.of(db.get(cpf));
+            }
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<User> findUserByEmail(String email, String passwordHashed) {
+        return Optional.empty();
     }
 }

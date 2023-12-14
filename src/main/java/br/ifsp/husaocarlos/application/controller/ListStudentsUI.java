@@ -22,13 +22,17 @@ import static br.ifsp.husaocarlos.application.main.Main.registerStudentActionUse
 
 public class ListStudentsUI {
 
+    // Button
+    @FXML
+    private Button btnSchedule;
+
     // Label
     @FXML
-    Label lblAction;
+    private Label lblAction;
 
     // TextField
     @FXML
-    TextField txtStudent;
+    private TextField txtStudent;
 
     // Table
     @FXML
@@ -94,6 +98,7 @@ public class ListStudentsUI {
         }
         this.action = action;
         lblAction.setText(action.getName());
+        btnSchedule.setVisible(false);
         loadStudentsOfAction(action);
     }
 

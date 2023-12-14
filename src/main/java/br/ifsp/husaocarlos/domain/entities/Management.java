@@ -10,7 +10,7 @@ import java.util.List;
 @DiscriminatorValue("Management")
 public class Management extends User {
 
-    public Management(Integer id, String email, String cpf, String name, String password, String adress, String registration, Roles role, boolean isActive) {
+    public Management(String email, String cpf, String name, String password, String adress, String registration, Roles role, boolean isActive) {
         super(email, cpf, name, password, adress, registration, role, isActive);
     }
 

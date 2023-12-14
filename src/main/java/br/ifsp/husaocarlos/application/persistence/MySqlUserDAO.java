@@ -36,7 +36,9 @@ public class MySqlUserDAO implements UserDAO {
     @Override
     public boolean update(User object) {
         try {
+            em.getTransaction().begin();
             em.merge(object);
+            em.getTransaction().commit();
             return true;
         }catch (RuntimeException e){
             return false;
@@ -54,9 +56,14 @@ public class MySqlUserDAO implements UserDAO {
     }
 
     @Override
-    public Optional<User> findUserByLogin(String username, String password) {
-        String jpql = "SELECT u FROM User u where u.password = ?1 and u.email = ?2";
-        return Optional.ofNullable(em.createQuery(jpql, User.class).setParameter(1, password).setParameter(2, username).getSingleResult());
+    public Optional<User> findUserByCpf(String cpf, String passwordHashed) {
+        String jpql = "SELECT u FROM User u where u.password = ?1 and u.cpf = ?2";
+        return Optional.ofNullable(em.createQuery(jpql, User.class).setParameter(1, passwordHashed).setParameter(2, cpf).getSingleResult());
     }
 
+    @Override
+    public Optional<User> findUserByEmail(String email, String password) {
+        String jpql = "SELECT u FROM User u where u.password = ?1 and u.email = ?2";
+        return Optional.ofNullable(em.createQuery(jpql, User.class).setParameter(1, password).setParameter(2, email).getSingleResult());
+    }
 }

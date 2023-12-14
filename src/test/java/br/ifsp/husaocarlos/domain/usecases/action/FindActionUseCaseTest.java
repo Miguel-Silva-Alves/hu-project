@@ -24,8 +24,7 @@ class FindActionUseCaseTest {
 
         RegisterActionUseCase registerActionUseCase = new RegisterActionUseCase(actionDAO);
         Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
-        Action action = new Action("Ação1","Urologista",professor,"LinhaDeCuidade1");
-        registerActionUseCase.registerAction(action);
+
     }
 
     @Test

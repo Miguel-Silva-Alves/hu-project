@@ -26,7 +26,7 @@ class GetNextHourFreeStudentUseCaseTest {
         // Action
 
         Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
-        Action action = new Action(1,"Ação1","Urologista",professor,"LinhaDeCuidade1");
+        Action action = new Action("Ação1","Urologista",professor,"LinhaDeCuidade1");
 
         // Student
         Student student = new Student("miguel.dev@gmail.com","410.852.512-57","miguel", "1234",

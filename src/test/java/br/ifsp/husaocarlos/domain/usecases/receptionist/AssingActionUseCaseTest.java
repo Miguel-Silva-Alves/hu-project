@@ -6,8 +6,6 @@ import br.ifsp.husaocarlos.domain.usecases.action.ActionDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.security.enterprise.credential.Password;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AssingActionUseCaseTest {
@@ -18,7 +16,7 @@ public class AssingActionUseCaseTest {
     @BeforeEach
     public void setup(){
         professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
-        action = new Action(1,"Ação1","Urologista",professor,"LinhaDeCuidade1");
+        action = new Action("Ação1","Urologista",professor,"LinhaDeCuidade1");
         patient = new Patient("567.894.784-42","Paulo","contato@email.com","(16)99356-8742","outro canto do mundo");
         DAO = new InMemoryActionDAO();
 

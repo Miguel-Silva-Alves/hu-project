@@ -98,7 +98,7 @@ public class HomeStudent {
                 case InService -> btnUpdateAppointment.setText("Atendido");
                 default -> btnUpdateAppointment.setVisible(false);
             }
-
+            updateAppointmentUseCase.changeStatus(student,appointment);
         }
 
     }

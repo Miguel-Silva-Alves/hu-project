@@ -17,6 +17,9 @@ public class AssingActionUseCase {
     public boolean AssingAction(Action action, Patient patient){
         if (action == null || patient == null)
             throw new IllegalArgumentException();
-        return action.reciveNewPatient(patient);
+        if (action.reciveNewPatient(patient)){
+            return DAO.update(action);
+        }
+        return false;
     }
 }

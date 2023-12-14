@@ -63,7 +63,9 @@ public class MySqlAppointmentDAO implements AppointmentDAO {
     @Override
     public boolean update(Appointment object) {
         try {
+            em.getTransaction().begin();
             em.merge(object);
+            em.getTransaction().commit();
             return true;
         }catch (RuntimeException e){
             return false;

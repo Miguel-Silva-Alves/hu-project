@@ -52,7 +52,9 @@ public class MySqlActionDAO implements ActionDAO {
     @Override
     public boolean update(Action object) {
         try {
+            em.getTransaction().begin();
             em.merge(object);
+            em.getTransaction().commit();
             return true;
         }catch (RuntimeException e){
             return false;

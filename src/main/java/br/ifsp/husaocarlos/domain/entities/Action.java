@@ -24,7 +24,7 @@ public class Action {
       this.lineOfCare = lineOfCare;
    }
 
-   public Action(String ação1, String urologista, Professor professor, String linhaDeCuidade1) {
+   public Action() {
    }
 
    public Professor getProfessor() {

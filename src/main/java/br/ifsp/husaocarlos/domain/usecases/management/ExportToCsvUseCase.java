@@ -1,6 +1,4 @@
 package br.ifsp.husaocarlos.domain.usecases.management;
-
-import br.ifsp.husaocarlos.domain.entities.Roles;
 import br.ifsp.husaocarlos.domain.entities.User;
 import com.opencsv.CSVWriter;
 import java.io.FileWriter;

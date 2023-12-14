@@ -113,6 +113,7 @@ public class SchedulerPatientUI {
             if (appointmentOptional.isPresent()){
                 tableData.clear();
                 txtAction.setText("");
+                assingActionUseCase.AssingAction(schedule.getAction(),patient);
             }else{
                 System.out.println("SHOW MESSAGE OF ERROR");
             }

@@ -14,6 +14,7 @@ import br.ifsp.husaocarlos.domain.usecases.patient.FindPatientUseCase;
 import br.ifsp.husaocarlos.domain.usecases.patient.PatientDAO;
 import br.ifsp.husaocarlos.domain.usecases.patient.UpdatePatientUseCase;
 import br.ifsp.husaocarlos.domain.usecases.professor.FindLineOfCareUseCase;
+import br.ifsp.husaocarlos.domain.usecases.receptionist.AssingActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.ListStudentOfActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegisterStudentActionUseCase;
 import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
@@ -47,6 +48,7 @@ public class Main {
     public static DischargePatient dischargePatient;
     public static UpdateAppointmentUseCase updateAppointmentUseCase;
     public static FindLineOfCareUseCase findLineOfCareUseCase;
+    public static AssingActionUseCase assingActionUseCase;
 
     // DAOS
     private static ActionDAO actionDAO;
@@ -78,7 +80,7 @@ public class Main {
     private static void populateFakeDatabase(){
 
         // Management
-        User management = new Management(1, "admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
+        User management = new Management("admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
         userDAO.save(management);
 
         // Recepcionist
@@ -118,15 +120,13 @@ public class Main {
     private static void populateDatabase(){
 
         // Management
-        User management = new Management(1, "admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
-        dao.save(management);
+        User management = new Management("admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
+        userDAO.save(management);
 
         // Recepcionist
         User user = new Receptionist("teste@gmail.com", "99998964059", "miguel", "password", "endereco", "", Roles.Receptionist, true);
         userDAO.save(user);
 
-        Management management = new Management("gabriel@email","46352603050","Gabriel management","password","rua longe",null,Roles.Management,true);
-        userDAO.save(management);
         // Student
         Student student = new Student("student@gmail.com", "23812205009", "Aluno1", "password", "endereco", "idk", Roles.Student);
         userDAO.save(student);
@@ -172,6 +172,7 @@ public class Main {
         // Action
         findActionUseCase = new FindActionUseCase(actionDAO);
         registerActionUseCase = new RegisterActionUseCase(actionDAO);
+        assingActionUseCase = new AssingActionUseCase(actionDAO);
 
         // Registration
         listStudentOfActionUseCase = new ListStudentOfActionUseCase(registrationDAO, userDAO);

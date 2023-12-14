@@ -116,7 +116,7 @@ public class Main {
         User user = new Receptionist("teste@gmail.com", "99998964059", "miguel", "password", "endereco", "", Roles.Receptionist, true);
         userDAO.save(user);
 
-        Management management = new Management("gabriel@email","46352603050","Gabriel management","password","rua longe",null,Roles.Management,true);
+        Management management = new Management("gabriel@email","46352603050","Gabriel management","password","rua aldo milanetto",null,Roles.Management,true);
         userDAO.save(management);
         // Student
         Student student = new Student("student@gmail.com", "23812205009", "Aluno1", "password", "endereco", "idk", Roles.Student);

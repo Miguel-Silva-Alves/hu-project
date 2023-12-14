@@ -74,6 +74,11 @@ public class Main {
     }
 
     private static void populateFakeDatabase(){
+
+        // Management
+        User management = new Management(1, "admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
+        userDAO.save(management);
+
         // Recepcionist
         User user = new User("teste@gmail.com", "99998964059", "miguel", "password", "endereco", "", Roles.Receptionist);
         userDAO.save(user);
@@ -113,6 +118,10 @@ public class Main {
         ActionDAO actionDAO = new MySqlActionDAO();
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
         LinesOfCareDAO linesOfCareDAO = new MySqlLinesOfCareDAO();
+
+        // Management
+        User management = new Management(1, "admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
+        dao.save(management);
 
         // Recepcionist
         User user = new Receptionist("teste@gmail.com", "99998964059", "miguel", "password", "endereco", "", Roles.Receptionist, true);

@@ -25,7 +25,7 @@ public class getAllPatientsTest {
     @BeforeEach
     void setup(){
         DAO = new InMemoryPatientDAO();
-        professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","123456","la na pqp",null, Roles.Professor, true);
+        professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","123456","la na pqp",null, Roles.Professor, true);
         patient = new Patient("1111111111", "Miguel", "miguel@email.com", "169999999", "Rua onde ele mora, 10");
         RegisterPatientUseCase registerPatientUseCase = new RegisterPatientUseCase(DAO);
         registerPatientUseCase.insert(patient);

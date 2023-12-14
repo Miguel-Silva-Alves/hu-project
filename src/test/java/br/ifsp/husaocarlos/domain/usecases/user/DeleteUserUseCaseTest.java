@@ -3,6 +3,7 @@ package br.ifsp.husaocarlos.domain.usecases.user;
 import br.ifsp.husaocarlos.application.repository.InMemoryAppointmentDAO;
 import br.ifsp.husaocarlos.application.repository.InMemoryRegistrationDAO;
 import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
+import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
 import br.ifsp.husaocarlos.domain.entities.*;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.entities.student.Student;
@@ -21,13 +22,13 @@ class DeleteUserUseCaseTest {
 
     @Test
     void deleteUser() {
-        UserDAO userDAO = new MySqlUserDAO();
+        UserDAO userDAO = new InMemoryUserDAO();
         AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
 
         // Create User
         User user = new User(
                 "email",
-                "cpf",
+                "51485378842",
                 "name",
                 "1234",
                 "adress",
@@ -37,16 +38,16 @@ class DeleteUserUseCaseTest {
 
         // Save User
         boolean exec = userDAO.save(user);
-        assertEquals(exec, true);
+        assertTrue(exec);
 
         // Use Case
         DeleteUserUseCase deleteUserUseCase = new DeleteUserUseCase(userDAO, appointmentDAO);
         exec = deleteUserUseCase.deleteUser(user);
-        assertEquals(exec, true);
+        assertTrue(exec);
 
         // Trying to delete some user that not exists
         exec = deleteUserUseCase.deleteUser(user);
-        assertEquals(exec, false);
+        assertFalse(exec);
 
         // Saving user and register some appointment
         Student student = new Student(
@@ -61,7 +62,7 @@ class DeleteUserUseCaseTest {
 
         // Save Student
         exec = userDAO.save(student);
-        assertEquals(exec, true);
+        assertTrue(exec);
 
         // Save some appointment
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
@@ -69,7 +70,7 @@ class DeleteUserUseCaseTest {
         LocalDateTime date = LocalDateTime.now().plusHours(2);
 
         // Action
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         LineOfCare lineOfCare = new LineOfCare("LinhaDeCuidade1",new ArrayList<>(),professor);
         Action action = new Action("Ação1","Urologista",professor,lineOfCare);
 
@@ -78,17 +79,17 @@ class DeleteUserUseCaseTest {
 
         // Save registration on Action
         exec = registerStudentActionUseCase.includeStudentAction(action, student);
-        Assertions.assertEquals(true, exec);
+        assertTrue(exec);
 
         // Patient
         Patient patient = new Patient("1111111111", "Miguel", "miguel@email.com", "169999999", "Rua onde ele mora, 10");
         // Appointment
         Appointment appointment = new Appointment(date, action, student, patient);
         exec = appointmentDAO.save(appointment);
-        assertEquals(true, exec);
+        assertTrue(exec);
 
         // Trying to delete student with appointment
         exec = deleteUserUseCase.deleteUser(user);
-        assertEquals(exec, false);
+        assertFalse(exec);
     }
 }

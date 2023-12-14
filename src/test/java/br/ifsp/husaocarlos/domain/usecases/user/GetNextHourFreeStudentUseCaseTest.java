@@ -2,6 +2,7 @@ package br.ifsp.husaocarlos.domain.usecases.user;
 
 import br.ifsp.husaocarlos.application.repository.InMemoryAppointmentDAO;
 import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
+import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
 import br.ifsp.husaocarlos.domain.entities.*;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.entities.student.Student;
@@ -19,7 +20,7 @@ class GetNextHourFreeStudentUseCaseTest {
     void getNextHourFree() {
 
         AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
-        UserDAO userDAO = new MySqlUserDAO();
+        UserDAO userDAO = new InMemoryUserDAO();
 
         LocalDateTime date = LocalDateTime.now().plusHours(2);
         LocalDateTime date2 = LocalDateTime.now().minusHours(3);

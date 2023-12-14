@@ -19,6 +19,10 @@ import static br.ifsp.husaocarlos.application.main.Main.*;
 
 public class ListAppointmentsUI {
 
+    // Button
+    @FXML
+    private Button btnDischarge;
+
     // Label
     @FXML
     private Label lblSearch;
@@ -75,7 +79,6 @@ public class ListAppointmentsUI {
         cAction.setCellValueFactory(new PropertyValueFactory<>("patientName"));
         this.action = action;
         this.goBack = "HomeProfessor";
-        loadDataAndShow(null);
     }
 
     private void loadDataAndShow(Patient patientFilter){
@@ -110,13 +113,30 @@ public class ListAppointmentsUI {
         }
     }
 
+    private void loadAppointmentsOfPatient(Patient patientFilter){
+        List<Appointment> appointments;
+        if (patientFilter != null) {
+            appointments = listAppointmentUseCase.getAppointmentsOfPatient(patientFilter, null);
+        } else{
+            appointments = listAppointmentUseCase.findAll();
+        }
+
+        tableData.clear();
+        if(appointments == null){
+            Utils.showAlert("Sem dados", "Não encontramos nenhuma consulta!", Alert.AlertType.INFORMATION);
+        }else{
+            tableData.addAll(appointments);
+        }
+    }
+
     public void setPatient(Patient patient) {
         if (patient == null){
             throw new IllegalArgumentException("patient can not be null");
         }
         actionOrPatient.setText("Patient: " + patient.getName());
+        btnDischarge.setVisible(false);
         this.patient = patient;
-        loadDataAndShow(null);
+        loadAppointmentsOfPatient(patient);
     }
 
     public void setAction(Action action) {
@@ -163,7 +183,7 @@ public class ListAppointmentsUI {
     void toDischarge(MouseEvent event){
         Appointment appointment = tableView.getSelectionModel().getSelectedItem();
         if(appointment != null){
-            boolean wasDeleted = dischargePatient.discharge(appointment.getPatient());
+            boolean wasDeleted = dischargePatient.discharge(appointment.getPatient(),appointment);
             if(wasDeleted){
                 Utils.showAlert("Sucesso", "O paciente recebeu alta!", Alert.AlertType.CONFIRMATION);
             }else{
@@ -172,6 +192,7 @@ public class ListAppointmentsUI {
         }else{
             Utils.showAlert("Consulta não encontrada", "É necessário escolher uma consulta!", Alert.AlertType.ERROR);
         }
+        loadDataAndShow(patient);
     }
 
 }

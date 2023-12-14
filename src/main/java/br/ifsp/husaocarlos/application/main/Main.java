@@ -20,6 +20,7 @@ import br.ifsp.husaocarlos.domain.usecases.registration.RegistrationDAO;
 import br.ifsp.husaocarlos.domain.usecases.student.FindStudentsUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.FindUserUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.GetNextHourFreeStudentUseCase;
+import br.ifsp.husaocarlos.domain.usecases.user.LoginUserUseCase;
 import br.ifsp.husaocarlos.domain.usecases.user.UserDAO;
 import java.util.ArrayList;
 import br.ifsp.husaocarlos.domain.entities.Action;
@@ -28,6 +29,7 @@ import br.ifsp.husaocarlos.domain.entities.User;
 public class Main {
 
     // USECASE
+    public static LoginUserUseCase loginUserUseCase;
     public static FindUserUseCase findUserUseCase;
     public static CreatePatientUseCase createPatientUseCase;
     public static FindPatientUseCase findPatientUseCase;
@@ -58,25 +60,25 @@ public class Main {
     public static void main(String[] args) {
         configureDaos();
         configureInjection();
-        populateFakeDatabase();
+        //populateFakeDatabase();
         //populateDatabase();
         App.main(args);
     }
 
     private static void configureDaos(){
 
-        actionDAO = new InMemoryActionDAO();
-        userDAO = new InMemoryUserDAO();
-        patientDAO = new InMemoryPatientDAO();
-        registrationDAO = new InMemoryRegistrationDAO();
-        appointmentDAO = new InMemoryAppointmentDAO();
-
+        actionDAO = new MySqlActionDAO();
+        userDAO = new MySqlUserDAO();
+        patientDAO = new MySqlPatientDAO();
+        registrationDAO = new MySqlRegistrationDAO();
+        appointmentDAO = new MySqlAppointmentDAO();
+        linesOfCareDAO = new MySqlLinesOfCareDAO();
     }
 
     private static void populateFakeDatabase(){
 
         // Management
-        User management = new Management(1, "admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
+        User management = new Management("admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
         userDAO.save(management);
 
         // Recepcionist
@@ -114,26 +116,20 @@ public class Main {
         sch.scheduleWithDate(action, patient, student, dataa);
     }
     private static void populateDatabase(){
-        UserDAO dao = new MySqlUserDAO();
-        ActionDAO actionDAO = new MySqlActionDAO();
-        RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
-        LinesOfCareDAO linesOfCareDAO = new MySqlLinesOfCareDAO();
-
-        // Management
-        User management = new Management(1, "admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
-        dao.save(management);
 
         // Recepcionist
         User user = new Receptionist("teste@gmail.com", "99998964059", "miguel", "password", "endereco", "", Roles.Receptionist, true);
-        dao.save(user);
+        userDAO.save(user);
 
+        Management management = new Management("gabriel@email","46352603050","Gabriel management","password","rua aldo milanetto",null,Roles.Management,true);
+        userDAO.save(management);
         // Student
         Student student = new Student("student@gmail.com", "23812205009", "Aluno1", "password", "endereco", "idk", Roles.Student);
-        dao.save(student);
+        userDAO.save(student);
 
         // Professor
         Professor professor = new Professor("professor@gmail.com", "73885307030", "Professor1", "password", "endereco", "idk", Roles.Professor);
-        dao.save(professor);
+        userDAO.save(professor);
 
 
         LineOfCare line = new LineOfCare("LinhaDeCuidade1",new ArrayList<>(),professor);
@@ -154,13 +150,14 @@ public class Main {
         patientDAO.save(patient);
 
         AppointmentDAO appointmentDAO = new MySqlAppointmentDAO();
-        SchedulePatientToAppointmentUseCase sch = new SchedulePatientToAppointmentUseCase(appointmentDAO, registrationDAO, dao);
+        SchedulePatientToAppointmentUseCase sch = new SchedulePatientToAppointmentUseCase(appointmentDAO, registrationDAO, userDAO);
         String dataa = "02/12/2023 12:10";
         System.out.println(sch.scheduleWithDate(action, patient, student, dataa));
     }
 
     private static void configureInjection() {
         // User
+        loginUserUseCase = new LoginUserUseCase(userDAO);
         findUserUseCase = new FindUserUseCase(userDAO);
 
         // Patient

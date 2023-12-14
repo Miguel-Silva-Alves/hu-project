@@ -23,7 +23,7 @@ public class GetAllUsersTest {
     @BeforeEach
     void setup(){
         DAO = new MySqlUserDAO();
-        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Management, true);
+        management = new Management("adm.admin@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Management, true);
         Password professorPassword = new Password("123456");
         professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor);
         DAO.save(professor);
@@ -57,7 +57,7 @@ public class GetAllUsersTest {
     @Test
     void getAllUsersWithDifferentRole(){
         Password managementPassword = new Password("1234");
-        management = new Management(0,"adm.admin@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        management = new Management("adm.admin@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         final IllegalAccessException exception = assertThrows(IllegalAccessException.class,() ->{
             GetAllUsers getAllUsers = new GetAllUsers(DAO);
             getAllUsers.get(management);

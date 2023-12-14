@@ -119,10 +119,13 @@ public class Main {
     }
     private static void populateDatabase(){
 
+<<<<<<< HEAD
         // Management
         User management = new Management("admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
         userDAO.save(management);
 
+=======
+>>>>>>> e190843780b12b55177867940c2ea8193cdd2f20
         // Recepcionist
         User user = new Receptionist("teste@gmail.com", "99998964059", "miguel", "password", "endereco", "", Roles.Receptionist, true);
         userDAO.save(user);

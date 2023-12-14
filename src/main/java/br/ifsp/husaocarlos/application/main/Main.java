@@ -76,6 +76,11 @@ public class Main {
     }
 
     private static void populateFakeDatabase(){
+
+        // Management
+        User management = new Management("admin@gmail.com","91328945809","tomas","password","casa 2 rua 180","teste",Roles.Management,true);
+        userDAO.save(management);
+
         // Recepcionist
         User user = new User("teste@gmail.com", "99998964059", "miguel", "password", "endereco", "", Roles.Receptionist);
         userDAO.save(user);

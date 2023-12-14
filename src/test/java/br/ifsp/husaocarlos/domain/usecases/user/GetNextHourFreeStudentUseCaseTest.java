@@ -27,6 +27,7 @@ class GetNextHourFreeStudentUseCaseTest {
         // Action
 
         Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+
         LineOfCare lineOfCare = new LineOfCare("LinhaDeCuidade1",new ArrayList<>(),professor);
         Action action = new Action("Ação1","Urologista",professor,lineOfCare);
 

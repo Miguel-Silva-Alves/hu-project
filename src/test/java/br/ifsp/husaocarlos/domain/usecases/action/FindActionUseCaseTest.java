@@ -23,7 +23,7 @@ class FindActionUseCaseTest {
         findActionUseCase = new FindActionUseCase(actionDAO);
 
         RegisterActionUseCase registerActionUseCase = new RegisterActionUseCase(actionDAO);
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
 
     }
 
@@ -51,7 +51,7 @@ class FindActionUseCaseTest {
     @Test
     void findActionsOfProfessor() {
         // Incorrect
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         List<Action> actions = findActionUseCase.findActionsOfProfessor(professor);
         System.out.println(actions);
         assertEquals(false, actions.isEmpty());

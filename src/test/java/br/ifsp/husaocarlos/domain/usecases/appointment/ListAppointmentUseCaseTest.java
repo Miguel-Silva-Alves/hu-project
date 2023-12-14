@@ -25,12 +25,12 @@ class ListAppointmentUseCaseTest {
 
         AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
-        UserDAO userDAO = new MySqlUserDAO();
+        UserDAO userDAO = new InMemoryUserDAO();
         ActionDAO actionDAO = new InMemoryActionDAO();
 
         // Register Action and Professor
         RegisterActionUseCase registerActionUseCase = new RegisterActionUseCase(actionDAO);
-        Professor professor = new Professor(0,"prof.educador@gmail.com","589.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor("prof.educador@gmail.com","589.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         LineOfCare lineOfCare = new LineOfCare("LinhaDeCuidade1",new ArrayList<>(),professor);
         Action action = new Action("Ação1","Urologista",professor,lineOfCare);
         boolean exec = registerActionUseCase.registerAction(action);
@@ -67,7 +67,7 @@ class ListAppointmentUseCaseTest {
 
         // Register Action and Professor
         RegisterActionUseCase registerActionUseCase = new RegisterActionUseCase(actionDAO);
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         LineOfCare lineOfCare = new LineOfCare("LinhaDeCuidade1",new ArrayList<>(),professor);
         Action action = new Action("Ação1","Urologista",professor,lineOfCare);
         boolean exec = registerActionUseCase.registerAction(action);
@@ -113,7 +113,7 @@ class ListAppointmentUseCaseTest {
 
         // Register Action and Professor
         RegisterActionUseCase registerActionUseCase = new RegisterActionUseCase(actionDAO);
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         LineOfCare lineOfCare = new LineOfCare("LinhaDeCuidade1",new ArrayList<>(),professor);
         Action action = new Action("Ação1","Urologista",professor,lineOfCare);
         boolean exec = registerActionUseCase.registerAction(action);

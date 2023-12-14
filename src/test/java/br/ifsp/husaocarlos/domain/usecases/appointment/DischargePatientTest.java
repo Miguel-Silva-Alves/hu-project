@@ -2,6 +2,7 @@ package br.ifsp.husaocarlos.domain.usecases.appointment;
 import br.ifsp.husaocarlos.application.repository.InMemoryAppointmentDAO;
 import br.ifsp.husaocarlos.application.repository.InMemoryRegistrationDAO;
 import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
+import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
 import br.ifsp.husaocarlos.domain.entities.*;
 import br.ifsp.husaocarlos.domain.entities.appointment.Appointment;
 import br.ifsp.husaocarlos.domain.entities.student.Student;
@@ -22,13 +23,13 @@ class DischargePatientTest {
     void discharge() {
 
         AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
-        UserDAO userDAO = new MySqlUserDAO();
+        UserDAO userDAO = new InMemoryUserDAO();
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
 
         LocalDateTime date = LocalDateTime.now().plusHours(2);
 
         // Action
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-57","João","1234","la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor("prof.educador@gmail.com","579.456.789-57","João","1234","la na pqp",null, Roles.Professor, true);
         LineOfCare lineOfCare = new LineOfCare("LinhaDeCuidade1",new ArrayList<>(),professor);
         Action action = new Action("Ação1","Urologista",professor,lineOfCare);
 

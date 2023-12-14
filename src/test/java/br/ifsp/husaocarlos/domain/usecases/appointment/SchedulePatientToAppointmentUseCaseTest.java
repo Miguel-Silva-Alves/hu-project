@@ -24,14 +24,14 @@ class SchedulePatientToAppointmentUseCaseTest {
     @Test
     void schedule() {
         AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
-        UserDAO userDAO = new MySqlUserDAO();
+        UserDAO userDAO = new InMemoryUserDAO();
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
 
         LocalDateTime date = LocalDateTime.now().plusHours(2);
         LocalDateTime date2 = LocalDateTime.now().minusHours(3);
 
         // Action
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         LineOfCare lineOfCare = new LineOfCare("LinhaDeCuidade1",new ArrayList<>(),professor);
         Action action = new Action("Ação1","Urologista",professor,lineOfCare);
 
@@ -75,7 +75,7 @@ class SchedulePatientToAppointmentUseCaseTest {
         LocalDateTime date2 = LocalDateTime.now().minusHours(3);
 
         // Action
-        Professor professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        Professor professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         LineOfCare lineOfCare = new LineOfCare("LinhaDeCuidade1",new ArrayList<>(),professor);
         Action action = new Action("Ação1","Urologista",professor,lineOfCare);
 

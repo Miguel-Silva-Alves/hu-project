@@ -24,8 +24,7 @@ public class EditLinesOfCareUseCaseTest {
         DAO = new InMemoryLinesOfCareDAO();
         management = new Management("adm.admin@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Management, true);
         lineName = "Linha1";
-        Password professorPassword = new Password("123456");
-        professor = new Professor(0,"prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
+        professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor, true);
         lineOfCare = new LineOfCare(lineName,new ArrayList<Action>(),professor);
         DAO.save(lineOfCare);
     }

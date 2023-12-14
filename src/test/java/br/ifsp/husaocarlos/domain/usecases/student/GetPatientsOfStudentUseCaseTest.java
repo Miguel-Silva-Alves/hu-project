@@ -26,7 +26,7 @@ class GetPatientsOfStudentUseCaseTest {
     void getPatients() {
         AppointmentDAO appointmentDAO = new InMemoryAppointmentDAO();
         RegistrationDAO registrationDAO = new InMemoryRegistrationDAO();
-        UserDAO userDAO = new MySqlUserDAO();
+        UserDAO userDAO = new InMemoryUserDAO();
         ActionDAO actionDAO = new InMemoryActionDAO();
         PatientDAO patientDAO = new InMemoryPatientDAO();
 

@@ -1,5 +1,6 @@
 package br.ifsp.husaocarlos.domain.usecases.management;
 import br.ifsp.husaocarlos.application.persistence.MySqlUserDAO;
+import br.ifsp.husaocarlos.application.repository.InMemoryUserDAO;
 import br.ifsp.husaocarlos.domain.entities.Management;
 import br.ifsp.husaocarlos.domain.entities.Professor;
 import br.ifsp.husaocarlos.domain.entities.Roles;
@@ -22,9 +23,8 @@ public class GetAllUsersTest {
 
     @BeforeEach
     void setup(){
-        DAO = new MySqlUserDAO();
+        DAO = new InMemoryUserDAO();
         management = new Management("adm.admin@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Management, true);
-        Password professorPassword = new Password("123456");
         professor = new Professor("prof.educador@gmail.com","579.456.789-56","João","1234","la na pqp",null, Roles.Professor);
         DAO.save(professor);
     }

@@ -13,7 +13,7 @@ public class MySqlActionDAO implements ActionDAO {
 
     @Override
     public Optional<Action> findByName(String name) {
-        String jpql = "SELECT a FROM Action a WHERE a.name = ?1 ";
+        String jpql = "SELECT a FROM Action a WHERE a.name like ?1 ";
         return Optional.ofNullable(em.createQuery(jpql, Action.class)
                 .setParameter(1,name).getSingleResult());
     }
